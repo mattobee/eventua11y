@@ -1,0 +1,22 @@
+{
+  "name": "eventua11y",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattobee/eventua11y.git"
+  },
+  "author": "Matt Obee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mattobee/eventua11y/issues"
+  },
+  "homepage": "https://github.com/mattobee/eventua11y#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^1.0.1"
+  }
+}
