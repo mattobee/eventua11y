@@ -1,6 +1,17 @@
 @import '~modern-normalize/modern-normalize.css';
 @import 'preflight';
 @import 'typo';
+@import 'utilities';
+
+.maintenance {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .logo {
+        max-width: 20rem;
+    }
+}
 
 .container {
     margin: 0 auto;
