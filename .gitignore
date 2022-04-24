@@ -1,2 +1,13 @@
+# Dependency directories
 node_modules/
-dist/
+
+# dotenv environment variables file
+.env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# eleventy.js build output
+dist
