@@ -1,0 +1,31 @@
+@import '~modern-normalize/modern-normalize.css';
+@import 'preflight';
+@import 'typo';
+
+.container {
+    margin: 0 auto;
+    max-width: 1280px;
+}
+
+body {
+    background-color: #F3F3F3;
+    margin: 24px;
+}
+
+section {
+    margin-bottom: 4rem;
+}
+
+.event {
+    background-color: #fff;
+    margin-bottom: 24px;
+    &__location {
+        display: block;
+    }
+    &__iaap {
+        display: block;
+    }
+    .content {
+        padding: 24px;
+    }
+}
