@@ -1,0 +1,34 @@
+[
+  {
+    "title": "John Slatin AccessU 2022",
+    "location": "Austin, TX",
+    "description": {},
+    "dateStart": "2022-05-09T20:40:00.000Z",
+    "dateEnd": "2022-05-09T20:40:00.000Z",
+    "url": "https://knowbility.org/programs/accessu-2022",
+    "cpacc": true,
+    "was": true,
+    "cpwa": false
+  },
+  {
+    "title": "Global Accessibility Awareness Day",
+    "location": "Everywhere",
+    "description": {},
+    "dateStart": "2022-05-18T23:00:00.000Z",
+    "dateEnd": "2022-05-19T23:00:00.000Z",
+    "url": "https://accessibility.day/",
+    "cpacc": true,
+    "was": false,
+    "cpwa": true
+  },
+  {
+    "title": "International Guide Dog Day",
+    "location": "Everywhere",
+    "description": {},
+    "dateStart": "2022-05-09T20:40:00.000Z",
+    "dateEnd": "2022-05-09T20:40:00.000Z",
+    "cpacc": false,
+    "was": false,
+    "cpwa": false
+  }
+]
