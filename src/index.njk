@@ -1,0 +1,62 @@
+---
+title: Eventua11y
+layout: layouts/base.njk
+---
+
+<div class="container">
+
+    <h1 class="sr-only">Accessibility Events</h1>
+
+    <section>
+        <h2>Recent Events</h2>
+        <ul>
+            <li>
+                <article class="event">
+                    <div class="content">
+                        <h3 class="event__title"><a href="" class="external">Event Title</a></h3>
+                        <span class="event__location">London</span>
+                        <span class="event__iaap">CAECs pre-approved for <abbr title="Certified Professional in Accessibility Core Competencies">CPACC</abbr>, <abbr title="Certified Professional in Web Accessibility">CPWA</abbr></span>
+                    </div>
+                </article>
+                <!-- End event -->
+            </li>
+        </ul>
+        <!-- End past events -->
+    </section>
+
+    <section>
+        <h2>Upcoming Events</h2>
+        <ul>
+            {% for event in events %}
+            <li>
+                <article class="event">
+                    <div class="content">
+                        <h3 class="event__title">{{ event.title }}</h3>
+                        <span class="event__location">{{ event.location }}</span>
+                        {% if event.url %}<a class="url" href="{{ event.url }}" class="external">
+                            {{ event.url }}</a>
+                        {% endif %}
+                        {% if event.cpacc or event.was or event.cpwa %}
+                            <span class="event__iaap"><abbr title="Continuing Accessibility Education Credits">CAECs</abbr> pre-approved for 
+                                {% if event.cpacc %}
+                                    <abbr title="Certified Professional in Accessibility Core Competencies">CPACC</abbr>
+                                {% endif %}
+                                {% if event.was %}
+                                    <abbr title="Web Accessibility Specialist">WAS</abbr>
+                                {% endif %}
+                                {% if event.cpwa %}
+                                    <abbr title="Certified Professional in Web Accessibility">CPWA</abbr>
+                                {% endif %}
+                            </span>
+                        {% endif %}
+                    </div>
+                </article>
+                <!-- End event -->
+            </li>
+            {% endfor %}
+        </ul>
+        <!-- End upcoming events -->
+    </section>
+
+</div>
+<!-- End container -->
