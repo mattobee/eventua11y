@@ -7,10 +7,10 @@
     <title>{{ title }}</title>
     <link rel="stylesheet" href="/styles/styles.css">
   </head>
-  <body>
-    <header role="banner">
+  <body class="page--{% if page.fileSlug %}{{ page.fileSlug }}{% else %}home{% endif %} layout--{{ layout }}">
+    <header class="masthead" role="banner">
         <div class="container">
-            <img src="/images/eventua11y_logo_wordmark.svg" alt="Eventua11y">
+            <img calss="logo" src="/images/eventua11y_logo_wordmark.svg" alt="Eventua11y">
         </div>
     </header>
     <main>
