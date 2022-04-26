@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Slab&display=swap');
+
 h1 {
     font-size: 3.052rem;
     margin-bottom: 2rem;
@@ -18,4 +20,25 @@ h4 {
 
 h5 {
     font-size: 1.25rem;
+}
+
+body {
+    font-family: "Roboto";
+}
+
+:is(h1,h2,h3,h4,h5,h6) {
+    font-family: "Roboto Slab", serif;
+}
+
+a {
+    text-decoration: underline;
+    text-underline-offset: .3em;
+}
+
+a:link, a:visited {
+    color: var(--primary);
+}
+
+a:hover, a:active, a:focus {
+    color: var(--primary);
 }

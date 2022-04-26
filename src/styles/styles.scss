@@ -1,5 +1,6 @@
 @import '~modern-normalize/modern-normalize.css';
 @import 'preflight';
+@import 'color';
 @import 'typo';
 @import 'utilities';
 @import 'masthead';
@@ -11,21 +12,70 @@
 
 body {
     background-color: #F3F3F3;
+    line-height: 1.5;
     margin: 0;
+}
+
+.masthead {
+    display: grid;
+	justify-content: center;
 }
 
 section {
     margin-bottom: 4rem;
 }
 
+.events {
+    &--cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    grid-column-gap: 24px;
+    grid-row-gap: 24px; 
+    }
+    &--list .event {
+        margin-bottom: 24px;
+    }
+}
+
 .event {
     background-color: #fff;
-    margin-bottom: 24px;
+    height: 100%;
+    .content {
+        display: flex;
+    }
+    &__definition, &__description {
+        width: 50%;
+    }
     &__location {
         display: block;
+        // margin-top: 8px;
+    }
+    &__dateStart {
+        display: inline-block;
+        // margin-top: 8px;
     }
     &__iaap {
         display: block;
+        margin-top: 24px;
+    }
+    &__iaaplogo {
+        display: inline-block;
+        max-height: 1em;
+    }
+    &__type {
+        background-color: var(--primary);
+        // border-radius: 1em;
+        color: #fff;
+        display: inline-block;
+        line-height: 1;
+        margin-top: 4px;
+        padding: .2em .4em;
+        text-transform: uppercase;
+    }
+    &__url {
+        display: inline-block;
+        margin-top: 8px;
     }
     .content {
         padding: 24px;
