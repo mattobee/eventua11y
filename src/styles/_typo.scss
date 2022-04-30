@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Slab&display=swap');
 
+// Line heights
+$lh-default: 1.5;
+
+// Base body size
+$body-font-size: 16px !default;
+$body-line-height: $lh-default !default;
+
 h1 {
     font-size: 3.052rem;
     margin-bottom: 2rem;
@@ -24,6 +31,7 @@ h5 {
 
 body {
     font-family: "Roboto";
+    font-size: $body-font-size;
 }
 
 :is(h1,h2,h3,h4,h5,h6) {
@@ -36,9 +44,9 @@ a {
 }
 
 a:link, a:visited {
-    color: var(--primary);
+    color: var(--color-primary);
 }
 
 a:hover, a:active, a:focus {
-    color: var(--primary);
+    color: var(--color-primary);
 }

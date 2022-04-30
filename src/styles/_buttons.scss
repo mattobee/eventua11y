@@ -1,0 +1,32 @@
+// Base button styles
+.btn {
+  border-radius: $border-radius;
+  cursor: pointer;
+  display: inline-block;
+  padding: 1em 1.2em;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  appearance: none; // Corrects inability to style clickable `input` types in iOS
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:disabled,
+  &.disabled,
+  &[aria-disabled="true"] {
+    cursor: default;
+  }
+}
+
+// TODO: Primary Button
+
+// TODO: Secondary Button
+
+// Full-width button expands to the full width of its parent container
+.btn--block {
+  display: block;
+  width: 100%;
+  text-align: center;
+}

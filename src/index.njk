@@ -9,46 +9,17 @@ layout: layouts/base.njk
 
     <section id="upcoming">
         <h2>Upcoming Events</h2>
-        {# <div class="events events--cards">
-            {% for event in events %}
-                <article class="event">
-                    <div class="content">
-                        <span class="event__type">{{ event.type }}</span>
-                        <h3 class="event__title">{{ event.title }}</h3>
-                        <span class="event__dateStart">{{ event.dateStart }}</span>
-                        <span class="event__location"><i class="fa-solid fa-fw fa-location-dot"></i> {{ event.location }}</span>
-                        {% if event.url %}<i class="fa-solid fa-fw fa-up-right-from-square"></i> <a class="event__url" href="{{ event.url }}" class="external">
-                            {{ event.url }}</a>
-                        {% endif %}
-                        {% if event.cpacc or event.was or event.cpwa %}
-                            <span class="event__iaap">
-                                <img class="event__iaaplogo" src="/images/iaap.png" alt="IAAP" /> <span><abbr title="Continuing Accessibility Education Credits">CAECs</abbr> pre-approved for 
-                                {% if event.cpacc %}
-                                    <abbr title="Certified Professional in Accessibility Core Competencies">CPACC</abbr>
-                                {% endif %}
-                                {% if event.was %}
-                                    <abbr title="Web Accessibility Specialist">WAS</abbr>
-                                {% endif %}
-                                {% if event.cpwa %}
-                                    <abbr title="Certified Professional in Web Accessibility">CPWA</abbr>
-                                {% endif %}
-                            </span></span>
-                        {% endif %}
-                    </div>
-                </article>
-                <!-- End event -->
-            {% endfor %}
-        </div>
-        <!-- End upcoming events --> #}
         <div class="events events--list">
             {% for event in events %}
                 <article class="event">
                     <div class="content">
                         <div class="event__definition">
-                            <span class="event__type">{{ event.type }}</span>
-                            <h3 class="event__title">{{ event.title }}</h3>
-                            <span class="event__dateStart">{{ event.dateStart }}</span>
-                            <span class="event__location"><i class="fa-solid fa-fw fa-location-dot"></i> {{ event.location }}</span>
+                            <div>
+                                <span class="event__type">{{ event.type }}</span>
+                                <h3 class="event__title">{{ event.title }}</h3>
+                                <span class="event__dateStart">{{ event.dateStart }}</span>
+                                <span class="event__location"><i class="fa-solid fa-fw fa-location-dot"></i> {{ event.location }}</span>
+                            </div>
                             {% if event.cpacc or event.was or event.cpwa %}
                                 <span class="event__iaap">
                                     <img class="event__iaaplogo" src="/images/iaap.png" alt="IAAP" /> <span><abbr title="Continuing Accessibility Education Credits">CAECs</abbr> pre-approved for 
@@ -67,7 +38,10 @@ layout: layouts/base.njk
                         <!-- End definition -->
                         <div class="event__description">
                             <p>Praesent eu ligula eu leo fringilla tempus. Proin tempor dapibus justo eu blandit. Quisque ac eros vel est imperdiet interdum at eu enim. In risus ipsum, maximus at blandit at, scelerisque ut odio. Vestibulum vitae consequat odio, nec gravida justo. Aenean laoreet orci velit, a faucibus libero elementum quis.</p>
-                            {% if event.url %}<i class="fa-solid fa-fw fa-up-right-from-square"></i> <a class="event__url" href="{{ event.url }}" class="external">{{ event.url }}</a>{% endif %}
+                            {% if event.url %}<span class="event__url"><i class="fa-solid fa-fw fa-up-right-from-square"></i> <a href="{{ event.url }}" class="external">{{ event.url }}</a></span>{% endif %}
+                            <div class="event__actions">
+                                <button class="btn"><i class="fa-solid fa-share"></i> Share</button>
+                            </div>
                         </div>
                         <!-- End description -->
                     </div>
@@ -75,8 +49,8 @@ layout: layouts/base.njk
                 <!-- End event -->
             {% endfor %}
         </div>
-        <!-- End upcoming events -->
     </section>
+    <!-- End upcoming events -->
 
 </div>
 <!-- End container -->
