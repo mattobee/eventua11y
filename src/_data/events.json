@@ -35,12 +35,11 @@
     "cpwa": false
   },
   {
-    "title": "Test Event 1",
+    "title": "Test Single Day Event",
     "location": "Everywhere",
     "type": "Day",
     "description": {},
     "dateStart": "2022-05-09T20:40:00.000Z",
-    "dateEnd": "2022-05-09T20:40:00.000Z",
     "cpacc": false,
     "was": false,
     "cpwa": false

@@ -11,14 +11,17 @@ layout: layouts/base.njk
         <h2>Upcoming Events</h2>
         <div class="events events--list">
             {% for event in events %}
-                <article class="event">
+                <article class="event" itemprop="event" itemscope itemtype="https://schema.org/Event">
                     <div class="content">
                         <div class="event__definition">
                             <div>
                                 <span class="event__type">{{ event.type }}</span>
-                                <h3 class="event__title">{{ event.title }}</h3>
-                                <span class="event__dateStart">{{ event.dateStart | eventDate }}</span>
-                                <span class="event__location"><i class="fa-solid fa-fw fa-location-dot"></i> {{ event.location }}</span>
+                                <h3 class="event__title" itemprop="name">{{ event.title }}</h3>
+                                <span class="event__dateStart"><span class="sr-only">Starts </span><span itemprop="startDate">{{ event.dateStart | eventDate }}</span></span>
+                                {% if event.dateEnd %}
+                                <span class="event__dateEnd"><span class="sr-only">Ends </span><i class="fa-solid fa-arrow-right-long"></i> <span itemprop="endDate">{{ event.dateEnd | eventDate }}</span></span>
+                                {% endif %}
+                                <span class="event__location" itemprop="location"><i class="fa-solid fa-fw fa-location-dot"></i> {{ event.location }}</span>
                             </div>
                             {% if event.cpacc or event.was or event.cpwa %}
                                 <span class="event__iaap">
@@ -38,7 +41,7 @@ layout: layouts/base.njk
                         <!-- End definition -->
                         <div class="event__description">
                             <p>Praesent eu ligula eu leo fringilla tempus. Proin tempor dapibus justo eu blandit. Quisque ac eros vel est imperdiet interdum at eu enim. In risus ipsum, maximus at blandit at, scelerisque ut odio. Vestibulum vitae consequat odio, nec gravida justo. Aenean laoreet orci velit, a faucibus libero elementum quis.</p>
-                            {% if event.url %}<span class="event__url"><i class="fa-solid fa-fw fa-up-right-from-square"></i> <a href="{{ event.url }}" class="external">{{ event.url }}</a></span>{% endif %}
+                            {% if event.url %}<span class="event__url"><i class="fa-solid fa-fw fa-up-right-from-square"></i> <a href="{{ event.url }}" class="external" itemprop="url">{{ event.url }}</a></span>{% endif %}
                             <div class="event__actions">
                                 <button class="btn"><i class="fa-solid fa-share"></i> Share</button>
                             </div>
