@@ -11,7 +11,7 @@ layout: layouts/base.njk
         <h2>Upcoming Events</h2>
         <div class="events events--list">
             {% for event in events %}
-                <article class="event" itemprop="event" itemscope itemtype="https://schema.org/Event">
+                <article class="event event--{{ event.type }}" itemprop="event" itemscope itemtype="https://schema.org/Event">
                     <div class="content">
                         <div class="event__definition">
                             <div>
