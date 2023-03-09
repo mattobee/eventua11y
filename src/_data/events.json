@@ -14,7 +14,7 @@
   {
     "title": "Global Accessibility Awareness Day",
     "location": "Everywhere",
-    "type": "Day",
+    "type": "Theme Day",
     "description": {},
     "dateStart": "2022-05-18T23:00:00.000Z",
     "dateEnd": "2022-05-19T23:00:00.000Z",
@@ -26,7 +26,7 @@
   {
     "title": "International Guide Dog Day",
     "location": "Everywhere",
-    "type": "Day",
+    "type": "Theme Day",
     "description": {},
     "dateStart": "2022-05-09T20:40:00.000Z",
     "dateEnd": "2022-05-09T20:40:00.000Z",
@@ -37,7 +37,7 @@
   {
     "title": "Test Single Day Event",
     "location": "Everywhere",
-    "type": "Day",
+    "type": "Meetup",
     "description": {},
     "dateStart": "2022-05-09T20:40:00.000Z",
     "cpacc": false,
@@ -47,7 +47,7 @@
   {
     "title": "Test Event 2",
     "location": "Everywhere",
-    "type": "Day",
+    "type": "Workshop",
     "description": {},
     "dateStart": "2022-05-09T20:40:00.000Z",
     "dateEnd": "2022-05-09T20:40:00.000Z",
