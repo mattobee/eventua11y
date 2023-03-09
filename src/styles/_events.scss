@@ -28,7 +28,7 @@
     }
     &__location {
         display: block;
-        // margin-top: 8px;
+        margin-top: 4px;
     }
     &__dateStart {
         display: inline-block;
@@ -44,7 +44,7 @@
     }
     &__type {
         background-color: var(--color-primary);
-        // border-radius: 1em;
+        border-radius: .2em;
         color: #fff;
         display: inline-block;
         line-height: 1;
