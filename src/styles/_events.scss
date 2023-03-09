@@ -16,6 +16,7 @@
     border-radius: $border-radius;
     height: 100%;
     .content {
+        padding: 24px;
         display: flex;
     }
     &__definition, &__description {
@@ -58,7 +59,13 @@
     &__actions {
         margin-top: 1rem;
     }
+}
+
+.event--theme {
     .content {
         padding: 24px;
+    }
+    .event__title {
+        font-size: 1.2rem;
     }
 }

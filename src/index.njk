@@ -11,6 +11,19 @@ layout: layouts/base.njk
         <h2>Upcoming Events</h2>
         <div class="events events--list">
             {% for event in events %}
+            {%- if event.type == "Theme Day" %}
+            
+                <article class="event--theme" itemprop="event" itemscope itemtype="https://schema.org/Event">
+                    <div class="content">
+                        <h3 class="event__title" itemprop="name">{{ event.title }}</h3>
+                        <span class="event__dateStart"><span class="sr-only">Starts </span><span itemprop="startDate">{{ event.dateStart | eventDate }}</span></span>
+                        <span class="event__location" itemprop="location"><i class="fa-solid fa-fw fa-location-dot"></i> {{ event.location }}</span>
+                    </div>
+                </article>
+                <!-- End event -->
+
+            {% else %}
+            
                 <article class="event event--{{ event.type }}" itemprop="event" itemscope itemtype="https://schema.org/Event">
                     <div class="content">
                         <div class="event__definition">
@@ -25,7 +38,7 @@ layout: layouts/base.njk
                             </div>
                             {% if event.cpacc or event.was or event.cpwa %}
                                 <span class="event__iaap">
-                                    <img class="event__iaaplogo" src="/images/iaap.png" alt="IAAP" /> <span><abbr title="Continuing Accessibility Education Credits">CAECs</abbr> pre-approved for 
+                                    <img class="event__iaaplogo" src="/images/iaap.png" alt="IAAP" /> <span>Credits pre-approved for 
                                     {% if event.cpacc %}
                                         <abbr title="Certified Professional in Accessibility Core Competencies">CPACC</abbr>
                                     {% endif %}
@@ -41,12 +54,14 @@ layout: layouts/base.njk
                         <!-- End definition -->
                         <div class="event__description">
                             <p>Praesent eu ligula eu leo fringilla tempus. Proin tempor dapibus justo eu blandit. Quisque ac eros vel est imperdiet interdum at eu enim. In risus ipsum, maximus at blandit at, scelerisque ut odio. Vestibulum vitae consequat odio, nec gravida justo. Aenean laoreet orci velit, a faucibus libero elementum quis.</p>
-                            {% if event.url %}<span class="event__url"><i class="fa-solid fa-fw fa-up-right-from-square"></i> <a href="{{ event.url }}" class="external" itemprop="url">{{ event.url }}</a></span>{% endif %}
+                            {% if event.url %}<span class="event__url"><i class="fa-solid fa-fw fa-up-right-from-square"></i> <a href="{{ event.url }}" class="external" itemprop="url">{{ event.title }}</a></span>{% endif %}
                         </div>
                         <!-- End description -->
                     </div>
                 </article>
                 <!-- End event -->
+                {% endif %}
+
             {% endfor %}
         </div>
     </section>
