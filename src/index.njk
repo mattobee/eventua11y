@@ -53,7 +53,7 @@ layout: layouts/base.njk
                         </div>
                         <!-- End definition -->
                         <div class="event__description">
-                            <p>Praesent eu ligula eu leo fringilla tempus. Proin tempor dapibus justo eu blandit. Quisque ac eros vel est imperdiet interdum at eu enim. In risus ipsum, maximus at blandit at, scelerisque ut odio. Vestibulum vitae consequat odio, nec gravida justo. Aenean laoreet orci velit, a faucibus libero elementum quis.</p>
+                            {{ event.description }}
                             {% if event.url %}<span class="event__url"><i class="fa-solid fa-fw fa-up-right-from-square"></i> <a href="{{ event.url }}" class="external" itemprop="url">{{ event.title }}</a></span>{% endif %}
                         </div>
                         <!-- End description -->
