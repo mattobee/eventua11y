@@ -28,7 +28,6 @@ layout: layouts/base.njk
                     <div class="content">
                         <div class="event__definition">
                             <div>
-                                <span class="event__type">{{ event.type }}</span>
                                 <h3 class="event__title" itemprop="name">{% if event.url %}<a href="{{ event.url }}">{{ event.title }}</a>{% else %}{{ event.title }}{% endif %}</h3>
                                 <span class="event__dateStart"><span class="sr-only">Starts </span><span itemprop="startDate">{{ event.dateStart | eventDate }}</span></span>
                                 {% if event.dateEnd %}
