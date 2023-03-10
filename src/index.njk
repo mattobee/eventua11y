@@ -15,7 +15,7 @@ layout: layouts/base.njk
             
                 <article class="event--theme" itemprop="event" itemscope itemtype="https://schema.org/Event">
                     <div class="content">
-                        <h3 class="event__title" itemprop="name">{{ event.title }}</h3>
+                        <h3 class="event__title" itemprop="name">{% if event.url %}<a href="{{ event.url }}">{{ event.title }}</a>{% endif %}</h3>
                         <span class="event__dateStart"><span class="sr-only">Starts </span><span itemprop="startDate">{{ event.dateStart | eventDate }}</span></span>
                         <span class="event__location" itemprop="location"><i class="fa-solid fa-fw fa-location-dot"></i> {{ event.location }}</span>
                     </div>
@@ -29,7 +29,7 @@ layout: layouts/base.njk
                         <div class="event__definition">
                             <div>
                                 <span class="event__type">{{ event.type }}</span>
-                                <h3 class="event__title" itemprop="name">{{ event.title }}</h3>
+                                <h3 class="event__title" itemprop="name">{% if event.url %}<a href="{{ event.url }}">{{ event.title }}</a>{% else %}{{ event.title }}{% endif %}</h3>
                                 <span class="event__dateStart"><span class="sr-only">Starts </span><span itemprop="startDate">{{ event.dateStart | eventDate }}</span></span>
                                 {% if event.dateEnd %}
                                 <span class="event__dateEnd"><span class="sr-only">Ends </span><i class="fa-solid fa-arrow-right-long"></i> <span itemprop="endDate">{{ event.dateEnd | eventDate }}</span></span>
