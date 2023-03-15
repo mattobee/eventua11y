@@ -16,7 +16,7 @@ Styles are written in [Sass](https://sass-lang.com/), which is then transformed 
 
 The events themselves are stored in a [JSON](https://www.json.org/) data file.
 
-The website is hosted by [Netlify](https://www.netlify.com/). Whenever changes are pushed to the main branch in GitHub, Netlify builds and deploys the changes automatically.
+The website is hosted by [Netlify](https://www.netlify.com/). Whenever changes are pushed to the main branch in GitHub, Netlify builds and deploys the changes automatically. Branches are also deployed temporarily for testing purposes.
 
 ## Installing the website locally
 
