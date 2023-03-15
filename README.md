@@ -26,7 +26,7 @@ The website is hosted by [Netlify](https://www.netlify.com/). Whenever changes a
     git clone https://github.com/mattobee/eventua11y.git
     ```
 
-1. Navigate into the project's root directory directory:
+1. Navigate into the project's root directory:
 
     ```sh
     cd eventua11y
