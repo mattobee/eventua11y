@@ -8,7 +8,7 @@ See the [contributing guide](CONTRIBUTING.md) for ways to get involved in this p
 
 ## Technology
 
-This website is built using [Eleventy](https://www.11ty.dev/), which is a static site generator. This means that instead of waiting until a page is requested by a visitor and then building it on demand each time, the pages are all built in advance so that they are ready to serve ahead of time.
+This website is built using [Eleventy](https://www.11ty.dev/), which is a static site generator. This means that instead of waiting until a page is requested by a visitor and then building it on demand, the pages are all built in advance so that they are ready to serve ahead of time.
 
 Page templates are written in the [Nunjucks](https://mozilla.github.io/nunjucks/) templating language, which is then transformed into HTML.
 
@@ -20,7 +20,7 @@ The website is hosted by [Netlify](https://www.netlify.com/). Whenever changes a
 
 ## Installing the website locally
 
-1. Clone this repository by entering this command into your command line application. This will create a version-controlled copy of the website in the directory you entered the command in.
+1. Clone this repository by entering this command into your command line application.
 
 ```sh
 git clone https://github.com/mattobee/eventua11y.git
