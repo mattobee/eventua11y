@@ -10,7 +10,7 @@ See the [contributing guide](CONTRIBUTING.md) for ways to get involved in this p
 
 This website is built using [Eleventy](https://www.11ty.dev/), which is a static site generator. This means that instead of waiting until a page is requested by a visitor and then building it on demand, the pages are all built in advance so that they are ready to serve ahead of time.
 
-Page templates are written in the [Nunjucks](https://mozilla.github.io/nunjucks/) templating language, which is then transformed into HTML.
+Page templates are written in the [Liquid](https://github.com/Shopify/liquid) templating language, which is then transformed into HTML.
 
 Styles are written in [Sass](https://sass-lang.com/), which is then transformed into CSS.
 
