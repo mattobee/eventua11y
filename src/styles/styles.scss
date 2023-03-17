@@ -11,6 +11,9 @@
 .container {
     margin: 0 auto;
     max-width: 1280px;
+    &.readable {
+        max-width: 52rem;
+    }
 }
 
 body {
@@ -22,3 +25,4 @@ body {
 section {
     margin-bottom: 4rem;
 }
+

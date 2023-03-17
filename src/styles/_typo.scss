@@ -40,7 +40,7 @@ body {
 
 a {
     text-decoration: underline;
-    text-underline-offset: .3em;
+    text-underline-offset: .1em;
 }
 
 a:link, a:visited {
@@ -58,4 +58,8 @@ small {
 abbr[title] {
     text-decoration: underline dotted 1px;
     text-underline-offset: 0.1em
+}
+
+body {
+    color: var(--color-body);
 }
