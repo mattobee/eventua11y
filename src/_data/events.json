@@ -1,7 +1,8 @@
 [
   {
     "title": "John Slatin AccessU",
-    "location": "Austin, TX and online",
+    "location": "Austin, TX",
+    "online": true,
     "type": "Conference",
     "description": "An annual conference where tech professionals, content creators, policymakers, and advocates come together for deep learning in accessible digital design.",
     "dateStart": "2023-05-09T09:00:00.000Z",

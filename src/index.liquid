@@ -33,7 +33,10 @@ layout: layouts/base.liquid
                         {% endif %}
                     </div>
                     <!-- End dates -->
-                    <span class="event__location" itemprop="location"><i class="fa-solid fa-fw fa-location-dot"></i> {{ event.location }}</span>
+                    <div class="event__delivery">
+                        {% if event.location %}<span class="event__location" itemprop="location"><i class="fa-solid fa-fw fa-location-dot"></i> {{ event.location }}</span>{% endif %}
+                        {% if event.online %}<span class="event__online"><i class="fa-solid fa-laptop-arrow-down"></i> Online</span>{% endif %}
+                    </div>
                     <p class="event__description">{{ event.description }}</p>
                     {% if event.cpacc or event.was or event.cpwa %}
                         <span class="event__iaap">

@@ -23,11 +23,16 @@
         margin-bottom: .4rem;
         order: 3;
     }
+    &__dates {
+        margin-bottom: .5em;
+    }
     &__location {
         display: block;
         order: 2
     }
-    &__dates {
+    &__delivery {
+        display: flex;
+        gap: .5em;
         margin-bottom: 0.5em;
         order: 1;
     }
