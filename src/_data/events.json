@@ -75,8 +75,8 @@
   },
   {
     "title": "axe-con",
-    "location": "Online",
     "type": "Conference",
+    "online": true,
     "description": "Axe-con is the world’s largest digital accessibility conference that welcomes developers, designers, business users, and accessibility professionals of all experience levels to an accessibility conference focused on building, testing, and maintaining accessible digital experiences.",
     "dateStart": "2023-03-15T20:40:00.000Z",
     "dateEnd": "2023-03-16T20:40:00.000Z",
@@ -87,8 +87,8 @@
   },
   {
     "title": "TechShare Pro",
-    "location": "Online",
     "type": "Conference",
+    "online": true,
     "description": "AbilityNet TechShare Pro is Europe's largest gathering of accessibility and inclusion professionals and their allies.",
     "dateStart": "2023-11-14T09:00:00.000Z",
     "dateEnd": "2023-11-15T09:00:00.000Z",
@@ -126,8 +126,8 @@
   },
   {
     "title": "WordPress Accessibility Day",
-    "location": "Global",
     "type": "Conference",
+    "online": true,
     "description": "WordPress Accessibility Day is a 24-hour global event dedicated to promoting and learning website accessibility best practices for WordPress websites.",
     "url": "https://wpaccessibility.day/"
   },
