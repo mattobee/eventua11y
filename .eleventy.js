@@ -4,6 +4,7 @@ const eleventySass = require("@11tyrocks/eleventy-plugin-sass-lightningcss");
 module.exports = (eleventyConfig) => {
     eleventyConfig.addPassthroughCopy("./src/images");
     eleventyConfig.addPlugin(eleventySass);
+    eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
 
     // Format event dates based on user's locale
     eleventyConfig.addFilter("eventDate", (dateObj) => {
