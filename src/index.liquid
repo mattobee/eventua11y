@@ -18,7 +18,7 @@ layout: layouts/base.liquid
                 <article class="event--theme" itemprop="event" itemscope itemtype="https://schema.org/Event">
                     <h3 class="event__title" itemprop="name">{% if event.url %}<a href="{{ event.url }}">{{ event.title }}</a>{% else %}{{ event.title }}{% endif %}</h3>
                     <div class="order__dates">
-                        <span class="event__dateStart"><span class="sr-only">Starts </span><time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | eventDate }}</time></span>
+                        <span class="event__dateStart"><span class="sr-only">Starts </span><time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | formatDate: 'MM/DD/YYYY' }}</time></span>
                     </div>
                     <span class="event__location" itemprop="location"><i class="fa-solid fa-fw fa-location-dot"></i> {{ event.location }}</span>
                 </article>
@@ -29,9 +29,9 @@ layout: layouts/base.liquid
                 <article class="event event--{{ event.type }}" itemprop="event" itemscope itemtype="https://schema.org/Event">
                     <h3 class="event__title" itemprop="name">{% if event.url %}<a href="{{ event.url }}">{{ event.title }}</a>{% else %}{{ event.title }}{% endif %}</h3>
                     <div class="event__dates">
-                        <span class="event__dateStart"><span class="sr-only">Starts </span><time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | eventDate }}</time></span>
+                        <span class="event__dateStart"><span class="sr-only">Starts </span><time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart }}</time></span>
                         {% if event.dateEnd %}
-                        <span class="event__dateEnd"><span class="sr-only">Ends </span><i class="fa-solid fa-arrow-right-long"></i> <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd | eventDate }}</time></span>
+                        <span class="event__dateEnd"><span class="sr-only">Ends </span><i class="fa-solid fa-arrow-right-long"></i> <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd }}</time></span>
                         {% endif %}
                     </div>
                     <!-- End dates -->

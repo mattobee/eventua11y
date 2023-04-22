@@ -1,4 +1,3 @@
-const { DateTime } = require("luxon");
 const dayjs = require("dayjs");
 
 function readableDate(dateObj) {
@@ -13,10 +12,6 @@ function isoDate(dateString) {
 /* Formats a date using Day.js */
 const formatDate = (date, format) => dayjs(date).format(format);
 
-function eventDate(dateObj) {
-  return DateTime.fromISO(dateObj).toLocaleString(DateTime.DATETIME_FULL);
-}
-
 /* Returns a list of upcoming events in chronological order */
 function upcomingEvents(events) {
   return events
@@ -30,6 +25,5 @@ module.exports = {
   readableDate,
   isoDate,
   formatDate,
-  eventDate,
   upcomingEvents
 };
