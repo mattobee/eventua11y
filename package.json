@@ -15,7 +15,7 @@
     "url": "git+https://github.com/mattobee/eventua11y.git"
   },
   "author": "Matt Obee",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/mattobee/eventua11y/issues"
   },
