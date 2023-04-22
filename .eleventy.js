@@ -1,20 +1,20 @@
-const { DateTime } = require("luxon");
 const eleventySass = require("@11tyrocks/eleventy-plugin-sass-lightningcss");
+const filters = require("./src/_11ty/filters");
 
 module.exports = (eleventyConfig) => {
-    eleventyConfig.addPassthroughCopy("./src/images");
-    eleventyConfig.addPlugin(eleventySass);
-    eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
+  eleventyConfig.addPassthroughCopy("./src/images");
+  eleventyConfig.addPlugin(eleventySass);
+  eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
 
-    // Format event dates based on user's locale
-    eleventyConfig.addFilter("eventDate", (dateObj) => {
-      return DateTime.fromISO(dateObj).toLocaleString(DateTime.DATETIME_FULL);
-    });
-    
-    return {
-      dir: {
-        input: "src",
-        output: "dist"
-      }
-    }
+  // Create filters
+  Object.keys(filters).forEach((filterName) => {
+    eleventyConfig.addFilter(filterName, filters[filterName]);
+  });
+
+  return {
+    dir: {
+      input: "src",
+      output: "dist",
+    },
   };
+};
