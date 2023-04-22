@@ -17,6 +17,7 @@ function eventDate(dateObj) {
   return DateTime.fromISO(dateObj).toLocaleString(DateTime.DATETIME_FULL);
 }
 
+/* Returns a list of upcoming events in chronological order */
 function upcomingEvents(events) {
   return events
     .filter((event) => {
@@ -30,5 +31,5 @@ module.exports = {
   isoDate,
   formatDate,
   eventDate,
-  upcomingEvents,
+  upcomingEvents
 };

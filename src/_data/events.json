@@ -1,5 +1,14 @@
 [
   {
+    "title": "Global Accessibility Awareness Day",
+    "location": "Global",
+    "type": "Theme Day",
+    "description": {},
+    "dateStart": "2023-05-18T23:00:00.000Z",
+    "dateEnd": "2023-05-19T23:00:00.000Z",
+    "url": "https://accessibility.day/"
+  },
+  {
     "title": "John Slatin AccessU",
     "location": "Austin, TX",
     "online": true,
@@ -11,15 +20,6 @@
     "cpacc": true,
     "was": true,
     "cpwa": true
-  },
-  {
-    "title": "Global Accessibility Awareness Day",
-    "location": "Global",
-    "type": "Theme Day",
-    "description": {},
-    "dateStart": "2023-05-18T23:00:00.000Z",
-    "dateEnd": "2023-05-19T23:00:00.000Z",
-    "url": "https://accessibility.day/"
   },
   {
     "title": "International Guide Dog Day",
@@ -129,6 +129,8 @@
     "type": "Conference",
     "online": true,
     "description": "WordPress Accessibility Day is a 24-hour global event dedicated to promoting and learning website accessibility best practices for WordPress websites.",
+    "dateStart": "2023-10-10T09:00:00.000Z",
+    "dateEnd": "2023-10-23T13:00:00.000Z",
     "url": "https://wpaccessibility.day/"
   },
   {

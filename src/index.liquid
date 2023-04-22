@@ -10,9 +10,11 @@ layout: layouts/base.liquid
     <section id="upcoming">
         <h2>Upcoming Events</h2>
         <div class="events events--list">
-            {% for event in events | upcomingEvents %}
+        
+            {% assign upcomingEvents = events | upcomingEvents | sort: 'dateStart' %}
+
+            {% for event in upcomingEvents %}
             {%- if event.type == "Theme Day" %}
-            
                 <article class="event--theme" itemprop="event" itemscope itemtype="https://schema.org/Event">
                     <h3 class="event__title" itemprop="name">{% if event.url %}<a href="{{ event.url }}">{{ event.title }}</a>{% else %}{{ event.title }}{% endif %}</h3>
                     <div class="order__dates">
