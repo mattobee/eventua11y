@@ -21,9 +21,18 @@ function upcomingEvents(events) {
     .reverse();
 }
 
+/* Returns a list of events taking place today */
+function todaysEvents(events) {
+  return events
+    .filter((event) => {
+      return new Date(event.dateStart) == new Date();
+    })
+}
+
 module.exports = {
   readableDate,
   isoDate,
   formatDate,
-  upcomingEvents
+  upcomingEvents,
+  todaysEvents
 };
