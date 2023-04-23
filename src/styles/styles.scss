@@ -17,12 +17,14 @@
 }
 
 body {
-    background-color: #F3F3F3;
+    background-color: var(--color-primary);
     line-height: 1.5;
     margin: 0;
 }
 
-section {
-    margin-bottom: 4rem;
+main {
+    background-color: #fff;
+    padding-bottom: 3rem;
 }
+
 
