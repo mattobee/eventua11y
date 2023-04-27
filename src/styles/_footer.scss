@@ -1,12 +1,12 @@
 #global-footer {
     background: var(--color-primary);
     color: #fff;
-    padding: 2rem 0;
+    padding: var(--space-m-l) 0;
     a {
         color: inherit;
      }
      .logo {
-        margin-bottom: 1rem;
+        margin-bottom: var(--space-m-l);
         max-width: 10rem;
      }
 }

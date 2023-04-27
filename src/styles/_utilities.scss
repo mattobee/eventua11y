@@ -11,15 +11,31 @@
 }
 
 .stack {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
-  
-  .stack > * {
-    margin-block: 0;
-  } 
-  
-  .stack > * + * {
-    margin-block-start: var(--space, 1.5rem);
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.stack > * {
+  margin-block: 0;
+}
+
+.stack > * + * {
+  margin-block-start: var(--space, 1.5rem);
+}
+
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.bg-secondary {
+  background-color: var(--color-secondary);
+}
+
+.color-primary {
+  color: var(--color-primary);
+}
+
+.color-secondary {
+  color: var(--color-secondary);
+}
