@@ -1,5 +1,5 @@
 const dayjs = require("dayjs");
-const localizedFormat = require('dayjs/plugin/localizedFormat');
+const localizedFormat = require("dayjs/plugin/localizedFormat");
 dayjs.extend(localizedFormat);
 
 function readableDate(dateObj) {
@@ -23,10 +23,11 @@ function upcomingEvents(events) {
 
 /* Returns a list of events taking place today */
 function todaysEvents(events) {
-  return events
-    .filter((event) => {
-      return new Date(event.dateStart) == new Date();
-    })
+  return events.filter((event) => {
+    const today = new Date().toISOString().slice(0, 10);
+    const eventDate = new Date(event.dateStart).toISOString().slice(0, 10);
+    return eventDate === today;
+  });
 }
 
 module.exports = {
@@ -34,5 +35,5 @@ module.exports = {
   isoDate,
   formatDate,
   upcomingEvents,
-  todaysEvents
+  todaysEvents,
 };
