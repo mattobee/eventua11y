@@ -3,21 +3,11 @@ title: Eventua11y
 layout: layouts/base.liquid
 ---
 
+<h1 class="sr-only">Accessibility Events</h1>
+
+{% render "today" events: events %}
+
 <div class="container readable">
-
-    <h1 class="sr-only">Accessibility Events</h1>
-
-    <section id="today">
-        <h2>Today</h2>
-        <div class="events events--list">
-            {% assign todaysEvents = events | todaysEvents | sort: 'dateStart' %}
-            {% for event in todaysEvents %}
-                {{ event.title }}
-            {% else %}
-                <p>There are no events today.</p>
-            {% endfor %}
-        </div>
-    </section>
 
     <section id="upcoming">
         <h2>Upcoming Events</h2>
