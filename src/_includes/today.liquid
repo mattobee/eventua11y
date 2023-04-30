@@ -1,0 +1,36 @@
+<section id="today">
+
+  <div class="container readable">
+
+    <h2>Today</h2>
+
+    <div class="events events--list stack">
+
+      {% assign todaysEvents = events | todaysEvents %}
+
+        {% for event in todaysEvents %}
+        <article
+          class="event"
+          itemprop="event"
+          itemscope
+          itemtype="https://schema.org/Event">
+          <h3 itemprop="name">
+            {% if event.url %}
+              <a href="{{ event.url }}">{{ event.title }}</a>
+            {% else %}
+              {{ event.title }}{% endif %}
+          </h3>
+        </article>
+        <!-- End .event -->
+      {% else %}
+        <p>There are no events today.</p>
+      {% endfor %}
+
+    </div>
+    <!-- End .events -->
+
+  </div>
+  <!-- End .container -->
+
+</section>
+<!-- End #today -->
