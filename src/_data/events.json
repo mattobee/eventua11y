@@ -1,5 +1,14 @@
 [
   {
+    "title": "Test Event Today",
+    "location": "Global",
+    "type": "Theme Day",
+    "description": {},
+    "dateStart": "2023-04-30T00:00:00.000Z",
+    "dateEnd": "2023-05-01T23:59:00.000Z",
+    "url": "https://accessibility.day/"
+  },
+  {
     "title": "Global Accessibility Awareness Day",
     "location": "Global",
     "type": "Theme Day",
