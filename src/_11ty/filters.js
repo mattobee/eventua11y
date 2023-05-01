@@ -23,10 +23,11 @@ function upcomingEvents(events) {
 
 /* Returns a list of events taking place today */
 function todaysEvents(events) {
+  const today = new Date().toISOString().slice(0, 10);
   return events.filter((event) => {
-    const today = new Date().toISOString().slice(0, 10);
-    const eventDate = new Date(event.dateStart).toISOString().slice(0, 10);
-    return eventDate === today;
+    const eventDateStart = new Date(event.dateStart).toISOString().slice(0, 10);
+    const eventDateEnd = new Date(event.dateEnd).toISOString().slice(0, 10);
+    return eventDateStart <= today && today <= eventDateEnd;
   });
 }
 
