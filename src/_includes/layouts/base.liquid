@@ -9,21 +9,48 @@
     <title>{{ title }}</title>
     <link rel="stylesheet" href="/styles/styles.css">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script defer src="https://kit.fontawesome.com/6fc2948f48.js" crossorigin="anonymous"></script>
+    <script
+      defer
+      src="https://kit.fontawesome.com/6fc2948f48.js"
+      crossorigin="anonymous"></script>
   </head>
   <body class="page--{% if page.fileSlug %}{{ page.fileSlug }}{% else %}home{% endif %} layout--{{ layout }}">
-    <header id="global-header" class="masthead" role="banner">
-      <a href="/"><img class="logo" src="/images/eventua11y_logo_wordmark_white.svg" alt="Eventua11y"></a>
+    <header
+      id="global-header"
+      class="masthead"
+      role="banner">
+      <a href="/"><img
+          class="logo"
+          src="/images/eventua11y_logo_wordmark_grey.svg"
+          alt="Eventua11y"></a>
     </header>
     <main>
-        {{ content }}
+      {{ content }}
     </main>
     <footer id="global-footer" role="contentinfo">
       <div class="container readable">
-        <a href="/"><img class="logo" src="/images/eventua11y_logo_wordmark_white.svg" alt="Eventua11y"></a>
-        <p><small>&copy 2022-{% year %} <a href="https://mattobee.com/">Matt Obee</a></small></p>
-        <p><small>This page conforms to <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.1 at Level <abbr title="Double-A">AA</abbr>.</small></p>
-        <p><small>Powered by <a href="https://www.11ty.dev/">Eleventy</a>, <a href="https://www.netlify.com/">Netlify</a>, and <a href="https://github.com/mattobee/eventua11y">GitHub</a>. Basic accessibility tests by <a href="https://github.com/pa11y/pa11y">pa11y</a>/<a href="https://github.com/dequelabs/axe-core">axe-core</a>.</small></p>
+        <a href="/"><img
+            class="logo"
+            src="/images/eventua11y_logo_wordmark_white.svg"
+            alt="Eventua11y"></a>
+        <p>
+          <small>&copy 2022-{% year %}
+            <a href="https://mattobee.com/">Matt Obee</a>
+          </small>
+        </p>
+        <p>
+          <small>This page conforms to
+            <abbr title="Web Content Accessibility Guidelines">WCAG</abbr>
+            2.1 at Level
+            <abbr title="Double-A">AA</abbr>.</small>
+        </p>
+        <p>
+          <small>Powered by
+            <a href="https://www.11ty.dev/">Eleventy</a>,
+            <a href="https://www.netlify.com/">Netlify</a>, and
+            <a href="https://github.com/mattobee/eventua11y">GitHub</a>. Basic accessibility tests by
+            <a href="https://github.com/pa11y/pa11y">pa11y</a>/<a href="https://github.com/dequelabs/axe-core">axe-core</a>.</small>
+        </p>
       </div>
     </footer>
   </body>
