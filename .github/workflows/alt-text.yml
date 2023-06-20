@@ -1,0 +1,2 @@
+- name: Accessibility alt text bot
+  uses: github/accessibility-alt-text-bot@v1.2.0
