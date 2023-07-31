@@ -25,6 +25,7 @@ export default async (request, context) => {
            day: "numeric",
            weekday: "short",
            month: "short",
+           timeZoneName: "short"
          });
 
          // modify the HTML element
