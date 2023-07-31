@@ -2,28 +2,38 @@
 
   <div class="container readable">
 
-    <h2>Today</h2>
+    <hgroup role="group" aria-roledescription="Heading group">
+      <h2>Today</h2>
+      <p aria-roledescription="subtitle">
+        <time datetime="">1 May</time>
+      </p>
+    </hgroup>
 
     <div class="events events--list stack">
 
-      {% assign todaysEvents = events | todaysEvents %}
-
-        {% for event in todaysEvents %}
+      {% assign todaysThemes = events | todaysEvents | where: "type", "Theme Day" %}
+      {% for event in todaysThemes %}
         <article
-          class="event"
           itemprop="event"
           itemscope
           itemtype="https://schema.org/Event">
-          <h3 itemprop="name">
+          <h3 class="event__title" itemprop="name">
             {% if event.url %}
               <a href="{{ event.url }}">{{ event.title }}</a>
             {% else %}
               {{ event.title }}{% endif %}
           </h3>
+          <div class="meta">
+            <span class="event__location" itemprop="location">
+              <i class="fa-solid fa-fw fa-location-dot"></i>
+              {{ event.location }}</span>
+            <span class="event__dateStart">
+              <span class="sr-only">Starts</span>
+              <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | formatDate: 'dddd D MMMM' }}</time>
+            </span>
+          </div>
         </article>
-        <!-- End .event -->
-      {% else %}
-        <p>There are no events today.</p>
+        <!-- End event -->
       {% endfor %}
 
     </div>
