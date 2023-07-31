@@ -44,3 +44,27 @@
 
 </section>
 <!-- End #today -->
+
+<script>
+  function localizeTimes() {
+    const times = document.querySelectorAll("time");
+
+    times.forEach((node) => {
+      const date = new Date(node.dateTime);
+      const newLocaleString = date.toLocaleString([], {
+        timeStyle: "long",
+        dateStyle: "medium"
+      });
+      node.textContent = newLocaleString;
+    });
+
+    button.remove();
+  }
+
+  function helloWorld() {
+    console.log("Hello World");
+  }
+
+  const button = document.querySelector("#localize-times");
+  button.addEventListener("click", localizeTimes);
+</script>
