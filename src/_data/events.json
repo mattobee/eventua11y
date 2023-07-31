@@ -1,11 +1,20 @@
 [
   {
-    "title": "Test Event Today",
+    "title": "Test Event Today 1",
     "location": "Global",
     "type": "Theme Day",
     "description": {},
-    "dateStart": "2023-04-30T00:00:00.000Z",
-    "dateEnd": "2023-05-01T23:59:00.000Z",
+    "dateStart": "2023-04-29T00:00:00.000Z",
+    "dateEnd": "2023-08-01T23:59:00.000Z",
+    "url": "https://accessibility.day/"
+  },
+  {
+    "title": "Test Event Today 2",
+    "location": "Global",
+    "type": "Theme Day",
+    "description": {},
+    "dateStart": "2023-05-01T00:00:00.000Z",
+    "dateEnd": "2023-05-02T00:00:00.000Z",
     "url": "https://accessibility.day/"
   },
   {
@@ -69,7 +78,7 @@
     "type": "Theme Day",
     "description": {},
     "dateStart": "2023-01-04T00:00:00.000Z",
-    "dateEnd": "2023-01-5T00:00:00.000Z"
+    "dateEnd": "2023-01-05T00:00:00.000Z"
   },
   {
     "title": "Inclusive Design 24",
@@ -77,6 +86,7 @@
     "type": "Conference",
     "description": "Inclusive Design 24 (#id24) is a free 24-hour online event for the global community. It celebrates inclusive design and shares knowledge and ideas from analogue to digital, from design to development, from planners to practitioners, and everything and everyone in between.",
     "dateStart": "2023-09-21T00:00:00.000Z",
+    "dateEnd": "2023-09-22T00:00:00.000Z",
     "url": "https://inclusivedesign24.org/2023/",
     "cpacc": true,
     "was": true,
