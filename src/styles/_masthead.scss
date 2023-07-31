@@ -1,4 +1,7 @@
 .masthead {
-    background-color: var(--color-primary);
+    background-color: #FFF;
     padding: var(--space-s-l);
+    .logo {
+        max-width: 10rem;
+    }
 }

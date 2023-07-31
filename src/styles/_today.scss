@@ -1,5 +1,7 @@
 #today {
-    background-color: var(--color-secondary);
-    color: var(--color-white);
+    background-color: var(--color-yellow-bg);
     padding: var(--space-s-l) 0;
+    a:link, a:visited {
+        color: inherit;
+    }
 }
