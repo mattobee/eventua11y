@@ -17,6 +17,7 @@
       {% assign todaysThemes = events | todaysEvents | where: "type", "Theme Day" %}
       {% for event in todaysThemes %}
         <article
+          class="event"
           itemprop="event"
           itemscope
           itemtype="https://schema.org/Event">
