@@ -18,8 +18,8 @@ export default async (request, context) => {
 
     const locale = request.headers["accept-language"] || "en-GB";
     const { timezone } = context.geo;
-    const date = new Date();
-    const localDateNow = date.toLocaleDateString(locale, {
+    const dateNow = new Date();
+    const localDateNow = dateNow.toLocaleDateString(locale, {
       timeZone: timezone,
       weekday: "long",
       month: "long",
@@ -52,6 +52,7 @@ export default async (request, context) => {
 
       // Return today's date based on locale
       eleventyConfig.addShortcode("today", () => localDateNow);
+
     });
 
     return await edge.handleResponse();
