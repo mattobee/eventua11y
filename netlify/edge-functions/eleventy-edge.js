@@ -21,6 +21,7 @@ export default async (request, context) => {
     const dateNow = new Date();
     const localDateNow = dateNow.toLocaleDateString(locale, {
       timeZone: timezone,
+      timeZoneName: "shortGeneric",
       weekday: "long",
       month: "long",
       day: "numeric",
@@ -50,8 +51,13 @@ export default async (request, context) => {
         });
       });
 
-      // Return today's date based on locale
-      eleventyConfig.addShortcode("today", () => localDateNow);
+      // Return today's date as an iso string
+      eleventyConfig.addShortcode("todayISO", () => dateNow.toISOString());
+
+      // Return today's date as a locale string
+      eleventyConfig.addShortcode("today", function() {
+        return localDateNow;
+      });
 
     });
 
