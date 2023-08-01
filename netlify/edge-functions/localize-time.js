@@ -8,7 +8,7 @@ export default async (request, context) => {
    const response = await context.next();
 
    return new HTMLRewriter()
-     .on("time", {
+     .on(".event time", {
        element(element) {
          // get the date value as a string from the HTML data attribute
          const dateString = element.getAttribute("datetime");
