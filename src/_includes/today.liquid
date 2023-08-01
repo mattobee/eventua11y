@@ -5,7 +5,11 @@
     <hgroup role="group" aria-roledescription="Heading group">
       <h2>Today</h2>
       <p aria-roledescription="subtitle">
-        <time datetime="">1 May</time>
+        {% edge "liquid" %}
+          Today is probably
+          <time datetime="{% today %}">{% today %}</time>
+        {% endedge %}
+
       </p>
     </hgroup>
 

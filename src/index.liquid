@@ -3,13 +3,9 @@ title: Eventua11y
 layout: layouts/base.liquid
 ---
 
-{% edge "liquid" %}
-  Today is {% today %}
-{% endedge %}
-
 <h1 class="sr-only">Accessibility Events</h1>
 
-{% render "today" events: events %}
+{% include "today", events: events %}
 
 <div class="container readable">
 
@@ -19,9 +15,9 @@ layout: layouts/base.liquid
       {% assign upcomingEvents = events | upcomingEvents | sort: 'dateStart' %}
       {% for event in upcomingEvents %}
         {%- if event.type == "Theme Day" %}
-          {% render "themeday" event: event %}
+          {% include "themeday" event: event %}
         {% else %}
-          {% render "event" event: event %}
+          {% include "event" event: event %}
         {% endif %}
       {% endfor %}
     </div>

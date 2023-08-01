@@ -17,7 +17,7 @@ export default async (request, context) => {
     const locale = request.headers["accept-language"] || "en-GB";
     const { timezone } = context.geo;
     const date = new Date();
-    const localizedTime = date.toLocaleString(locale, {
+    const localTimeNow = date.toLocaleString(locale, {
       timeZone: timezone
     });
 
@@ -25,7 +25,7 @@ export default async (request, context) => {
       // Add some custom Edge-specific configuration
       // e.g. Fancier json output
       // eleventyConfig.addFilter("json", obj => JSON.stringify(obj, null, 2));
-      eleventyConfig.addShortcode("today", () => localizedTime);
+      eleventyConfig.addShortcode("today", () => localTimeNow);
     });
 
     return await edge.handleResponse();
