@@ -20,7 +20,6 @@ export default async (request, context) => {
     const localDateNow = date.toLocaleDateString(locale, {
       timeZone: timezone,
       weekday: "long",
-      year: "numeric",
       month: "long",
       day: "numeric",
     });
