@@ -3,6 +3,10 @@ title: Eventua11y
 layout: layouts/base.liquid
 ---
 
+{% edge "liquid" %}
+  Today is {% today %}
+{% endedge %}
+
 <h1 class="sr-only">Accessibility Events</h1>
 
 {% render "today" events: events %}

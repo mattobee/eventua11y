@@ -1,3 +1,7 @@
 [[edge_functions]]
-  path = "/"
+  path = "/*"
   function = "localize-time"
+
+[[edge_functions]]
+  function = "eleventy-edge"
+  path = "/*"
