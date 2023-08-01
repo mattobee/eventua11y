@@ -12,36 +12,37 @@
       </p>
     </hgroup>
 
-    <div class="events events--list stack">
+    {% edge "liquid" events %}
+      <div class="events events--list stack">
 
-      {% assign todaysThemes = events | todaysEvents | where: "type", "Theme Day" %}
-      {% for event in todaysThemes %}
-        <article
-          class="event"
-          itemprop="event"
-          itemscope
-          itemtype="https://schema.org/Event">
-          <h3 class="event__title" itemprop="name">
-            {% if event.url %}
-              <a href="{{ event.url }}">{{ event.title }}</a>
-            {% else %}
-              {{ event.title }}{% endif %}
-          </h3>
-          <div class="meta">
-            <span class="event__location" itemprop="location">
-              <i class="fa-solid fa-fw fa-location-dot"></i>
-              {{ event.location }}</span>
-            <span class="event__dateStart">
-              <span class="sr-only">Starts</span>
-              <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | formatDate: 'dddd D MMMM' }}</time>
-            </span>
-          </div>
-        </article>
-        <!-- End event -->
-      {% endfor %}
-
-    </div>
-    <!-- End .events -->
+        {% assign todaysThemes = events | todaysEvents | where: "type", "Theme Day" %}
+        {% for event in todaysThemes %}
+          <article
+            class="event"
+            itemprop="event"
+            itemscope
+            itemtype="https://schema.org/Event">
+            <h3 class="event__title" itemprop="name">
+              {% if event.url %}
+                <a href="{{ event.url }}">{{ event.title }}</a>
+              {% else %}
+                {{ event.title }}{% endif %}
+            </h3>
+            <div class="meta">
+              <span class="event__location" itemprop="location">
+                <i class="fa-solid fa-fw fa-location-dot"></i>
+                {{ event.location }}</span>
+              <span class="event__dateStart">
+                <span class="sr-only">Starts</span>
+                <time datetime="{{ event.dateStart  | isoDate }}" itemprop="startDate">{{ event.dateStart }}</time>
+              </span>
+            </div>
+          </article>
+          <!-- End event -->
+        {% endfor %}
+      </div>
+      <!-- End .events -->
+    {% endedge %}
 
   </div>
   <!-- End .container -->
