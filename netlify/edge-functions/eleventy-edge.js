@@ -21,10 +21,10 @@ export default async (request, context) => {
     const dateNow = new Date();
     const localDateNow = dateNow.toLocaleDateString(locale, {
       timeZone: timezone,
-      timeZoneName: "shortGeneric",
-      weekday: "long",
-      month: "long",
       day: "numeric",
+      weekday: "short",
+      month: "short",
+      timeZoneName: "shortGeneric"
     });
 
     edge.config((eleventyConfig) => {
