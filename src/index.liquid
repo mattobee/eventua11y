@@ -14,7 +14,7 @@ layout: layouts/base.liquid
     <div class="events events--list stack">
       {% assign upcomingEvents = events | upcomingEvents | sort: 'dateStart' %}
       {% for event in upcomingEvents %}
-        {%- if event.type == "Theme Day" %}
+        {%- if event.type == "Theme" %}
           {% include "themeday" event: event %}
         {% else %}
           {% include "event" event: event %}
