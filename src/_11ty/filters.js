@@ -12,18 +12,8 @@ const isoDate = (date) => dayjs(date).toISOString();
 /* Formats a date using Day.js */
 const formatDate = (date, format) => dayjs(date).format(format);
 
-/* Returns a list of upcoming events in chronological order */
-function upcomingEvents(events) {
-  return events
-    .filter((event) => {
-      return new Date(event.dateStart) > new Date();
-    })
-    .reverse();
-}
-
 module.exports = {
   readableDate,
   isoDate,
-  formatDate,
-  upcomingEvents
+  formatDate
 };

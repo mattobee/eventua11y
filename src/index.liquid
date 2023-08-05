@@ -7,23 +7,107 @@ layout: layouts/base.liquid
 
 {% include "today", events: events %}
 
-<div class="container readable">
+  <div class="container readable">
 
-  <section id="upcoming">
-    <h2>Upcoming Events</h2>
-    <div class="events events--list stack">
-      {% assign upcomingEvents = events | upcomingEvents | sort: 'dateStart' %}
-      {% for event in upcomingEvents %}
-        {%- if event.type == "Theme" %}
-          {% include "themeday" event: event %}
-        {% else %}
-          {% include "event" event: event %}
-        {% endif %}
-      {% endfor %}
-    </div>
-    <!-- End .events -->
-  </section>
-  <!-- End .upcoming -->
+  {% edge "liquid" events %}
+    <section id="upcoming">
+      <h2>Upcoming Events</h2>
+      <div class="events events--list stack">
+        {% assign upcomingEvents = events | upcomingEvents | sort: 'dateStart' %}
+        {% for event in upcomingEvents %}
+          {%- if event.type == "Theme" %}
+            <article
+              class="event--theme"
+              itemprop="event"
+              itemscope
+              itemtype="https://schema.org/Event">
+              <h3 class="event__title" itemprop="name">
+                {% if event.url %}
+                  <a href="{{ event.url }}">{{ event.title }}</a>
+                {% else %}
+                  {{ event.title }}{% endif %}
+              </h3>
+              <div class="order__dates">
+                <span class="event__dateStart">
+                  <span class="sr-only">Starts
+                  </span>
+                  <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart }}</time>
+                </span>
+              </div>
+              <span class="event__location" itemprop="location">
+                <i class="fa-solid fa-fw fa-location-dot"></i>
+                {{ event.location }}</span>
+            </article>
+            <!-- End event -->
+          {% else %}
+            <article
+              class="event event--{{ event.type }}"
+              itemprop="event"
+              itemscope
+              itemtype="https://schema.org/Event">
+              <h3 class="event__title" itemprop="name">
+                {% if event.url %}
+                  <a href="{{ event.url }}">{{ event.title }}</a>
+                {% else %}
+                  {{ event.title }}{% endif %}
+              </h3>
+              <div class="event__dates">
+                <span class="event__dateStart">
+                  <span class="sr-only">Starts
+                  </span>
+                  <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart }}</time>
+                </span>
+                {% if event.dateEnd %}
+                  <span class="event__dateEnd">
+                    <span class="sr-only">Ends
+                    </span>
+                    <i class="fa-solid fa-arrow-right-long"></i>
+                    <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd }}</time>
+                  </span>
+                {% endif %}
+              </div>
+              <!-- End dates -->
+              <div class="event__delivery">
+                {% if event.location %}
+                  <span class="event__location" itemprop="location">
+                    <i class="fa-solid fa-fw fa-location-dot"></i>
+                    {{ event.location }}</span>
+                {% endif %}
+                {% if event.online %}
+                  <span class="event__online">
+                    <i class="fa-solid fa-laptop-arrow-down"></i>
+                    Online</span>
+                {% endif %}
+              </div>
+              <p class="event__description">{{ event.description }}</p>
+              {% if event.cpacc or event.was or event.cpwa %}
+                <span class="event__iaap">
+                  <img
+                    class="event__iaaplogo"
+                    src="/images/iaap.png"
+                    alt="IAAP" />
+                  <span>Credits pre-approved for
+                    {% if event.cpacc %}
+                      <abbr title="Certified Professional in Accessibility Core Competencies">CPACC</abbr>
+                    {% endif %}
+                    {% if event.was %}
+                      <abbr title="Web Accessibility Specialist">WAS</abbr>
+                    {% endif %}
+                    {% if event.cpwa %}
+                      <abbr title="Certified Professional in Web Accessibility">CPWA</abbr>
+                    {% endif %}
+                  </span>
+                </span>
+              {% endif %}
+            </article>
+            <!-- End .event -->
+          {% endif %}
+        {% endfor %}
+      </div>
+      <!-- End .events -->
+    </section>
+    <!-- End .upcoming -->
+  {% endedge %}
 
 </div>
 <!-- End container -->

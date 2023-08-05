@@ -61,6 +61,14 @@ export default async (request, context) => {
         });
       });
 
+      /* Returns a list of upcoming events in chronological order */
+      eleventyConfig.addFilter("upcomingEvents", function(events) {
+        return events.filter((event) => {
+            return new Date(event.dateStart) > new Date();
+          })
+          .reverse();
+      });
+
       // Return today's date as an iso string
       eleventyConfig.addShortcode("todayISO", () => dateNow.toISOString());
 
