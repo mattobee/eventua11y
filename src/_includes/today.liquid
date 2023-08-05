@@ -15,8 +15,8 @@
     {% edge "liquid" events %}
       <div class="events events--list stack">
 
-        {% assign todaysThemes = events | todaysThemes %}
-        {% assign todaysEvents = events | todaysEvents %}
+        {% assign todaysThemes = events | todaysThemes | sort: "dateStart" %}
+        {% assign todaysEvents = events | todaysEvents | sort: "dateStart" %}
 
         {% for event in todaysThemes %}
           <article
