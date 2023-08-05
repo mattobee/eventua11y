@@ -41,13 +41,23 @@ export default async (request, context) => {
         return dateObject.toISOString();
       });
 
-      // Return events taking place today, based on locale
+      // Return theme events taking place today, based on locale
+      eleventyConfig.addFilter("todaysThemes", function(events) {
+        const today = new Date().toISOString().slice(0, 10);
+        return events.filter((event) => {
+          const eventDateStart = new Date(event.dateStart).toISOString().slice(0, 10);
+          const eventDateEnd = new Date(event.dateEnd).toISOString().slice(0, 10);
+          return eventDateStart <= today && today <= eventDateEnd && event.type == "Theme";
+        });
+      });
+
+      // Return non-theme events taking place today, based on locale
       eleventyConfig.addFilter("todaysEvents", function(events) {
         const today = new Date().toISOString().slice(0, 10);
         return events.filter((event) => {
           const eventDateStart = new Date(event.dateStart).toISOString().slice(0, 10);
           const eventDateEnd = new Date(event.dateEnd).toISOString().slice(0, 10);
-          return eventDateStart <= today && today <= eventDateEnd;
+          return eventDateStart <= today && today <= eventDateEnd && event.type !== "Theme";
         });
       });
 
