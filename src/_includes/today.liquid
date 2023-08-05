@@ -85,7 +85,10 @@
                   Online</span>
               {% endif %}
             </div>
-            <p class="event__description">{{ event.description }}</p>
+            <p class="event__description">
+              {% if event.description %}
+                {{ event.description }}{% endif %}
+            </p>
             {% if event.cpacc or event.was or event.cpwa %}
               <span class="event__iaap">
                 <img
