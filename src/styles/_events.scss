@@ -1,7 +1,8 @@
 .event {
     background-color: #fff;
+    border: 1px solid #ddd;
     border-radius: $border-radius;
-    box-shadow: 0px 10px 20px rgba(60,55,125,0.05);
+    // box-shadow: 0px 10px 20px rgba(60,55,125,0.05);
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -65,4 +66,8 @@
     .event__dates {
         order: 1;
     }
+}
+
+#upcoming {
+    padding: var(--space-s-l) 0;
 }

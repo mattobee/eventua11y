@@ -6,6 +6,7 @@
 @import 'utilities';
 @import 'masthead';
 @import 'events';
+@import 'today';
 @import 'footer';
 
 .container {
@@ -18,14 +19,13 @@
 }
 
 body {
-    background-color: var(--color-primary);
+    background-color: var(--color-white);
     line-height: 1.5;
     margin: 0;
 }
 
 main {
-    background-color: #F2F8FF;
-    padding: var(--space-s-l) 0;
+    background-color: var(--color-white);
 }
 
 
