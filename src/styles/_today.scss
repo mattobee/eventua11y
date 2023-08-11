@@ -1,10 +1,21 @@
 #today {
-    background-color: var(--color-yellow-bg);
+    background-color: var(--color-primary);
+    color: #fff;
     padding: var(--space-s-l) 0;
     a:link, a:visited {
         color: inherit;
     }
-    .event--theme {
+    .event.event--theme {
+        color: #fff;
         padding: 0;
+        a:link, a:visited {
+            color: inherit;
+        }
+    }
+    .event {
+        color: var(--color-body);
+        a:link, a:visited {
+            color: var(--color-primary);
+        }
     }
 }

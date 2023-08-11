@@ -1,6 +1,6 @@
 <section id="today">
 
-  <div class="container readable">
+  <div class="container readable stack">
 
     <hgroup role="group" aria-roledescription="Heading group">
       <h2>Today</h2>
@@ -16,7 +16,6 @@
       <div class="events events--list stack">
 
         {% assign todaysThemes = events | todaysThemes | sort: "dateStart" %}
-        {% assign todaysEvents = events | todaysEvents | sort: "dateStart" %}
 
         {% for event in todaysThemes %}
           <article
@@ -30,13 +29,6 @@
               {% else %}
                 {{ event.title }}{% endif %}
             </h3>
-            <div class="order__dates">
-              <span class="event__dateStart">
-                <span class="sr-only">Starts
-                </span>
-                <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart }}</time>
-              </span>
-            </div>
             <span class="event__location" itemprop="location">
               <i class="fa-solid fa-fw fa-location-dot"></i>
               {{ event.location }}</span>
@@ -44,7 +36,11 @@
           <!-- End event -->
         {% endfor %}
         <!-- End themes -->
+      </div>
+      <!-- End .events -->
 
+      <div class="events events--list stack">
+        {% assign todaysEvents = events | todaysEvents | sort: "dateStart" %}
         {% for event in todaysEvents %}
           <article
             class="event event--{{ event.type }}"
@@ -112,9 +108,8 @@
           <!-- End .event -->
         {% endfor %}
         <!-- End events -->
-
       </div>
-      <!-- End .events -->
+      <!-- End events -->
     {% endedge %}
 
   </div>
