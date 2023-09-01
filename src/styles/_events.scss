@@ -27,15 +27,6 @@
     &__description {
         order: 4;
     }
-    &__iaap {
-        display: block;
-        margin-top: 24px;
-        order: 5;
-    }
-    &__iaaplogo {
-        display: inline-block;
-        max-height: 1em;
-    }
     &__type {
         background-color: var(--color-primary);
         border-radius: .2em;
