@@ -15,8 +15,12 @@
         display: block;
         order: 2
     }
+    &__dates {
+        font-size: var(--step--1);
+    }
     &__delivery {
         display: flex;
+        font-size: var(--step--1);
         gap: .5em;
         margin-bottom: 0.5em;
         order: 3;
@@ -57,6 +61,7 @@
     }
     .event__dates {
         order: 1;
+        font-size: var(--step--1);
     }
 }
 
