@@ -3,10 +3,10 @@ import {
   precompiledAppData,
 } from "./_generated/eleventy-edge-app.js";
 
-import events from "../../src/_data/events.json" assert {type: 'json'};
+// import events from "../../src/_data/events.json" assert {type: 'json'};
 
-// import { getEvents } from "../../src/_data/sanity.mjs";
-// const events = await getEvents();
+import { getEvents } from "../../src/_data/sanity.mjs";
+const events = await getEvents();
 console.log(events);
 
 export default async (request, context) => {
