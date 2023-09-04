@@ -8,64 +8,34 @@
     "url": "https://example.com"
   },
   {
-    "title": "Test Theme 2",
-    "location": "Global",
-    "type": "Theme",
-    "dateStart": "2023-08-08T00:00:00.000Z",
-    "dateEnd": "2023-08-12T23:59:00.000Z",
-    "url": "https://example.com"
-  },
-  {
-    "title": "Test Event Today 2",
-    "location": "Global",
-    "type": "Conference",
-    "description": "AbilityNet TechShare Pro is Europe's largest gathering of accessibility and inclusion professionals and their allies.",
-    "dateStart": "2023-08-04T00:00:00.000Z",
-    "dateEnd": "2023-08-29T00:00:00.000Z",
-    "url": "https://accessibility.day/"
-  },
-  {
     "title": "Global Accessibility Awareness Day",
     "location": "Global",
     "type": "Theme",
-    "dateStart": "2023-05-18T23:00:00.000Z",
-    "dateEnd": "2023-05-19T23:00:00.000Z",
+    "dateStart": "2024-05-16T23:00:00.000Z",
+    "dateEnd": "2024-05-17T00:00:00.000Z",
     "url": "https://accessibility.day/"
-  },
-  {
-    "title": "John Slatin AccessU",
-    "location": "Austin, TX",
-    "online": true,
-    "type": "Conference",
-    "description": "An annual conference where tech professionals, content creators, policymakers, and advocates come together for deep learning in accessible digital design.",
-    "dateStart": "2023-05-09T09:00:00.000Z",
-    "dateEnd": "2023-05-12T17:00:00.000Z",
-    "url": "https://knowbility.org/programs/accessu-2023",
-    "cpacc": true,
-    "was": true,
-    "cpwa": true
   },
   {
     "title": "International Guide Dog Day",
     "location": "Global",
     "type": "Theme",
-    "dateStart": "2023-05-09T20:00:00.000Z",
-    "dateEnd": "2023-05-09T20:00:00.000Z"
+    "dateStart": "2024-04-24T00:00:00.000Z",
+    "dateEnd": "2024-04-24T00:00:00.000Z"
   },
   {
     "title": "International Wheelchair Day",
     "location": "Global",
     "type": "Theme",
-    "dateStart": "2023-03-01T00:00:00.000Z",
-    "dateEnd": "2023-03-02T00:00:00.000Z"
+    "dateStart": "2024-03-01T00:00:00.000Z",
+    "dateEnd": "2024-03-02T00:00:00.000Z"
   },
   {
     "title": "World Hearing Day",
     "location": "Global",
     "type": "Theme",
     "description": "World Hearing Day is held on 3 March each year to raise awareness on how to prevent deafness and hearing loss and promote ear and hearing care across the world.",
-    "dateStart": "2023-03-03T00:00:00.000Z",
-    "dateEnd": "2023-03-04T00:00:00.000Z",
+    "dateStart": "2024-03-03T00:00:00.000Z",
+    "dateEnd": "2024-03-04T00:00:00.000Z",
     "url": "https://www.who.int/campaigns/world-hearing-day/"
   },
   {
@@ -100,8 +70,8 @@
     "type": "Conference",
     "online": true,
     "description": "Axe-con is the world’s largest digital accessibility conference that welcomes developers, designers, business users, and accessibility professionals of all experience levels to an accessibility conference focused on building, testing, and maintaining accessible digital experiences.",
-    "dateStart": "2023-03-15T20:40:00.000Z",
-    "dateEnd": "2023-03-16T20:40:00.000Z",
+    "dateStart": "2024-02-20T00:00:00.000Z",
+    "dateEnd": "2024-02-25T00:00:00.000Z",
     "url": "https://www.deque.com/axe-con/",
     "cpacc": true,
     "was": true,
@@ -138,21 +108,12 @@
     "url": "https://www.naidex.co.uk/business-without-barriers"
   },
   {
-    "title": "Business without Barriers",
-    "location": "Washington, DC",
-    "type": "Conference",
-    "description": "The annual conference and showcase of the Global Initiative for Inclusive Information and Communication Technologies (G3ict),",
-    "dateStart": "2023-10-10T09:00:00.000Z",
-    "dateEnd": "2023-10-23T13:00:00.000Z",
-    "url": "https://m-enabling.com/"
-  },
-  {
     "title": "WordPress Accessibility Day",
     "type": "Conference",
     "online": true,
     "description": "WordPress Accessibility Day is a 24-hour global event dedicated to promoting and learning website accessibility best practices for WordPress websites.",
-    "dateStart": "2023-10-10T09:00:00.000Z",
-    "dateEnd": "2023-10-23T13:00:00.000Z",
+    "dateStart": "2023-09-27T14:45:00.000Z",
+    "dateEnd": "2023-09-27T14:00:00.000Z",
     "url": "https://wpaccessibility.day/"
   },
   {
