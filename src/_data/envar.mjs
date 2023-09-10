@@ -1,4 +1,4 @@
-import dotenv from "dotenv"
+// import dotenv from "dotenv"
 
 export const sanityDetails = {
     projectId: process.env.SANITY_PROJECT,
