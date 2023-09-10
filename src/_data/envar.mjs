@@ -1,8 +1,3 @@
-// module.exports = {
-//     sanityProject: process.env.SANITY_PROJECT,
-//     sanityToken: process.env.SANITY_TOKEN,
-// };
-
 const sanityDetails = {
     projectId: process.env.SANITY_PROJECT,
     dataset: "production",
@@ -11,4 +6,4 @@ const sanityDetails = {
 
 module.exports = {
     sanityDetails
-  };
+}
