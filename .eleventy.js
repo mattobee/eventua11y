@@ -2,12 +2,7 @@ const eleventySass = require("@11tyrocks/eleventy-plugin-sass-lightningcss");
 const filters = require("./src/_11ty/filters");
 const { EleventyEdgePlugin } = require("@11ty/eleventy");
 
-// console.log("hello from .eleventy.js", process.env)
-
-// module.exports = {
-//   sanityProject: process.env.SANITY_PROJECT,
-//   sanityToken: process.env.SANITY_TOKEN,
-// };
+console.log("hello from .eleventy.js", process.env)
 
 module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy("./src/images");
