@@ -1,10 +1,10 @@
 [[edge_functions]]
-  path = "/*"
-  function = "localize-time"
-
-[[edge_functions]]
   function = "eleventy-edge"
   path = "/*"
+
+[[edge_functions]]
+  path = "/*"
+  function = "localize-time"
 
 [dev]
   targetPort = 8081
