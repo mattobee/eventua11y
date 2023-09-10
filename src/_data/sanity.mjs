@@ -1,5 +1,5 @@
 import { createClient } from "https://esm.sh/@sanity/client";
-import { sanityDetails } from "./envar.mjs";
+// import { sanityDetails } from "./envar.mjs";
 
 const client = createClient({
   // projectId: sanityDetails.projectId,
@@ -13,6 +13,6 @@ async function getEvents() {
   return events;
 }
 
-console.log("Hello")
+console.log("Hello from sanity.mjs")
 
 export let events = getEvents();
