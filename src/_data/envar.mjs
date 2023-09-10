@@ -1,7 +1,9 @@
+import dotenv from "dotenv"
+
 export const sanityDetails = {
-    projectId: Netlify.env.SANITY_PROJECT,
+    projectId: process.env.SANITY_PROJECT,
     dataset: "production",
-    token: Netlify.env.SANITY_TOKEN
+    token: process.env.SANITY_TOKEN
 }
 
 console.log("Hello from envar.mjs")
