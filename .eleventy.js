@@ -1,4 +1,4 @@
-// const eleventySass = require("@11tyrocks/eleventy-plugin-sass-lightningcss");
+const eleventySass = require("@11tyrocks/eleventy-plugin-sass-lightningcss");
 const filters = require("./src/_11ty/filters");
 const { EleventyEdgePlugin } = require("@11ty/eleventy");
 
