@@ -3,10 +3,12 @@ import {
   precompiledAppData,
 } from "./_generated/eleventy-edge-app.js";
 
+// Pull events from JSON
 import events from "../../src/_data/events.json" assert {type: 'json'};
 
+// Pull events from Sanity
 // import { events } from "../../src/_data/sanity.mjs";
-console.log("Importing events from sanity.mjs", events);
+// console.log("Importing events from sanity.mjs");
 
 export default async (request, context) => {
   try {
