@@ -5,3 +5,6 @@
 [[edge_functions]]
   function = "eleventy-edge"
   path = "/*"
+
+[dev]
+  port = 8081
