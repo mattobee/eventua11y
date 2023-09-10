@@ -1,4 +1,5 @@
 import { createClient } from "https://esm.sh/@sanity/client";
+// import sanity details from envar.mjs
 // import { sanityDetails } from "./envar.mjs";
 
 const client = createClient({
