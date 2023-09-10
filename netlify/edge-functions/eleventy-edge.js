@@ -8,7 +8,6 @@ import {
 
 // Pull events from Sanity
 import { events } from "../../src/_data/sanity.mjs";
-// console.log("Importing events from sanity.mjs");
 
 export default async (request, context) => {
   try {

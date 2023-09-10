@@ -1,12 +1,11 @@
 import { createClient } from "https://esm.sh/@sanity/client";
-// import sanity details from envar.mjs
-// import { sanityDetails } from "./envar.mjs";
+import envar from "./envar.mjs";
 
 const client = createClient({
   // projectId: sanityDetails.projectId,
-  projectId: '2g5zqxo3',
-  dataset: "production",
-  apiVersion: "2023-09-04",
+  projectId: envar.projectId,
+  dataset: envar.dataset,
+  apiVersion: envar.apiVersion,
 });
 
 async function getEvents() {

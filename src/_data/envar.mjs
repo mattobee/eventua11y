@@ -1,13 +1,7 @@
-// import dotenv from "dotenv"
-
-export const sanityDetails = {
-    projectId: process.env.SANITY_PROJECT,
+export default {
+    projectId: '2g5zqxo3',
     dataset: "production",
-    token: process.env.SANITY_TOKEN
+    apiVersion: "2023-09-04"
 }
 
-console.log("Hello from envar.mjs")
-
-// module.exports = {
-//     sanityDetails
-// }
+// console.log("Hello from envar.mjs")
