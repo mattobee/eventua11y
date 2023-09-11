@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "npx @11ty/eleventy",
-    "start": "npx @11ty/eleventy --serve --quiet",
+    "start": "npx @11ty/eleventy --serve --port=8081 --quiet",
     "debug": "DEBUG=Eleventy* npx @11ty/eleventy",
     "debugstart": "DEBUG=Eleventy* npx @11ty/eleventy --serve --port=8081",
     "benchmark": "DEBUG=Eleventy:Benchmark* npx @11ty/eleventy"
