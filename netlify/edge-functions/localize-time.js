@@ -4,6 +4,9 @@ export default async (request, context) => {
     const locale = request.headers["accept-language"] || "en-GB";
     const { timezone } = context.geo;
 
+    // console.log("locale: " + locale);
+    // console.log("timezone: " + timezone);
+
     // capture the HTTP response so we can modify it
    const response = await context.next();
 

@@ -57,11 +57,13 @@ export default async (request, context) => {
 
       // Return non-theme events taking place today, based on locale
       eleventyConfig.addFilter("todaysEvents", function(events) {
-        const today = new Date().toISOString().slice(0, 10);
+        const today = new Date().getDate();
+        // console.log("I think today is " + today);
         return events.filter((event) => {
-          const eventDateStart = new Date(event.dateStart).toISOString().slice(0, 10);
-          const eventDateEnd = new Date(event.dateEnd).toISOString().slice(0, 10);
-          return eventDateStart <= today && today <= eventDateEnd && event.type !== "Theme";
+          const eventDateStart = new Date(event.dateStart).getDate();
+          const eventDateEnd = new Date(event.dateEnd).getDate();
+          // Return an event if it starts today or earlier, and ends today or later
+          return eventDateStart <= today && today <= eventDateEnd && event.type != "Theme";
         });
       });
 
