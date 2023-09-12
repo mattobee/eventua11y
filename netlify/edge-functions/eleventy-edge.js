@@ -6,6 +6,8 @@ import {
 // Pull events from Sanity
 import { events } from "../../src/_data/sanity.mjs";
 
+import meta from "../../src/_data/meta.mjs";
+
 export default async (request, context) => {
   try {
     let edge = new EleventyEdge("edge", {
@@ -33,8 +35,9 @@ export default async (request, context) => {
       // e.g. Fancier json output
       // eleventyConfig.addFilter("json", obj => JSON.stringify(obj, null, 2));
 
-      // Add events to global data in edge
-      eleventyConfig.addGlobalData("events", events);
+      // Make Eleventy global data available on the edge
+      eleventyConfig.addGlobalData("events", events); // Events from Sanity
+      eleventyConfig.addGlobalData("meta", meta); // Meta data
 
       /* Converts the given date string to ISO8601 format. */
       eleventyConfig.addFilter("isoDate", function(date) {
