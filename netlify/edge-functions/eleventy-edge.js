@@ -70,7 +70,7 @@ export default async (request, context) => {
       /* Returns a list of upcoming events in chronological order */
       eleventyConfig.addFilter("upcomingEvents", function(events) {
         return events.filter((event) => {
-            return new Date(event.dateStart) > new Date();
+            return new Date(event.dateStart).getDate() > new Date().getDate();
           })
           .reverse();
       });
