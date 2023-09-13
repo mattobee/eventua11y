@@ -100,7 +100,7 @@ export default async (request, context) => {
 
       // Return today's date as a locale string
       eleventyConfig.addShortcode("today", function() {
-        return localDateNow;
+        return dateNow.format('LL');
       });
 
     });
