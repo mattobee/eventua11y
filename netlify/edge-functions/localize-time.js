@@ -1,7 +1,7 @@
 import { HTMLRewriter } from "https://ghuc.cc/worker-tools/html-rewriter/index.ts";
 
 export default async (request, context) => {
-    const locale = request.headers["accept-language"] || "en-GB";
+    const locale = request.headers["accept-language"] || "en-gb";
     const { timezone } = context.geo;
 
     // console.log("locale: " + locale);
