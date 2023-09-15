@@ -34,12 +34,16 @@ export default async (request, context) => {
 
     const LOCALE = request.headers["accept-language"] || "en-gb";
 
-    import(`https://esm.sh/dayjs/locale/${LOCALE}.js`)
-    .then(() => {
-      dayjs.locale(LOCALE);
-      console.log("Locale in day.js is " + dayjs.locale());
-      console.log("Same or before: " + dayjs().isSameOrBefore(dayjs('2024-01-01')))
-    });
+    // import(`npm:dayjs/locale/${LOCALE}.js`)
+    // .then(() => {
+    //   dayjs.locale(LOCALE);
+    //   console.log("Locale in day.js is " + dayjs.locale());
+    //   console.log("Same or before: " + dayjs().isSameOrBefore(dayjs('2024-01-01')))
+    // });
+
+    const dayjslocale = await import(`https://esm.sh/dayjs/locale/${LOCALE}.js`);
+    dayjs.locale(LOCALE);
+    console.log("Locale in day.js is " + dayjs.locale());
     
     const { timezone } = context.geo;
     const dateNow = new dayjs();
