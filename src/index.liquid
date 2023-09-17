@@ -33,7 +33,16 @@ layout: layouts/base.liquid
                   </span>
                   <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart }}</time>
                 </span>
+                {% if event.dateEnd %}
+                  <span class="event__dateEnd">
+                    <span class="sr-only">Ends
+                    </span>
+                    <i class="fa-solid fa-arrow-right-long"></i>
+                    <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd }}</time>
+                  </span>
+                {% endif %}
               </div>
+              <!-- End dates -->
               <span class="event__location" itemprop="location">
                 <i class="fa-solid fa-fw fa-location-dot"></i>
                 {{ event.location }}</span>
