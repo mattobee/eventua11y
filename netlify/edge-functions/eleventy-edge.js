@@ -67,12 +67,10 @@ export default async (request, context) => {
       eleventyConfig.addFilter("todaysThemes", function(events) {
         let today = new dayjs();
         return events.filter((event) => {
+          console.log(event)
           const eventDateStart = new dayjs(event.dateStart);
-          console.log("eventDateStart is " + eventDateStart)
           const eventDateEnd = new dayjs(event.dateEnd);
-          console.log("eventDateEnd is " + eventDateEnd)
-          console.log("Same or before: " + dayjs().isSameOrBefore(dayjs('2012-01-01')))
-          return eventDateStart.isSameOrBefore(today) && eventDateEnd.isSameOrAfter(today) && event.type == "Theme";
+          return eventDateStart.isSameOrBefore(today) && eventDateEnd.isSameOrAfter(today) && event.type == "theme";
         });
       });
 
@@ -84,7 +82,7 @@ export default async (request, context) => {
           const eventDateStart = new dayjs(event.dateStart);
           const eventDateEnd = new dayjs(event.dateEnd);
           // Return an event if it starts today or earlier, and ends today or later
-          return eventDateStart.isSameOrBefore(today) && eventDateEnd.isSameOrAfter(today) && event.type != "Theme";
+          return eventDateStart.isSameOrBefore(today) && eventDateEnd.isSameOrAfter(today) && event.type != "theme";
         });
       });
 
