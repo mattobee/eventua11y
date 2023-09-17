@@ -41,15 +41,13 @@ export default async (request, context) => {
     //   console.log("Same or before: " + dayjs().isSameOrBefore(dayjs('2024-01-01')))
     // });
 
-    const dayjslocale = await import(`https://esm.sh/dayjs/locale/${LOCALE}.js`);
-    dayjs.locale(LOCALE);
-    console.log("Locale in day.js is " + dayjs.locale());
+    // const dayjslocale = await import(`https://esm.sh/dayjs/locale/${LOCALE}.js`);
+    // dayjs.locale('de');
+    // console.log("Locale in day.js is " + dayjs.locale());
     
     const { timezone } = context.geo;
     const dateNow = new dayjs();
     console.log("dateNow is " + dateNow)
-    const localDateNow = dateNow.toISOString()
-    console.log("localDateNow is " + localDateNow)
 
     edge.config((eleventyConfig) => {
       // Add some custom Edge-specific configuration
