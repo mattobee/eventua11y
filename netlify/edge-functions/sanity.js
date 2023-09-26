@@ -1,11 +1,7 @@
 import { createClient } from "https://esm.sh/@sanity/client";
+import getEnvar from "./envar.js";
 
-const envar = {
-    sanityProjectId: Deno.env.get("SANITY_PROJECT"),
-    sanityToken: Deno.env.get("SANITY_TOKEN"),
-    sanityDataset: "production",
-    sanityApiVersion: "2023-09-04"
-}
+const envar = getEnvar();
 
 const client = createClient({
   projectId: envar.sanityProjectId,
