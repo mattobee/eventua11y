@@ -11,6 +11,7 @@ import isSameOrBefore from 'https://esm.sh/dayjs/plugin/isSameOrBefore'
 import isSameOrAfter from 'https://esm.sh/dayjs/plugin/isSameOrAfter'
 import localeData from 'https://esm.sh/dayjs/plugin/localeData'
 import LocalizedFormat from 'https://esm.sh/dayjs/plugin/localizedFormat'
+import meta from "../../src/_data/meta.mjs";
 
 dayjs.extend(customParseFormat)
 dayjs.extend(isSameOrBefore)
@@ -20,8 +21,6 @@ dayjs.extend(LocalizedFormat)
 
 // Pull events from Sanity
 const events = getEvents();
-
-import meta from "../../src/_data/meta.mjs";
 
 export default async (request, context) => {
   try {
