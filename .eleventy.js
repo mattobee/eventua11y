@@ -1,4 +1,5 @@
 const eleventySass = require("@11tyrocks/eleventy-plugin-sass-lightningcss");
+const dayjs = require('dayjs')
 const filters = require("./src/_11ty/filters");
 const { EleventyEdgePlugin } = require("@11ty/eleventy");
 
@@ -8,8 +9,8 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy("./src/images");
   eleventyConfig.addPlugin(eleventySass);
   eleventyConfig.addPlugin(EleventyEdgePlugin);
-  eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
-  eleventyConfig.addShortcode("today", () => `${new Date()}`);
+  eleventyConfig.addShortcode("year", () => `${new dayjs().year()}`);
+  eleventyConfig.addShortcode("today", () => `${new dayjs()}`);
 
   // Create filters
   Object.keys(filters).forEach((filterName) => {
