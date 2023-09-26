@@ -11,9 +11,14 @@ const client = createClient({
 });
 
 async function getEvents() {
-  const events = await client.fetch('*[_type == "event"]');
-  return events;
-}
+    try {
+      const events = await client.fetch('*[_type == "event"]');
+      return events;
+    } catch (error) {
+      console.error(error);
+      throw new Error("Failed to fetch events");
+    }
+  }
 
 export default function() {
   return getEvents();
