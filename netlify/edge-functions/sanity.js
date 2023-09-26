@@ -3,7 +3,7 @@ import getEnvar from "./envar.js";
 
 const envar = getEnvar();
 
-const client = createClient({
+const sanityClient = createClient({
   projectId: envar.sanityProjectId,
   token: envar.sanityToken,
   dataset: envar.sanityDataset,
@@ -12,7 +12,7 @@ const client = createClient({
 
 async function getEvents() {
     try {
-      const events = await client.fetch('*[_type == "event"]');
+      const events = await sanityClient.fetch('*[_type == "event"]');
       return events;
     } catch (error) {
       console.error(error);
