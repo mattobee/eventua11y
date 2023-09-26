@@ -3,6 +3,8 @@ import {
   precompiledAppData,
 } from "./_generated/eleventy-edge-app.js";
 
+import getEvents from "./sanity.js";
+
 import dayjs from 'https://esm.sh/dayjs'
 import customParseFormat from 'https://esm.sh/dayjs/plugin/customParseFormat'
 import isSameOrBefore from 'https://esm.sh/dayjs/plugin/isSameOrBefore'
@@ -17,7 +19,7 @@ dayjs.extend(localeData)
 dayjs.extend(LocalizedFormat)
 
 // Pull events from Sanity
-import { events } from "../../src/_data/sanity.mjs";
+const events = getEvents();
 
 import meta from "../../src/_data/meta.mjs";
 
