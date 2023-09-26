@@ -16,5 +16,5 @@ async function getEvents() {
 }
 
 export default function() {
-    return getEvents();
-  }
+  return getEvents();
+}
