@@ -4,10 +4,10 @@ import getEnvar from "./envar.js";
 const envar = getEnvar();
 
 const sanityClient = createClient({
-  projectId: envar.sanityProjectId,
-  token: envar.sanityToken,
-  dataset: envar.sanityDataset,
-  apiVersion: envar.sanityApiVersion,
+  projectId: envar.SANITY_PROJECT_ID,
+  token: envar.SANITY_TOKEN,
+  dataset: envar.SANITY_DATASET,
+  apiVersion: envar.SANITY_API_VERSION,
 });
 
 async function getEvents() {
