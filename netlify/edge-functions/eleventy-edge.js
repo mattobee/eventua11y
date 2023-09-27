@@ -11,6 +11,8 @@ import isSameOrBefore from 'https://esm.sh/dayjs/plugin/isSameOrBefore'
 import isSameOrAfter from 'https://esm.sh/dayjs/plugin/isSameOrAfter'
 import localeData from 'https://esm.sh/dayjs/plugin/localeData'
 import LocalizedFormat from 'https://esm.sh/dayjs/plugin/localizedFormat'
+import utc from 'https://esm.sh/dayjs/plugin/utc'
+import timezone from 'https://esm.sh/dayjs/plugin/timezone'
 import meta from "../../src/_data/meta.mjs";
 
 dayjs.extend(customParseFormat)
@@ -18,6 +20,8 @@ dayjs.extend(isSameOrBefore)
 dayjs.extend(isSameOrAfter)
 dayjs.extend(localeData)
 dayjs.extend(LocalizedFormat)
+dayjs.extend(utc)
+dayjs.extend(timezone)
 
 // Pull events from Sanity
 const events = getEvents();
@@ -92,7 +96,7 @@ export default async (request, context) => {
 
       // Return today's date as a locale string
       eleventyConfig.addShortcode("today", function() {
-        return dayjs(now).locale(LOCALE).format("LLL");
+        return dayjs(now).locale(LOCALE).tz(timezone).format("LLL");
         // return now;
       });
 
