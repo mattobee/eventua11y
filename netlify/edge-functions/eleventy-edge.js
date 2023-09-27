@@ -35,6 +35,7 @@ export default async (request, context) => {
 
     // Set the locale based on the request headers, defaulting to en-gb
     const LOCALE = request.headers["accept-language"] || "en-gb";
+    console.log("LOCALE is " + LOCALE);
     
     const { timezone } = context.geo;
     const now = new dayjs();
@@ -55,7 +56,7 @@ export default async (request, context) => {
 
        /* Formats the given date string based on the user's locale. */
        eleventyConfig.addFilter("localizedDate", function(date) {
-        return dayjs(date).locale(LOCALE).format("LL");
+        return dayjs(date).locale(LOCALE).tz(timezone).format("LL");
       });
 
       // Return theme events taking place today, based on locale
@@ -91,7 +92,8 @@ export default async (request, context) => {
 
       // Return today's date as a locale string
       eleventyConfig.addShortcode("today", function() {
-        return now;
+        return dayjs(now).locale(LOCALE).format("LLL");
+        // return now;
       });
 
     });
