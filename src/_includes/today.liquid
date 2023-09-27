@@ -33,14 +33,14 @@
               <span class="event__dateStart">
                 <span class="sr-only">Starts
                 </span>
-                <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart }}</time>
+                <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | localizedDate }}</time>
               </span>
               {% if event.dateEnd %}
                 <span class="event__dateEnd">
                   <span class="sr-only">Ends
                   </span>
                   <i class="fa-solid fa-arrow-right-long"></i>
-                  <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd }}</time>
+                  <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd | localizedDate }}</time>
                 </span>
               {% endif %}
             </div>
@@ -73,14 +73,14 @@
               <span class="event__dateStart">
                 <span class="sr-only">Starts
                 </span>
-                <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart }}</time>
+                <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | localizedDate }}</time>
               </span>
               {% if event.dateEnd %}
                 <span class="event__dateEnd">
                   <span class="sr-only">Ends
                   </span>
                   <i class="fa-solid fa-arrow-right-long"></i>
-                  <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd }}</time>
+                  <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd | localizedDate }}</time>
                 </span>
               {% endif %}
             </div>

@@ -60,7 +60,7 @@ export default async (request, context) => {
 
        /* Formats the given date string based on the user's locale. */
        eleventyConfig.addFilter("localizedDate", function(date) {
-        return dayjs(date).locale(LOCALE).tz(timezone).format("LL");
+        return dayjs(date).locale(LOCALE).tz(timezone).format("LLL");
       });
 
       // Return theme events taking place today, based on locale
