@@ -33,27 +33,16 @@ export default async (request, context) => {
       cookies: [],
     });
 
+    // Set the locale based on the request headers, defaulting to en-gb
     const LOCALE = request.headers["accept-language"] || "en-gb";
-
-    // import(`npm:dayjs/locale/${LOCALE}.js`)
-    // .then(() => {
-    //   dayjs.locale(LOCALE);
-    //   console.log("Locale in day.js is " + dayjs.locale());
-    //   console.log("Same or before: " + dayjs().isSameOrBefore(dayjs('2024-01-01')))
-    // });
-
-    // const dayjslocale = await import(`https://esm.sh/dayjs/locale/${LOCALE}.js`);
-    // dayjs.locale('de');
-    // console.log("Locale in day.js is " + dayjs.locale());
     
     const { timezone } = context.geo;
-    const dateNow = new dayjs();
-    console.log("dateNow is " + dateNow)
+    const now = new dayjs();
+    
+    console.log("now is " + now)
+    console.log("timezone is " + timezone)
 
     edge.config((eleventyConfig) => {
-      // Add some custom Edge-specific configuration
-      // e.g. Fancier json output
-      // eleventyConfig.addFilter("json", obj => JSON.stringify(obj, null, 2));
 
       // Make Eleventy global data available on the edge
       eleventyConfig.addGlobalData("events", events); // Events from Sanity
@@ -64,44 +53,45 @@ export default async (request, context) => {
         return dayjs(date).toISOString() 
       });
 
+       /* Formats the given date string based on the user's locale. */
+       eleventyConfig.addFilter("localizedDate", function(date) {
+        return dayjs(date).locale(LOCALE).format("LL");
+      });
+
       // Return theme events taking place today, based on locale
       eleventyConfig.addFilter("todaysThemes", function(events) {
-        let today = new dayjs();
         return events.filter((event) => {
-          console.log(event)
+          // console.log(event)
           const eventDateStart = new dayjs(event.dateStart);
           const eventDateEnd = new dayjs(event.dateEnd);
-          return eventDateStart.isSameOrBefore(today) && eventDateEnd.isSameOrAfter(today) && event.type == "theme";
+          return eventDateStart.isSameOrBefore(now) && eventDateEnd.isSameOrAfter(now) && event.type == "theme";
         });
       });
 
       // Return non-theme events taking place today, based on locale
       eleventyConfig.addFilter("todaysEvents", function(events) {
-        let today = new dayjs();
-        // console.log("I think today is " + today);
         return events.filter((event) => {
           const eventDateStart = new dayjs(event.dateStart);
           const eventDateEnd = new dayjs(event.dateEnd);
           // Return an event if it starts today or earlier, and ends today or later
-          return eventDateStart.isSameOrBefore(today) && eventDateEnd.isSameOrAfter(today) && event.type != "theme";
+          return eventDateStart.isSameOrBefore(now) && eventDateEnd.isSameOrAfter(now) && event.type != "theme";
         });
       });
 
       /* Returns a list of upcoming events in chronological order */
       eleventyConfig.addFilter("upcomingEvents", function(events) {
-        let today = new dayjs();
         return events.filter((event) => {
-            return new dayjs(event.dateStart).isAfter(today, 'day');
+            return new dayjs(event.dateStart).isAfter(now, 'day');
           })
           // .reverse();
       });
 
       // Return today's date as an iso string
-      eleventyConfig.addShortcode("todayISO", () => dateNow.toISOString());
+      eleventyConfig.addShortcode("todayISO", () => now.toISOString());
 
       // Return today's date as a locale string
       eleventyConfig.addShortcode("today", function() {
-        return dateNow.format('LL');
+        return now;
       });
 
     });
