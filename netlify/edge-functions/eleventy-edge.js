@@ -54,14 +54,13 @@ export default async (request, context) => {
       eleventyConfig.addGlobalData("meta", meta); // Meta data
 
       /* Converts the given date string to ISO8601 format. */
-      eleventyConfig.addFilter("isoDate", function(date) {
-        return dayjs(date).toISOString() 
-      });
+      eleventyConfig.addFilter("isoDate", (date) => dayjs(date).toISOString());
+
 
        /* Formats the given date string based on the user's locale. */
-       eleventyConfig.addFilter("localizedDate", function(date) {
-        return dayjs(date).locale(LOCALE).tz(timezone).format("LLL");
-      });
+       eleventyConfig.addFilter("localizedDate", (date) =>
+        dayjs(date).locale(LOCALE).tz(timezone).format("LLL")
+      );
 
       // Return theme events taking place today, based on locale
       eleventyConfig.addFilter("todaysThemes", function(events) {
