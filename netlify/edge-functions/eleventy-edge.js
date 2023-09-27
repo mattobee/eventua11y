@@ -96,8 +96,13 @@ export default async (request, context) => {
 
       // Return today's date as a locale string
       eleventyConfig.addShortcode("today", function() {
-        return dayjs(now).locale(LOCALE).tz(timezone).format("LLL");
+        return dayjs(now).locale(LOCALE).tz(timezone).format("LL");
         // return now;
+      });
+
+      // Return the user's timezone
+      eleventyConfig.addShortcode("timezone", function(context) {
+        return timezone;
       });
 
     });

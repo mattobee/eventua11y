@@ -6,7 +6,7 @@
       <h2>Today</h2>
       <p aria-roledescription="subtitle">
         {% edge "liquid" %}
-          <time datetime="{% todayISO %}">{% today %}</time>
+          <time datetime="{% todayISO %}">{% today %} in {% timezone %}</time>
         {% endedge %}
 
       </p>
