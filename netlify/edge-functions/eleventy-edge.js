@@ -36,7 +36,7 @@ export default async (request, context) => {
       eleventyConfig.addFilter("isoDate", (date) => dayjs(date).toISOString());
 
       /* Formats the given date string based on the user's locale. */
-      eleventyConfig.addFilter("localizedDate", (date) =>
+      eleventyConfig.addFilter("localizeDate", (date) =>
         dayjs(date).locale(LOCALE).tz(timezone).format("LLL")
       );
 
