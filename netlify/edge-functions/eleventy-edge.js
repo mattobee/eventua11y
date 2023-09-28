@@ -2,6 +2,9 @@ import { EleventyEdge, precompiledAppData } from "./_generated/eleventy-edge-app
 import getEvents from "./sanity.js";
 import dayjs from "./day.js";
 import meta from "../../src/_data/meta.mjs";
+import getEnvar from "./envar.js";
+
+const envar = getEnvar();
 
 // Pull events from Sanity
 const events = await getEvents();
@@ -21,11 +24,13 @@ export default async (request, context) => {
     const LOCALE = request.headers["accept-language"] || "en-gb";
     console.log("LOCALE is " + LOCALE);
 
+    // Set the timezone based on Netlify's geo headers
     const { timezone } = context.geo;
-    const now = new dayjs();
-
-    console.log("now is " + now);
     console.log("timezone is " + timezone);
+
+    // Set the current date
+    const now = new dayjs();
+    console.log("now is " + now);
 
     edge.config((eleventyConfig) => {
       // Make Eleventy global data available on the edge
@@ -89,6 +94,12 @@ export default async (request, context) => {
       eleventyConfig.addShortcode("timezone", function (context) {
         return timezone;
       });
+
+      // Return the user's country
+      eleventyConfig.addShortcode("country", function (context) {
+        return envar.COUNTRY;
+      });
+
     });
 
     return await edge.handleResponse();
