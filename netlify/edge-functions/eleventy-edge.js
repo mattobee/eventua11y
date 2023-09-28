@@ -2,9 +2,6 @@ import { EleventyEdge, precompiledAppData } from "./_generated/eleventy-edge-app
 import getEvents from "./sanity.js";
 import dayjs from "./day.js";
 import meta from "../../src/_data/meta.mjs";
-import getEnvar from "./envar.js";
-
-const envar = getEnvar();
 
 // Pull events from Sanity
 const events = await getEvents();
