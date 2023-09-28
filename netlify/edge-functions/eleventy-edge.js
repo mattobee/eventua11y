@@ -8,6 +8,7 @@ const envar = getEnvar();
 
 // Pull events from Sanity
 const events = await getEvents();
+console.log(events);
 
 export default async (request, context) => {
   try {
@@ -41,8 +42,8 @@ export default async (request, context) => {
       eleventyConfig.addFilter("isoDate", (date) => dayjs(date).toISOString());
 
       /* Formats the given date string based on the user's locale. */
-      eleventyConfig.addFilter("localizeDate", (date) =>
-        dayjs(date).locale(LOCALE).tz(timezone).format("LLL")
+      eleventyConfig.addFilter("localizeDate", (date, format) =>
+        dayjs(date).locale(LOCALE).tz(timezone).format(format)
       );
 
       // Return theme events taking place today, based on locale
@@ -97,7 +98,7 @@ export default async (request, context) => {
 
       // Return the user's country
       eleventyConfig.addShortcode("country", function (context) {
-        return envar.COUNTRY;
+        return context.geo.country;
       });
 
     });
