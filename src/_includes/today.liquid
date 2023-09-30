@@ -84,14 +84,22 @@
                 <span class="event__dateStart">
                   <span class="sr-only">Starts
                   </span>
-                  <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | localizeDate }}</time>
+                  {% if event.day %}
+                    <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | localizeDate: "LL" }}</time>
+                  {% else %}
+                    <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | localizeDate: "LLL" }}</time>
+                  {% endif %}
                 </span>
                 {% if event.dateEnd %}
                   <span class="event__dateEnd">
                     <span class="sr-only">Ends
                     </span>
                     <i class="fa-solid fa-arrow-right-long"></i>
-                    <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd | localizeDate }}</time>
+                    {% if event.day %}
+                      <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd | localizeDate: "LL" }}</time>
+                    {% else %}
+                      <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd | localizeDate: "LLL" }}</time>
+                    {% endif %}
                   </span>
                 {% endif %}
               </div>
