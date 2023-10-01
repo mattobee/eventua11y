@@ -104,6 +104,7 @@
                 {% endif %}
               </div>
               <!-- End dates -->
+              <a href="https://calndr.link/d/event/?service=google&start={{ event.dateStart | isoDate }}&end={{event.dateEnd | isoDate}}&title={{ event.title }}">Add to Calendar</a>
               <div class="event__delivery">
                 {% if event.location %}
                   <span class="event__location" itemprop="location">

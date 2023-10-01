@@ -52,6 +52,7 @@ layout: layouts/base.liquid
                 {% endif %}
               </div>
               <!-- End dates -->
+              <a href="https://calndr.link/d/event/?service=google&start={{ event.dateStart | isoDate }}&end={{event.dateEnd | isoDate}}&title={{ event.title }}">Add to Calendar</a>
               <span class="event__location" itemprop="location">
                 <i class="fa-solid fa-fw fa-location-dot"></i>
                 {{ event.location }}</span>
@@ -93,6 +94,14 @@ layout: layouts/base.liquid
                 {% endif %}
               </div>
               <!-- End dates -->
+              <!-- Add to calendar links for each service -->
+              <a href="https://calndr.link/d/event/?service=google&start={{ event.dateStart | isoDate }}&end={{event.dateEnd | isoDate}}&title={{ event.title }}">Google</a>
+              <a href="https://calndr.link/d/event/?service=yahoo&start={{ event.dateStart | isoDate }}&end={{event.dateEnd | isoDate}}&title={{ event.title }}">Yahoo</a>
+              <a href="https://calndr.link/d/event/?service=outlook&start={{ event.dateStart | isoDate }}&end={{event.dateEnd | isoDate}}&title={{ event.title }}">Outlook</a>
+              <a href="https://calndr.link/d/event/?service=apple&start={{ event.dateStart | isoDate }}&end={{event.dateEnd | isoDate}}&title={{ event.title }}">Apple</a>
+              <a href="https://calndr.link/d/event/?service=office365&start={{ event.dateStart | isoDate }}&end={{event.dateEnd | isoDate}}&title={{ event.title }}">Office 365</a>
+              <a href="https://calndr.link/d/event/?service=stream&start={{ event.dateStart | isoDate }}&end={{event.dateEnd | isoDate}}&title={{ event.title }}">Stream</a>
+              <!-- End Add to Calendar -->
               <div class="event__delivery">
                 {% if event.location %}
                   <span class="event__location" itemprop="location">
