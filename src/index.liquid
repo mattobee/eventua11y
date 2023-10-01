@@ -59,9 +59,11 @@ layout: layouts/base.liquid
                 {% endif %}
               </div>
               <!-- End dates -->
-              <span class="event__location" itemprop="location">
-                <i class="fa-solid fa-fw fa-location-dot"></i>
-                {{ event.location }}</span>
+              {% if event.location %}
+                <span class="event__location" itemprop="location">
+                  <i class="fa-solid fa-fw fa-location-dot"></i>
+                  {{ event.location }}</span>
+              {% endif %}
             </article>
             <!-- End event -->
           {% else %}
