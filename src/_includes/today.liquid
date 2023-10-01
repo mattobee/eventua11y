@@ -14,6 +14,13 @@
     {% edge "liquid" events %}
 
       {% assign todaysThemes = events | todaysThemes | sort: "dateStart" %}
+      {% assign todaysEvents = events | todaysEvents | sort: "dateStart" %}
+
+      <!-- if there are no events today -->
+      {% if todaysThemes.length == 0 and todaysEvents.length == 0 %}
+        <p>There are no events today.</p>
+      {% endif %}
+
       {% if todaysThemes.length > 0 %}
         <div class="events events--list stack">
           {% for event in todaysThemes %}
@@ -65,7 +72,6 @@
         <!-- End .events -->
       {% endif %}
 
-      {% assign todaysEvents = events | todaysEvents | sort: "dateStart" %}
       {% if todaysEvents.length > 0 %}
         <div class="events events--list stack">
           {% for event in todaysEvents %}
