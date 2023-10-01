@@ -12,8 +12,15 @@ layout: layouts/base.liquid
   {% edge "liquid" events %}
     <section id="upcoming">
       <h2>Upcoming Events</h2>
+
+      {% assign upcomingEvents = events | upcomingEvents | sort: 'dateStart' %}
+
+      <!-- if there are no upcoming events -->
+      {% if upcomingEvents.length == 0 %}
+        <p>There are no upcoming events. Check back later.</p>
+      {% endif %}
+
       <div class="events events--list stack">
-        {% assign upcomingEvents = events | upcomingEvents | sort: 'dateStart' %}
         {% for event in upcomingEvents %}
           {%- if event.type == "theme" %}
             <article
