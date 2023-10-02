@@ -1,4 +1,7 @@
-import { EleventyEdge, precompiledAppData } from "./_generated/eleventy-edge-app.js";
+import {
+  EleventyEdge,
+  precompiledAppData,
+} from "./_generated/eleventy-edge-app.js";
 import getEvents from "./sanity.js";
 import dayjs from "./day.js";
 import meta from "../../src/_data/meta.mjs";
@@ -46,14 +49,11 @@ export default async (request, context) => {
       // Return theme events taking place today, based on locale
       eleventyConfig.addFilter("todaysThemes", function (events) {
         return events.filter((event) => {
-          // console.log(event)
           const eventDateStart = new dayjs(event.dateStart);
-          const eventDateEnd = new dayjs(event.dateEnd);
-          return (
-            eventDateStart.isSameOrBefore(now) &&
-            eventDateEnd.isSameOrAfter(now) &&
-            event.type == "theme"
-          );
+          const eventDateEnd = event.dateEnd ? dayjs(event.dateEnd) : eventDateStart;
+          const isOngoing = eventDateStart.isSameOrBefore(now, 'day') && eventDateEnd.isSameOrAfter(now, 'day');
+          console.log("Ongoing: ", isOngoing, event)
+          return isOngoing && event.type == "theme";
         });
       });
 
@@ -64,8 +64,8 @@ export default async (request, context) => {
           const eventDateEnd = new dayjs(event.dateEnd);
           // Return an event if it starts today or earlier, and ends today or later
           return (
-            eventDateStart.isSameOrBefore(now) &&
-            eventDateEnd.isSameOrAfter(now) &&
+            eventDateStart.isSameOrBefore(now, 'day') &&
+            eventDateEnd.isSameOrAfter(now, 'day') &&
             event.type != "theme"
           );
         });
@@ -97,7 +97,6 @@ export default async (request, context) => {
       eleventyConfig.addShortcode("country", function (context) {
         return context.geo.country;
       });
-
     });
 
     return await edge.handleResponse();
