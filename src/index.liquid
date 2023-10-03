@@ -41,7 +41,7 @@ layout: layouts/base.liquid
                   {% if event.day %}
                     <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | localizeDate: "LL" }}</time>
                   {% else %}
-                    <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | localizeDate: "LLL" }}</time>
+                    <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | localizeDate: "LLL z" }}</time>
                   {% endif %}
                 </span>
                 {% if event.dateEnd %}
@@ -53,7 +53,7 @@ layout: layouts/base.liquid
                     {% if event.day %}
                       <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd | localizeDate: "LL" }}</time>
                     {% else %}
-                      <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd | localizeDate: "LLL" }}</time>
+                      <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd | localizeDate: "LLL z" }}</time>
                     {% endif %}
                   </span>
                 {% endif %}
@@ -85,7 +85,7 @@ layout: layouts/base.liquid
                   {% if event.day %}
                     <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | localizeDate: "LL" }}</time>
                   {% else %}
-                    <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | localizeDate: "LLL" }}</time>
+                    <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | localizeDate: "LLL z" }}</time>
                   {% endif %}
                 </span>
                 {% if event.dateEnd %}
@@ -96,7 +96,7 @@ layout: layouts/base.liquid
                     {% if event.day %}
                       <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd | localizeDate: "LL" }}</time>
                     {% else %}
-                      <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd | localizeDate: "LLL" }}</time>
+                      <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd | localizeDate: "LLL z" }}</time>
                     {% endif %}
                   </span>
                 {% endif %}
