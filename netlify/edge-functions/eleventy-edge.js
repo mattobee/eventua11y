@@ -8,7 +8,6 @@ import meta from "../../src/_data/meta.mjs";
 
 // Pull events from Sanity
 const events = await getEvents();
-console.log(events);
 
 export default async (request, context) => {
   try {
@@ -46,37 +45,40 @@ export default async (request, context) => {
         dayjs(date).locale(LOCALE).tz(timezone).format(format)
       );
 
-      // Return theme events taking place today, based on locale
+      // Return theme events taking place today
       eleventyConfig.addFilter("todaysThemes", function (events) {
         return events.filter((event) => {
+          // Get the start date of the event
           const eventDateStart = new dayjs(event.dateStart);
+          // If there's no end date, assume it's a one-day event
           const eventDateEnd = event.dateEnd ? dayjs(event.dateEnd) : eventDateStart;
+          // Work out if the event is ongoing
           const isOngoing = eventDateStart.isSameOrBefore(now, 'day') && eventDateEnd.isSameOrAfter(now, 'day');
-          console.log("Ongoing: ", isOngoing, event)
+          // Return the event if it's ongoing and a theme
           return isOngoing && event.type == "theme";
         });
       });
 
-      // Return non-theme events taking place today, based on locale
+      // Return non-theme events taking place today
       eleventyConfig.addFilter("todaysEvents", function (events) {
         return events.filter((event) => {
+          // Get the start date of the event
           const eventDateStart = new dayjs(event.dateStart);
-          const eventDateEnd = new dayjs(event.dateEnd);
-          // Return an event if it starts today or earlier, and ends today or later
-          return (
-            eventDateStart.isSameOrBefore(now, 'day') &&
-            eventDateEnd.isSameOrAfter(now, 'day') &&
-            event.type != "theme"
-          );
+          // If there's no end date, assume it's a one-day event
+          const eventDateEnd = event.dateEnd ? dayjs(event.dateEnd) : eventDateStart;
+          // Work out if the event is ongoing
+          const isOngoing = eventDateStart.isSameOrBefore(now, 'day') && eventDateEnd.isSameOrAfter(now, 'day');
+          // Return the event if it's ongoing and not a theme
+          return isOngoing && event.type != "theme";
         });
       });
 
       /* Returns a list of upcoming events in chronological order */
       eleventyConfig.addFilter("upcomingEvents", function (events) {
         return events.filter((event) => {
+          // Return the event if its start date is after today
           return new dayjs(event.dateStart).isAfter(now, "day");
         });
-        // .reverse();
       });
 
       // Return today's date as an iso string
@@ -85,7 +87,6 @@ export default async (request, context) => {
       // Return today's date as a locale string
       eleventyConfig.addShortcode("today", function () {
         return dayjs(now).locale(LOCALE).tz(timezone).format("LL");
-        // return now;
       });
 
       // Return the user's timezone
