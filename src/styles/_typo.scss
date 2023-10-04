@@ -44,7 +44,7 @@ a {
 }
 
 a:link, a:visited {
-    color: var(--color-primary);
+    color: inherit;
 }
 
 a:hover, a:active, a:focus {
