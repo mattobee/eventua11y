@@ -56,7 +56,10 @@
     border-radius: 0;
     display: flex;
     flex-direction: column;
-    padding: 0;
+    padding: 0 var(--space-s-m);
+    @media screen and (max-width: 400px) {
+        padding: 0;
+    }
     .event__title {
         font-size: 1.2rem;
         order: 2;
