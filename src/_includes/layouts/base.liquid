@@ -44,10 +44,28 @@
     </main>
     <footer id="global-footer" role="contentinfo">
       <div class="container readable">
-        <a href="/"><img
-            class="logo"
-            src="/images/eventua11y_logo_wordmark_white.svg"
-            alt="Eventua11y"></a>
+        <ul role="list" class="social flex gap">
+          <li>
+            <a
+              class="button"
+              itemprop="sameAs"
+              rel="me"
+              href="https://github.com/mattobee/eventua11y"
+              title="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a
+              class="button"
+              itemprop="sameAs"
+              rel="me"
+              href="https://mastodon.social/@eventua11y"
+              title="Mastodon">
+              <i class="fab fa-mastodon"></i>
+            </a>
+          </li>
+        </ul>
         <p>
           <small>&copy 2022-{% year %}
             <a href="https://mattobee.com/">Matt Obee</a>
@@ -61,9 +79,9 @@
         </p>
         <p>
           <small>Powered by
-            <a href="https://www.11ty.dev/">Eleventy</a>,
-            <a href="https://www.netlify.com/">Netlify</a>, and
-            <a href="https://github.com/mattobee/eventua11y">GitHub</a>. Basic accessibility tests by
+            <a href="https://www.11ty.dev/">Eleventy</a>
+            and
+            <a href="https://www.netlify.com/">Netlify</a>. Basic accessibility tests by
             <a href="https://github.com/pa11y/pa11y">pa11y</a>/<a href="https://github.com/dequelabs/axe-core">axe-core</a>.</small>
         </p>
       </div>

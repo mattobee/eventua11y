@@ -9,4 +9,24 @@
         margin-bottom: var(--space-m-l);
         max-width: 10rem;
      }
+       .social {
+         display: flex;
+         font-size: var(--step-1);
+         gap: var(--space-3xs-2xs);
+         margin-bottom: var(--space-s-m);
+         a {
+            color: var(--color-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            transition: background-color 0.1s ease-in-out;
+            &:hover, &:active, &:focus {
+               background: var(--color-primary);
+            }
+         }
+       }
 }
