@@ -1,4 +1,4 @@
-![](https://github.com/mattobee/eventua11y/assets/3172945/830a4e6e-6f8c-446c-8d31-fd08b607fcee)
+![Eventua11y](https://github.com/mattobee/eventua11y/assets/3172945/a1cc64a6-c3f8-465a-b88f-e5f8524c3edd)
 
 # Eventua11y
 
