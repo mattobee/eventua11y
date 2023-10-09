@@ -31,6 +31,7 @@ export default async (request, context) => {
     // Set the current date
     const now = new dayjs();
     console.log("now is " + now);
+    console.log(now.toISOString());
 
     edge.config((eleventyConfig) => {
       // Make Eleventy global data available on the edge
@@ -68,6 +69,7 @@ export default async (request, context) => {
           const eventDateEnd = event.dateEnd ? dayjs(event.dateEnd) : eventDateStart;
           // Work out if the event is ongoing
           const isOngoing = eventDateStart.isSameOrBefore(now, 'day') && eventDateEnd.isSameOrAfter(now, 'day');
+          console.log(event.title, isOngoing);
           // Return the event if it's ongoing and not a theme
           return isOngoing && event.type != "theme";
         });
