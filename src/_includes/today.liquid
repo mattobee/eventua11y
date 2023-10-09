@@ -40,9 +40,9 @@
                   <span class="sr-only">Starts
                   </span>
                   {% if event.day %}
-                    <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | localizeDate: "LL" }}</time>
+                    <time datetime="{{ event.dateStart }}" itemprop="startDate">{{ event.dateStart | localizeDate: "LL" }}</time>
                   {% else %}
-                    <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | localizeDate: "LLL" }}</time>
+                    <time datetime="{{ event.dateStart }}" itemprop="startDate">{{ event.dateStart | localizeDate: "LLL" }}</time>
                   {% endif %}
                 </span>
                 {% if event.dateEnd %}
@@ -51,9 +51,9 @@
                     </span>
                     <i class="fa-solid fa-arrow-right-long"></i>
                     {% if event.day %}
-                      <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd | localizeDate: "LL" }}</time>
+                      <time datetime="{{event.dateEnd }}" itemprop="endDate">{{ event.dateEnd | localizeDate: "LL" }}</time>
                     {% else %}
-                      <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd | localizeDate: "LLL" }}</time>
+                      <time datetime="{{event.dateEnd }}" itemprop="endDate">{{ event.dateEnd | localizeDate: "LLL" }}</time>
                     {% endif %}
                   </span>
                 {% endif %}
@@ -145,6 +145,7 @@
                   </span>
                 </span>
               {% endif %}
+              <!-- debug -->
             </article>
             <!-- End .event -->
           {% endfor %}
