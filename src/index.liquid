@@ -64,6 +64,7 @@ layout: layouts/base.liquid
                   <i class="fa-solid fa-fw fa-location-dot"></i>
                   {{ event.location }}</span>
               {% endif %}
+              {% debug event  %}
             </article>
             <!-- End event -->
           {% else %}
@@ -115,6 +116,7 @@ layout: layouts/base.liquid
                 {% endif %}
               </div>
               <p class="event__description">{{ event.description }}</p>
+              {% debug event  %}
             </article>
             <!-- End .event -->
           {% endif %}
