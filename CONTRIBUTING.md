@@ -8,4 +8,4 @@ Do you have an idea for a new feature, or a suggestion for improving Eventua11y?
 
 ## Report an accessibility defect
 
-Please report any defects that affect the accessibility of Eventua11y. Before creating an issue, please check the list of [existing accessibility issues](https://github.com/mattobee/eventua11y/labels/accessibility) in case it has already been reported.
+Please report any defects that affect the accessibility of Eventua11y. They will of course be prioritised. Before creating an issue, please check the list of [existing accessibility issues](https://github.com/mattobee/eventua11y/labels/accessibility) in case it has already been reported.
