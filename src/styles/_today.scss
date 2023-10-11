@@ -2,21 +2,20 @@
     background-color: var(--color-primary);
     color: #fff;
     padding: var(--space-s-l) 0;
+    a:link, a:visited {
+        color: #fff;
+        transition: all 0.1s ease-in-out;
+    }
+    a:hover, a:active, a:focus {
+        color: var(--color-secondary);
+    }
     .event.event--theme {
+        background-color: transparent;
         color: #fff;
         padding: 0;
-        a:link, a:visited, a:hover, a:active, a:focus {
-            color: inherit;
-        }
     }
     .event {
+        background-color: rgba(0,0,0,0.1);
         border: none;
-        color: var(--color-body);
-        a:link, a:visited {
-            color: inherit;
-        }
-        a:hover, a:active, a:focus {
-            color: var(--color-primary);
-        }
     }
 }
