@@ -8,13 +8,14 @@
     .event.event--theme {
         color: #fff;
         padding: 0;
+    }
+    .event {
+        border: none;
+        color: var(--color-body);
         a:link, a:visited {
             color: inherit;
         }
-    }
-    .event {
-        color: var(--color-body);
-        a:link, a:visited {
+        a:hover, a:active, a:focus {
             color: var(--color-primary);
         }
     }
