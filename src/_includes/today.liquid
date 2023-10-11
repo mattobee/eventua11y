@@ -30,8 +30,8 @@
               itemscope
               itemtype="https://schema.org/Event">
               <h3 class="event__title" itemprop="name">
-                {% if event.url %}
-                  <a href="{{ event.url }}">{{ event.title }}</a>
+                {% if event.website %}
+                  <a href="{{ event.website }}">{{ event.title }}</a>
                 {% else %}
                   {{ event.title }}{% endif %}
               </h3>
@@ -81,8 +81,8 @@
               itemscope
               itemtype="https://schema.org/Event">
               <h3 class="event__title" itemprop="name">
-                {% if event.url %}
-                  <a href="{{ event.url }}">{{ event.title }}</a>
+                {% if event.website %}
+                  <a href="{{ event.website }}">{{ event.title }}</a>
                 {% else %}
                   {{ event.title }}{% endif %}
               </h3>
