@@ -2,12 +2,12 @@
     background-color: var(--color-primary);
     color: #fff;
     padding: var(--space-s-l) 0;
-    a:link, a:visited, a:hover, a:active, a:focus {
-        color: inherit;
-    }
     .event.event--theme {
         color: #fff;
         padding: 0;
+        a:link, a:visited, a:hover, a:active, a:focus {
+            color: inherit;
+        }
     }
     .event {
         border: none;
