@@ -1,12 +1,15 @@
 details {
-    summary {
-        list-style-type: none;
+    > summary {
+        list-style: none;
         .icon {
             margin-right: .25em;
         }
     }
+    > summary::-webkit-details-marker {
+        display:none;
+      }
     &[open] {
-        summary {
+        > summary {
             .icon {
                 transform: rotate(90deg);
             }
