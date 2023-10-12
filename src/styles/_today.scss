@@ -1,26 +1,26 @@
 #today {
-    background-color: var(--color-primary);
+  background-color: var(--color-primary);
+  color: #fff;
+  padding: var(--space-s-l) 0;
+  a {
     color: #fff;
-    padding: var(--space-s-l) 0;
-    a:link, a:visited {
-        color: #fff;
-        transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+    &:hover,
+    &:active,
+    &:focus {
+      color: var(--color-secondary);
     }
-    a:hover, a:active, a:focus {
-        color: var(--color-secondary);
+  }
+  .event {
+    background-color: rgba(0, 0, 0, 0.1);
+    border: none;
+    &--theme {
+      background-color: transparent;
+      color: #fff;
+      padding: 0;
     }
-    .event.event--theme {
-        background-color: transparent;
-        color: #fff;
-        padding: 0;
+    &__description-container {
+      order: 4;
     }
-    .event {
-        background-color: rgba(0,0,0,0.1);
-        border: none;
-    }
-    .event__description-container {
-        order: 4;
-    }
-      
+  }
 }
-
