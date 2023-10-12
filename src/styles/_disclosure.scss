@@ -1,18 +1,19 @@
 details {
     > summary {
-        list-style: none;
-        .icon {
-            margin-right: .25em;
-        }
-    }
-    > summary::-webkit-details-marker {
-        display:none;
+      list-style: none;
+      .icon {
+        margin-right: 0.25em;
       }
-    &[open] {
-        > summary {
-            .icon {
-                transform: rotate(90deg);
-            }
-        }
+      &::-webkit-details-marker {
+        display: none;
+      }
     }
-}
+    &[open] {
+      summary:first-of-type {
+        margin-bottom: var(--space-3xs);
+      }
+      .icon {
+        transform: rotate(90deg);
+      }
+    }
+  }
