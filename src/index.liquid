@@ -114,7 +114,14 @@ layout: layouts/base.liquid
                     Online</span>
                 {% endif %}
               </div>
-              <p class="event__description">{{ event.description }}</p>
+              {% if event.description %}
+                <details class="event__description-container">
+                  <summary class="btn btn--small event__description-toggle"><i class="icon fa-solid fa-caret-right"></i> Description</summary>
+                  <p class="event__description">
+                      {{ event.description }}
+                  </p>
+                </details>
+              {% endif %}
             </article>
             <!-- End .event -->
           {% endif %}

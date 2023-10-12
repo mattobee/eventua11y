@@ -1,0 +1,14 @@
+details {
+    summary {
+        .icon {
+            margin-right: .25em;
+        }
+    }
+    &[open] {
+        summary {
+            .icon {
+                transform: rotate(90deg);
+            }
+        }
+    }
+}

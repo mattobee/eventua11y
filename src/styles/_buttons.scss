@@ -1,16 +1,19 @@
 // Base button styles
 .btn {
-  border-radius: $border-radius;
+  background-color: rgba(0,0,0,0.05);
+  border-radius: 1000px;
+  color: inherit;
   cursor: pointer;
   display: inline-block;
-  padding: 1em 1.2em;
+  padding: var(--space-3xs) var(--space-xs-s);
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
   appearance: none; // Corrects inability to style clickable `input` types in iOS
+  text-decoration: none;
 
-  &:hover {
-    text-decoration: none;
+  &:hover, &:active, &:focus {
+    background-color: rgba(0,0,0,0.1);
   }
 
   &:disabled,
@@ -31,6 +34,10 @@
   text-align: center;
 }
 
-.button {
-  text-decoration: none;
+.btn--small {
+  font-size: var(--step--1);
+}
+
+details[open] > summary:first-of-type {
+  margin-bottom: var(--space-3xs);
 }
