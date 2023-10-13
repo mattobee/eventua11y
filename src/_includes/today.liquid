@@ -125,7 +125,7 @@
               {% if event.description %}
               <details class="event__description-container">
                 <summary class="btn btn--small event__description-toggle"><i class="icon fa-solid fa-caret-right"></i> Description</summary>
-                <p class="event__description">
+                <p itemprop="description" class="event__description">
                     {{ event.description }}
                 </p>
               </details>
