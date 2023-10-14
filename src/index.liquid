@@ -60,6 +60,7 @@ layout: layouts/base.liquid
               </div>
               <!-- End dates -->
               <div class="event__delivery">
+                <span class="sr-only">Location:</span>
                 <span class="event__location">
                   <i class="fa-solid fa-fw fa-location-dot"></i>
                   <span itemprop="location" itemscope itemtype="https://schema.org/Place">{{ event.location | default: 'International' }}</span>
@@ -104,6 +105,7 @@ layout: layouts/base.liquid
               </div>
               <!-- End dates -->
               <div class="event__delivery">
+                <span class="sr-only">Location:</span>
                 {% if event.attendanceMode == "online" %}
                   <span class="event__online" itemprop="eventAttendanceMode" content="https://schema.org/OnlineEventAttendanceMode">
                     <i class="fa-solid fa-laptop"></i>

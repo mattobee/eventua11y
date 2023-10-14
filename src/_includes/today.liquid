@@ -37,8 +37,7 @@
               </h3>
               <div class="event__dates text-muted">
                 <span class="event__dateStart">
-                  <span class="sr-only">Starts
-                  </span>
+                  <span class="sr-only">Starts</span>
                   {% if event.day %}
                     <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | localizeDate: "LL" }}</time>
                   {% else %}
@@ -47,8 +46,7 @@
                 </span>
                 {% if event.dateEnd %}
                   <span class="event__dateEnd">
-                    <span class="sr-only">Ends
-                    </span>
+                    <span class="sr-only">Ends</span>
                     <i class="fa-solid fa-arrow-right-long"></i>
                     {% if event.day %}
                       <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd | localizeDate: "LL" }}</time>
@@ -60,6 +58,7 @@
               </div>
               <!-- End dates -->
               <div class="event__delivery">
+                <span class="sr-only">Location:</span>
                 <span class="event__location">
                   <i class="fa-solid fa-fw fa-location-dot"></i>
                   <span itemprop="location" itemscope itemtype="https://schema.org/Place">{{ event.location | default: 'International' }}</span>
@@ -89,8 +88,7 @@
               </h3>
               <div class="event__dates text-muted">
                 <span class="event__dateStart">
-                  <span class="sr-only">Starts
-                  </span>
+                  <span class="sr-only">Starts</span>
                   {% if event.day %}
                     <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | localizeDate: "LL" }}</time>
                   {% else %}
@@ -99,8 +97,7 @@
                 </span>
                 {% if event.dateEnd %}
                   <span class="event__dateEnd">
-                    <span class="sr-only">Ends
-                    </span>
+                    <span class="sr-only">Ends</span>
                     <i class="fa-solid fa-arrow-right-long"></i>
                     {% if event.day %}
                       <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd | localizeDate: "LL" }}</time>
@@ -112,6 +109,7 @@
               </div>
               <!-- End dates -->
               <div class="event__delivery">
+                <span class="sr-only">Location:</span>
                 {% if event.attendanceMode == "online" %}
                   <span class="event__online" itemprop="eventAttendanceMode" content="https://schema.org/OnlineEventAttendanceMode">
                   <i class="fa-solid fa-laptop"></i>
