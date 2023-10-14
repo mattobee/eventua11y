@@ -62,8 +62,13 @@ layout: layouts/base.liquid
               <div class="event__delivery">
                 <span class="sr-only">Location:</span>
                 <span class="event__location">
+                  {% if event.location %}
                   <i class="fa-solid fa-fw fa-location-dot"></i>
-                  <span itemprop="location" itemscope itemtype="https://schema.org/Place">{{ event.location | default: 'International' }}</span>
+                  <span itemprop="location" itemscope itemtype="https://schema.org/Place">{{ event.location }}</span>
+                  {% else %}
+                  <i class="fa-solid fa-fw fa-globe"></i>
+                  <span itemprop="location" itemscope itemtype="https://schema.org/Place">International</span>
+                  {% endif %}
                 </span>
               </div>
             </article>
