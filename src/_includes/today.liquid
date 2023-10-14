@@ -31,7 +31,7 @@
               itemtype="https://schema.org/Event">
               <h3 class="event__title" itemprop="name">
                 {% if event.website %}
-                  <a href="{{ event.website }}">{{ event.title }}</a>
+                  <a itemprop="url" href="{{ event.website }}">{{ event.title }}</a>
                 {% else %}
                   {{ event.title }}{% endif %}
               </h3>
@@ -59,11 +59,14 @@
                 {% endif %}
               </div>
               <!-- End dates -->
-              {% if event.location %}
-                <span class="event__location" itemprop="location">
-                  <i class="fa-solid fa-fw fa-location-dot"></i>
-                  {{ event.location }}</span>
-              {% endif %}
+              <span class="event__location" itemprop="location" itemscope itemtype="https://schema.org/Place">
+                <i class="fa-solid fa-fw fa-location-dot"></i>
+                {% if event.location %}
+                  {{ event.location }}
+                {% else %}
+                  International
+                {% endif %}
+              </span>
             </article>
             <!-- End event -->
           {% endfor %}
@@ -82,7 +85,7 @@
               itemtype="https://schema.org/Event">
               <h3 class="event__title" itemprop="name">
                 {% if event.website %}
-                  <a href="{{ event.website }}">{{ event.title }}</a>
+                  <a itemprop="url" href="{{ event.website }}">{{ event.title }}</a>
                 {% else %}
                   {{ event.title }}{% endif %}
               </h3>
@@ -111,11 +114,14 @@
               </div>
               <!-- End dates -->
               <div class="event__delivery">
-                {% if event.location %}
-                  <span class="event__location" itemprop="location">
-                    <i class="fa-solid fa-fw fa-location-dot"></i>
-                    {{ event.location }}</span>
-                {% endif %}
+                <span class="event__location" itemprop="location" itemscope itemtype="https://schema.org/Place">
+                  <i class="fa-solid fa-fw fa-location-dot"></i>
+                  {% if event.location %}
+                    {{ event.location }}
+                  {% else %}
+                    International
+                  {% endif %}
+                </span>
                 {% if event.online %}
                   <span class="event__online">
                     <i class="fa-solid fa-laptop-arrow-down"></i>
@@ -125,7 +131,7 @@
               {% if event.description %}
               <details class="event__description-container">
                 <summary class="btn btn--small event__description-toggle"><i class="icon fa-solid fa-caret-right"></i> Description</summary>
-                <p class="event__description">
+                <p itemprop="description" class="event__description">
                     {{ event.description }}
                 </p>
               </details>

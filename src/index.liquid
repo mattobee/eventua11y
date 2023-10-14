@@ -59,11 +59,14 @@ layout: layouts/base.liquid
                 {% endif %}
               </div>
               <!-- End dates -->
-              {% if event.location %}
-                <span class="event__location" itemprop="location">
+                <span class="event__location" itemprop="location" itemscope itemtype="https://schema.org/Place">
                   <i class="fa-solid fa-fw fa-location-dot"></i>
-                  {{ event.location }}</span>
-              {% endif %}
+                  {% if event.location %}
+                    {{ event.location }}
+                  {% else %}
+                    International
+                  {% endif %}
+                </span>
             </article>
             <!-- End event -->
           {% else %}
@@ -103,11 +106,14 @@ layout: layouts/base.liquid
               </div>
               <!-- End dates -->
               <div class="event__delivery">
-                {% if event.location %}
-                  <span class="event__location" itemprop="location">
-                    <i class="fa-solid fa-fw fa-location-dot"></i>
-                    {{ event.location }}</span>
-                {% endif %}
+                <span class="event__location" itemprop="location" itemscope itemtype="https://schema.org/Place">
+                  <i class="fa-solid fa-fw fa-location-dot"></i>
+                  {% if event.location %}
+                    {{ event.location }}
+                  {% else %}
+                    International
+                  {% endif %}
+                </span>
                 {% if event.online %}
                   <span class="event__online">
                     <i class="fa-solid fa-laptop-arrow-down"></i>
@@ -117,7 +123,7 @@ layout: layouts/base.liquid
               {% if event.description %}
                 <details class="event__description-container">
                   <summary class="btn btn--small event__description-toggle"><i class="icon fa-solid fa-caret-right"></i> Description</summary>
-                  <p class="event__description">
+                  <p itemprop="description" class="event__description">
                       {{ event.description }}
                   </p>
                 </details>
