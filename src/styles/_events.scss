@@ -21,6 +21,9 @@
         margin-bottom: 0.5em;
         order: 3;
     }
+    &__online {
+        white-space: nowrap;
+    }
     &__dateStart {
         display: inline-block;
     }
