@@ -60,7 +60,7 @@ layout: layouts/base.liquid
               </div>
               <!-- End dates -->
               {% if event.location %}
-                <span class="event__location" itemprop="location">
+                <span class="event__location" itemprop="location" itemscope itemtype="https://schema.org/Place">
                   <i class="fa-solid fa-fw fa-location-dot"></i>
                   {{ event.location }}</span>
               {% endif %}
@@ -104,7 +104,7 @@ layout: layouts/base.liquid
               <!-- End dates -->
               <div class="event__delivery">
                 {% if event.location %}
-                  <span class="event__location" itemprop="location">
+                  <span class="event__location" itemprop="location" itemscope itemtype="https://schema.org/Place">
                     <i class="fa-solid fa-fw fa-location-dot"></i>
                     {{ event.location }}</span>
                 {% endif %}
