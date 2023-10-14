@@ -4,58 +4,67 @@
   itemscope
   itemtype="https://schema.org/Event">
   <h3 class="event__title" itemprop="name">
-    {% if event.url %}
-      <a href="{{ event.url }}">{{ event.title }}</a>
+    {% if event.website %}
+      <a href="{{ event.website }}">{{ event.title }}</a>
     {% else %}
       {{ event.title }}{% endif %}
   </h3>
-  <div class="event__dates">
+  <div class="event__dates text-muted">
     <span class="event__dateStart">
       <span class="sr-only">Starts
       </span>
-      <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | formatDate: 'dddd D MMMM h:mma' }}</time>
+      {% if event.day %}
+        <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | localizeDate: "LL" }}</time>
+      {% else %}
+        <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | localizeDate: "LLL z" }}</time>
+      {% endif %}
     </span>
     {% if event.dateEnd %}
       <span class="event__dateEnd">
         <span class="sr-only">Ends
         </span>
         <i class="fa-solid fa-arrow-right-long"></i>
-        <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd | formatDate: 'dddd D MMMM h:mma' }}</time>
+        {% if event.day %}
+          <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd | localizeDate: "LL" }}</time>
+        {% else %}
+          <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd | localizeDate: "LLL z" }}</time>
+        {% endif %}
       </span>
     {% endif %}
   </div>
   <!-- End dates -->
   <div class="event__delivery">
-    {% if event.location %}
-      <span class="event__location" itemprop="location">
-        <i class="fa-solid fa-fw fa-location-dot"></i>
-        {{ event.location }}</span>
-    {% endif %}
-    {% if event.online %}
-      <span class="event__online">
-        <i class="fa-solid fa-laptop-arrow-down"></i>
+    <span class="sr-only">Location:</span>
+    {% if event.attendanceMode == "online" %}
+      <span class="event__online" itemprop="eventAttendanceMode" content="https://schema.org/OnlineEventAttendanceMode">
+        <i class="fa-solid fa-laptop"></i>
         Online</span>
     {% endif %}
-  </div>
-  <p class="event__description">{{ event.description }}</p>
-  {% if event.cpacc or event.was or event.cpwa %}
-    <span class="event__iaap">
-      <img
-        class="event__iaaplogo"
-        src="/images/iaap.png"
-        alt="IAAP" />
-      <span>Credits pre-approved for
-        {% if event.cpacc %}
-          <abbr title="Certified Professional in Accessibility Core Competencies">CPACC</abbr>
-        {% endif %}
-        {% if event.was %}
-          <abbr title="Web Accessibility Specialist">WAS</abbr>
-        {% endif %}
-        {% if event.cpwa %}
-          <abbr title="Certified Professional in Web Accessibility">CPWA</abbr>
-        {% endif %}
+    {% if event.attendanceMode == "offline" %}
+      <span class="event__location" itemprop="eventAttendanceMode" content="https://schema.org/OfflineEventAttendanceMode">
+      <i class="fa-solid fa-fw fa-location-dot"></i>
+        <span itemprop="location" itemscope itemtype="https://schema.org/Place">{{ event.location || "International" }}</span>
       </span>
-    </span>
+    {% endif %}
+    {% if event.attendanceMode == "mixed" %}
+      <div itemprop="eventAttendanceMode" content="https://schema.org/MixedEventAttendanceMode">
+        <span class="event__location">
+          <i class="fa-solid fa-fw fa-location-dot"></i>
+          <span itemprop="location" itemscope itemtype="https://schema.org/Place">{{ event.location | default: 'International' }}</span>
+        </span> <span class="text-muted">and</span> 
+        <span class="event__online">
+          <i class="fa-solid fa-laptop"></i>
+          Online</span> 
+      </div>
+    {% endif %}
+  </div>
+  {% if event.description %}
+    <details class="event__description-container">
+      <summary class="btn btn--small event__description-toggle"><i class="icon fa-solid fa-caret-right"></i> Description</summary>
+      <p itemprop="description" class="event__description">
+          {{ event.description }}
+      </p>
+    </details>
   {% endif %}
 </article>
 <!-- End .event -->
