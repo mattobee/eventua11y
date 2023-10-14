@@ -62,11 +62,7 @@
               <div class="event__delivery">
                 <span class="event__location">
                   <i class="fa-solid fa-fw fa-location-dot"></i>
-                  {% if event.location %}
-                    <span itemprop="location" itemscope itemtype="https://schema.org/Place">{{ event.location }}</span>
-                  {% else %}
-                    International
-                  {% endif %}
+                  <span itemprop="location" itemscope itemtype="https://schema.org/Place">{{ event.location | default: 'International' }}</span>
                 </span>
               </div>
             </article>
