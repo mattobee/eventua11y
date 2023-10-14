@@ -106,7 +106,7 @@ layout: layouts/base.liquid
               <div class="event__delivery">
                 {% if event.attendanceMode == "online" %}
                   <span class="event__online" itemprop="eventAttendanceMode" content="https://schema.org/OnlineEventAttendanceMode">
-                    <i class="fa-solid fa-laptop-arrow-down"></i>
+                    <i class="fa-solid fa-laptop"></i>
                     Online</span>
                 {% endif %}
                 {% if event.attendanceMode == "offline" %}
@@ -122,7 +122,7 @@ layout: layouts/base.liquid
                       <span itemprop="location" itemscope itemtype="https://schema.org/Place">{{ event.location | default: 'International' }}</span>
                     </span> <span class="text-muted">and</span> 
                     <span class="event__online">
-                      <i class="fa-solid fa-laptop-arrow-down"></i>
+                      <i class="fa-solid fa-laptop"></i>
                       Online</span> 
                   </div>
                 {% endif %}

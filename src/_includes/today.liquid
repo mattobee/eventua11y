@@ -114,7 +114,7 @@
               <div class="event__delivery">
                 {% if event.attendanceMode == "online" %}
                   <span class="event__online" itemprop="eventAttendanceMode" content="https://schema.org/OnlineEventAttendanceMode">
-                    <i class="fa-solid fa-laptop-arrow-down"></i>
+                  <i class="fa-solid fa-laptop"></i>
                     Online</span>
                 {% endif %}
                 {% if event.attendanceMode == "offline" %}
@@ -126,7 +126,7 @@
                 {% if event.attendanceMode == "mixed" %}
                   <div itemprop="eventAttendanceMode" content="https://schema.org/MixedEventAttendanceMode">
                     <span class="event__online">
-                      <i class="fa-solid fa-laptop-arrow-down"></i>
+                      <i class="fa-solid fa-laptop"></i>
                       Online</span> and 
                     <span class="event__location">
                       <i class="fa-solid fa-fw fa-location-dot"></i>
