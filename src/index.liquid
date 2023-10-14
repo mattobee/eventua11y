@@ -59,14 +59,12 @@ layout: layouts/base.liquid
                 {% endif %}
               </div>
               <!-- End dates -->
-                <span class="event__location" itemprop="location" itemscope itemtype="https://schema.org/Place">
+              <div class="event__delivery">
+                <span class="event__location">
                   <i class="fa-solid fa-fw fa-location-dot"></i>
-                  {% if event.location %}
-                    {{ event.location }}
-                  {% else %}
-                    International
-                  {% endif %}
+                  <span itemprop="location" itemscope itemtype="https://schema.org/Place">{{ event.location | default: 'International' }}</span>
                 </span>
+              </div>
             </article>
             <!-- End event -->
           {% else %}
@@ -106,18 +104,27 @@ layout: layouts/base.liquid
               </div>
               <!-- End dates -->
               <div class="event__delivery">
-                <span class="event__location" itemprop="location" itemscope itemtype="https://schema.org/Place">
-                  <i class="fa-solid fa-fw fa-location-dot"></i>
-                  {% if event.location %}
-                    {{ event.location }}
-                  {% else %}
-                    International
-                  {% endif %}
-                </span>
-                {% if event.online %}
-                  <span class="event__online">
+                {% if event.attendanceMode == "online" %}
+                  <span class="event__online" itemprop="eventAttendanceMode" content="https://schema.org/OnlineEventAttendanceMode">
                     <i class="fa-solid fa-laptop-arrow-down"></i>
                     Online</span>
+                {% endif %}
+                {% if event.attendanceMode == "offline" %}
+                  <span class="event__location" itemprop="eventAttendanceMode" content="https://schema.org/OfflineEventAttendanceMode">
+                  <i class="fa-solid fa-fw fa-location-dot"></i>
+                    <span itemprop="location" itemscope itemtype="https://schema.org/Place">{{ event.location || "International" }}</span>
+                  </span>
+                {% endif %}
+                {% if event.attendanceMode == "mixed" %}
+                  <div itemprop="eventAttendanceMode" content="https://schema.org/MixedEventAttendanceMode">
+                    <span class="event__location">
+                      <i class="fa-solid fa-fw fa-location-dot"></i>
+                      <span itemprop="location" itemscope itemtype="https://schema.org/Place">{{ event.location | default: 'International' }}</span>
+                    </span> <span class="text-muted">and</span> 
+                    <span class="event__online">
+                      <i class="fa-solid fa-laptop-arrow-down"></i>
+                      Online</span> 
+                  </div>
                 {% endif %}
               </div>
               {% if event.description %}
