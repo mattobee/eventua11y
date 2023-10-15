@@ -141,6 +141,19 @@ layout: layouts/base.liquid
                       {{ event.description }}
                   </p>
                 </details>
+                {% if event.children %}
+                <div class="event__children">
+                    <!-- List of child events -->
+                    <ul role="list" class="event__children-list">
+                      {% for child in event.children %}
+                        <li class="event__child">
+                          <a href="{{ child.website }}">{{ child.title }}</a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+                <!-- End .event__children -->
               {% endif %}
             </article>
             <!-- End .event -->

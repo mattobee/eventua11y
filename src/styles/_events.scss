@@ -30,6 +30,9 @@
     .event__description-container {
         order: 4;
     }
+    .event__children {
+        order: 5;
+    }
     &__type {
         background-color: var(--color-primary);
         border-radius: .2em;
