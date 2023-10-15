@@ -102,6 +102,40 @@ export default async (request, context) => {
       eleventyConfig.addShortcode("country", function (context) {
         return context.geo.country;
       });
+      // Returns debugging details for each event
+      eleventyConfig.addShortcode("debug", function (event) {
+        const isOngoing = dayjs(event.dateStart).isSameOrBefore(now, 'day') && dayjs(event.dateEnd).isSameOrAfter(now, 'day');
+
+        const debugOutput = `
+        <div class="debugging">
+          <details>
+            <summary class="debug-toggle">Debug information</summary>
+            <div class="debug">
+              <p><strong>${event.title}</strong></p>
+              <p>Your timezone is <strong>${timezone}</strong></p>
+              <p>Your locale is <strong>${LOCALE}</strong></p>
+              <p>Your local datetime is <strong>${dayjs(now).locale(LOCALE).tz(timezone).format()}</strong></p>
+              <p>Start date in Sanity: ${event.dateStart}</p>
+              <p>Start date in your timezone: ${dayjs(event.dateStart).locale(LOCALE).tz(timezone).format()}</p>
+              <p>End date in Sanity: ${event.dateEnd}</p>
+              <p>End date in your timezone: ${event.dateEnd ? dayjs(event.dateEnd).locale(LOCALE).tz(timezone).format() : null}</p>
+              <!-- if the event has ended, show a message. Otherwise, show nothing -->
+              ${dayjs(event.dateEnd).isBefore(now, 'day') ? `<p><strong>This event has ended</strong></p>` : null}
+              ${isOngoing ? `<p><strong>This event is ongoing</strong></p>` : null}
+              ${dayjs(event.dateStart).isAfter(now, 'day') ? `<p><strong>This event is upcoming</strong></p>` : null}
+            </div>
+          </details>
+          <details>
+            <summary class="debug-toggle">Raw event data</summary>
+            <div class="debug">
+              <pre>${JSON.stringify(event, null, 2)}</pre>
+            </div>
+          </details>
+        </div>
+        `
+
+        return debugOutput;
+      });
     });
 
     return await edge.handleResponse();
