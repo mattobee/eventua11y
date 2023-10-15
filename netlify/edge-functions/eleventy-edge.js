@@ -68,16 +68,20 @@ export default async (request, context) => {
           const eventDateEnd = event.dateEnd ? dayjs(event.dateEnd) : eventDateStart;
           // Work out if the event is ongoing
           const isOngoing = eventDateStart.isSameOrBefore(now, 'day') && eventDateEnd.isSameOrAfter(now, 'day');
-          // Return the event if it's ongoing and not a theme
-          return isOngoing && event.type != "theme";
+          // Work out if the event has a parent event
+          const hasParent = event.parent ? true : false;
+          // Return the event if it's ongoing, not a theme, and not part of a larger event
+          return isOngoing && !hasParent && event.type != "theme";
         });
       });
 
       /* Returns a list of upcoming events in chronological order */
       eleventyConfig.addFilter("upcomingEvents", function (events) {
         return events.filter((event) => {
-          // Return the event if its start date is after today
-          return new dayjs(event.dateStart).isAfter(now, "day");
+          // Work out if the event has a parent event
+          const hasParent = event.parent ? true : false;
+          // Return the event if its start date is after today and is not part of a larger event
+          return new dayjs(event.dateStart).isAfter(now, "day") && !hasParent;
         });
       });
 
