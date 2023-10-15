@@ -5,7 +5,12 @@
     flex-direction: column;
     height: 100%;
     justify-content: space-between;
-    padding: var(--space-s-m);
+    // padding: var(--space-s-m);
+    .content {
+        display: flex;
+        flex-direction: column;
+        padding: var(--space-s-m);
+    }
     &__title {
         margin-bottom: .4rem;
         order: 3;
@@ -30,8 +35,10 @@
     .event__description-container {
         order: 4;
     }
-    .event__children {
+    &__children {
+        border-top: 1px solid #ddd;
         order: 5;
+        padding: var(--space-s-m);
     }
     &__type {
         background-color: var(--color-primary);
