@@ -79,6 +79,7 @@ layout: layouts/base.liquid
               itemprop="event"
               itemscope
               itemtype="https://schema.org/Event">
+              <div class="content">
               <h3 class="event__title" itemprop="name">
                 {% if event.website %}
                   <a href="{{ event.website }}">{{ event.title }}</a>
@@ -141,16 +142,24 @@ layout: layouts/base.liquid
                       {{ event.description }}
                   </p>
                 </details>
+                </div>
                 {% if event.children %}
                 <div class="event__children">
-                    <!-- List of child events -->
-                    <ul role="list" class="event__children-list">
-                      {% for child in event.children %}
-                        <li class="event__child">
-                          <a href="{{ child.website }}">{{ child.title }}</a>
-                        </li>
-                      {% endfor %}
-                    </ul>
+                  <!-- Display the count of children with appropriate pluralization -->
+                  {% assign childCount = event.children | size %}
+                  {% if childCount == 1 %}
+                    <p>{{ childCount }} accessibility event:</p>
+                  {% else %}
+                    <p>{{ childCount }} accessibility events:</p>
+                  {% endif %}
+                  <!-- List of child events -->
+                  <ul role="list" class="event__children-list">
+                    {% for child in event.children %}
+                      <li class="event__child">
+                        <a href="{{ child.website }}">{{ child.title }}</a>
+                      </li>
+                    {% endfor %}
+                  </ul>
                 </div>
                 {% endif %}
                 <!-- End .event__children -->
