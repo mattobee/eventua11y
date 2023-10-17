@@ -11,14 +11,27 @@ const sanityClient = createClient({
 });
 
 async function getEvents() {
-    try {
-      const events = await sanityClient.fetch('*[_type == "event"]');
-      return events;
-    } catch (error) {
-      console.error(error);
-      throw new Error("Failed to fetch events");
-    }
+  try {
+    // Fetch all events from Sanity
+    const events = await sanityClient.fetch('*[_type == "event"]');
+    // Add children to those events, if they exist
+    const eventsWithChildren = events.map(event => {
+      // Find children of this event
+      const children = events.filter(child => child.parent && child.parent._ref === event._id);
+      // Return the event with its children, if it has any
+      return {
+        ...event,
+        ...(children.length > 0 && { children })
+      };
+    });
+    // Return the events with their children
+    return eventsWithChildren;
+    // Throw an error if we fail to fetch events
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to fetch events");
   }
+}
 
 export default function() {
   return getEvents();
