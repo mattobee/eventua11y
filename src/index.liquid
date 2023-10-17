@@ -148,15 +148,18 @@ layout: layouts/base.liquid
                   <!-- Display the count of children with appropriate pluralization -->
                   {% assign childCount = event.children | size %}
                   {% if childCount == 1 %}
-                    <p>{{ childCount }} accessibility event:</p>
+                    <p>{{ childCount }} accessibility highlight:</p>
                   {% else %}
-                    <p>{{ childCount }} accessibility events:</p>
+                    <p>{{ childCount }} accessibility highlights:</p>
                   {% endif %}
                   <!-- List of child events -->
                   <ul role="list" class="event__children-list">
                     {% for child in event.children %}
                       <li class="event__child">
                         <a href="{{ child.website }}">{{ child.title }}</a>
+                        <div class="event__dates text-muted">
+                          <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | localizeDate: "MMMM D h:MM z" }}</time>
+                        </div>
                       </li>
                     {% endfor %}
                   </ul>
