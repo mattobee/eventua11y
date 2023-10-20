@@ -158,7 +158,7 @@ layout: layouts/base.liquid
                       <li class="event__child" itemprop="event" itemscope itemtype="https://schema.org/Event">
                         <a href="{{ child.website }}" itemprop="name">{{ child.title }}</a>
                         <div class="event__dates text-muted">
-                          <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | localizeDate: "MMMM D h:MM z" }}</time>
+                          <time datetime="{{ child.dateStart | isoDate }}" itemprop="startDate">{{ child.dateStart | localizeDate: "LLL z" }}</time>
                         </div>
                       </li>
                     {% endfor %}
