@@ -15,17 +15,17 @@ async function getEvents() {
     // Fetch all events from Sanity
     const events = await sanityClient.fetch('*[_type == "event"]');
     // Add children to those events, if they exist
-    const eventsWithChildren = events.map(event => {
-      // Find children of this event
-      const children = events.filter(child => child.parent && child.parent._ref === event._id);
+    const eventsWithChildren = events.map(async event => {
+      // Find children of this event, sorted by dateStart in ascending order
+      const children = await sanityClient.fetch('*[_type == "event" && parent._ref == $eventId] | order(dateStart asc)', { eventId: event._id });
       // Return the event with its children, if it has any
       return {
         ...event,
         ...(children.length > 0 && { children })
       };
     });
-    // Return the events with their children
-    return eventsWithChildren;
+    // Wait for all events to be processed and return the events with their children
+    return Promise.all(eventsWithChildren);
     // Throw an error if we fail to fetch events
   } catch (error) {
     console.error(error);
