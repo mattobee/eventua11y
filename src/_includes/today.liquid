@@ -1,6 +1,6 @@
 <section id="today">
 
-  <div class="container readable stack">
+  <div class="container readable flow">
 
     <hgroup role="group" aria-roledescription="Heading group">
       <h2>Today</h2>
@@ -22,7 +22,7 @@
       {% endif %}
 
       {% if todaysThemes.length > 0 %}
-        <div class="events events--list stack">
+        <div class="events events--list flow">
           {% for event in todaysThemes %}
             <article
               class="event event--theme"
@@ -78,7 +78,7 @@
       {% endif %}
 
       {% if todaysEvents.length > 0 %}
-        <div class="events events--list stack">
+        <div class="events events--list flow">
           {% for event in todaysEvents %}
             <article
               class="event event--{{ event.type }}"

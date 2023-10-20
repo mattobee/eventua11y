@@ -10,18 +10,12 @@
   border-width: 0;
 }
 
-.stack {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+.flow > * + * {
+  margin-block-start: var(--flow-space, 1em);
 }
 
-.stack > * {
-  margin-block: 0;
-}
-
-.stack > * + * {
-  margin-block-start: var(--space, var(--space-s-m));
+.flow-tight {
+  --flow-space: var(--space-3xs-2xs);
 }
 
 .bg-primary {

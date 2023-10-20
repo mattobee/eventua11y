@@ -39,6 +39,7 @@
         border-top: 1px solid #ddd;
         order: 5;
         padding: var(--space-s-m);
+        --flow-space: var(--space-3xs-2xs);
     }
     &__type {
         background-color: var(--color-primary);

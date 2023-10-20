@@ -20,7 +20,7 @@ layout: layouts/base.liquid
         <p>There are no upcoming events. Check back later.</p>
       {% endif %}
 
-      <div class="events events--list stack">
+      <div class="events events--list flow">
         {% for event in upcomingEvents %}
           {%- if event.type == "theme" %}
             <article
@@ -144,7 +144,7 @@ layout: layouts/base.liquid
                 </details>
                 </div>
                 {% if event.children %}
-                <div class="event__children">
+                <div class="event__children flow">
                   <!-- Display the count of children with appropriate pluralization -->
                   {% assign childCount = event.children | size %}
                   {% if childCount == 1 %}
@@ -152,17 +152,19 @@ layout: layouts/base.liquid
                   {% else %}
                     <p>{{ childCount }} accessibility highlights:</p>
                   {% endif %}
-                  <!-- List of child events -->
-                  <ul role="list" class="event__children-list">
-                    {% for child in event.children %}
-                      <li class="event__child" itemprop="event" itemscope itemtype="https://schema.org/Event">
-                        <a href="{{ child.website }}" itemprop="name">{{ child.title }}</a>
-                        <div class="event__dates text-muted">
-                          <time datetime="{{ child.dateStart | isoDate }}" itemprop="startDate">{{ child.dateStart | localizeDate: "LLL z" }}</time>
-                        </div>
-                      </li>
-                    {% endfor %}
-                  </ul>
+                  <div>
+                    <!-- List of child events -->
+                    <ul role="list" class="event__children-list flow">
+                      {% for child in event.children %}
+                        <li class="event__child" itemprop="event" itemscope itemtype="https://schema.org/Event">
+                          <a href="{{ child.website }}" itemprop="name">{{ child.title }}</a>
+                          <div class="event__dates text-muted">
+                            <time datetime="{{ child.dateStart | isoDate }}" itemprop="startDate">{{ child.dateStart | localizeDate: "LLL z" }}</time>
+                          </div>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
                 </div>
                 {% endif %}
                 <!-- End .event__children -->
