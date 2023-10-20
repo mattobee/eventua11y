@@ -159,7 +159,13 @@ layout: layouts/base.liquid
                         <li class="event__child" itemprop="event" itemscope itemtype="https://schema.org/Event">
                           <a href="{{ child.website }}" itemprop="name">{{ child.title }}</a>
                           <div class="event__dates text-muted">
-                            <time datetime="{{ child.dateStart | isoDate }}" itemprop="startDate">{{ child.dateStart | localizeDate: "LLL z" }}</time>
+                            {% assign startDate = event.dateStart | date: "%Y-%m-%d" %}
+                            {% assign endDate = event.dateEnd | date: "%Y-%m-%d" %}
+                            {% if startDate == endDate %}
+                              <time datetime="{{ child.dateStart }}" itemprop="startDate">{{ child.dateStart | localizeDate: 'LT z' }}</time>
+                            {% else %}
+                              <time datetime="{{ child.dateStart }}" itemprop="startDate">{{ child.dateStart | localizeDate: "LLL z" }}</time>
+                            {% endif %}
                           </div>
                         </li>
                       {% endfor %}
