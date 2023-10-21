@@ -1,4 +1,5 @@
 details {
+  --flow-space: var(--space-3xs-2xs);
     > summary {
       list-style: none;
       .icon {
@@ -9,9 +10,9 @@ details {
       }
     }
     &[open] {
-      summary:first-of-type {
-        margin-bottom: var(--space-3xs);
-      }
+      // summary:first-of-type {
+      //   margin-bottom: var(--space-3xs);
+      // }
       .icon {
         transform: rotate(90deg);
       }

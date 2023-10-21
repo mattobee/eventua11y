@@ -22,5 +22,8 @@
     &__description-container {
       order: 4;
     }
+    &__children {
+      border-top-color: var(--color-primary);
+    }
   }
 }

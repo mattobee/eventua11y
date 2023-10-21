@@ -1,5 +1,5 @@
 .event {
-    border: 1px solid #ddd;
+    border: 1px solid rgba(0,0,0,.15);
     border-radius: $border-radius;
     display: flex;
     flex-direction: column;
@@ -36,7 +36,7 @@
         order: 4;
     }
     &__children {
-        border-top: 1px solid #ddd;
+        border-top: 1px solid rgba(0,0,0,.15);
         order: 5;
         padding: var(--space-s-m);
         --flow-space: var(--space-3xs-2xs);
