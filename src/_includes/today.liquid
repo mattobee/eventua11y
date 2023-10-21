@@ -140,33 +140,64 @@
                 {% endif %}
               </div>
               {% if event.description %}
-              <details class="event__description-container">
+              <details class="event__description-container flow">
                 <summary class="btn btn--small event__description-toggle"><i class="icon fa-solid fa-caret-right"></i> Description</summary>
                 <p itemprop="description" class="event__description">
                     {{ event.description }}
                 </p>
               </details>
-            {% endif %}
-              {% if event.cpacc or event.was or event.cpwa %}
-                <span class="event__iaap">
-                  <img
-                    class="event__iaaplogo"
-                    src="/images/iaap.png"
-                    alt="IAAP" />
-                  <span>Credits pre-approved for
-                    {% if event.cpacc %}
-                      <abbr title="Certified Professional in Accessibility Core Competencies">CPACC</abbr>
-                    {% endif %}
-                    {% if event.was %}
-                      <abbr title="Web Accessibility Specialist">WAS</abbr>
-                    {% endif %}
-                    {% if event.cpwa %}
-                      <abbr title="Certified Professional in Web Accessibility">CPWA</abbr>
-                    {% endif %}
-                  </span>
-                </span>
               {% endif %}
               </div>
+              {% if event.children %}
+              <div class="event__children">
+                <details class="flow">
+                  <summary class="btn btn--small"><i class="icon fa-solid fa-caret-right"></i> 
+                    {% assign childCount = event.children | size %}
+                    {% if childCount == 1 %}
+                    {{ childCount }} accessibility highlight
+                    {% else %}
+                    {{ childCount }} accessibility highlights
+                    {% endif %}
+                  </summary>
+                  <div class="flow">
+                    <!-- List of child events -->
+                    <ul role="list" class="flow">
+                      {% for child in event.children %}
+                        <li class="event__child" itemprop="event" itemscope itemtype="https://schema.org/Event">
+                          <span itemprop="name"><a href="{{ child.website }}">{{ child.title }}</a></span>
+                          <div class="event__dates text-muted">
+                            {% assign parentStartDate = event.dateStart | date: "%Y-%m-%d" %}
+                            {% assign parentEndDate = event.dateEnd | date: "%Y-%m-%d" %}
+                            {% if parentStartDate == parentEndDate %}
+                              <time datetime="{{ child.dateStart }}" itemprop="startDate">{{ child.dateStart | localizeDate: 'LT z' }}</time>
+                            {% else %}
+                              <span class="sr-only">Starts</span>
+                              <time datetime="{{ child.dateStart }}" itemprop="startDate">{{ child.dateStart | localizeDate: "LLL" }}</time>
+                              <i class="fa-solid fa-arrow-right-long"></i>
+                              <span class="sr-only">Ends</span>
+                              <time datetime="{{ child.dateEnd }}" itemprop="endDate">{{ child.dateEnd | localizeDate: "LT z" }}</time>
+                            {% endif %}
+                            <meta itemprop="endDate" content="{{ child.dateEnd }}" />
+                            {% if child.attendanceMode == "online" %}
+                              <meta itemprop="eventAttendanceMode" content="https://schema.org/OnlineEventAttendanceMode" />
+                            {% endif %}
+                            {% if child.attendanceMode == "offline" %}
+                              <meta itemprop="eventAttendanceMode" content="https://schema.org/OfflineEventAttendanceMode" />
+                              <meta itemprop="location" content="{{ child.location }}" />
+                            {% endif %}
+                            {% if child.attendanceMode == "mixed" %}
+                              <meta itemprop="eventAttendanceMode" content="https://schema.org/MixedEventAttendanceMode" />
+                              <meta itemprop="location" content="{{ child.location }}" />
+                            {% endif %} 
+                          </div>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                    </div>
+                </details>
+              </div>
+              {% endif %}
+              <!-- End .event__children -->
             </article>
             <!-- End .event -->
           {% endfor %}
