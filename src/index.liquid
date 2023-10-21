@@ -157,7 +157,7 @@ layout: layouts/base.liquid
                     <ul role="list" class="event__children-list flow">
                       {% for child in event.children %}
                         <li class="event__child" itemprop="event" itemscope itemtype="https://schema.org/Event">
-                          <a href="{{ child.website }}" itemprop="name">{{ child.title }}</a>
+                          <span itemprop="name"><a href="{{ child.website }}">{{ child.title }}</a></span>
                           <div class="event__dates text-muted">
                             {% assign startDate = event.dateStart | date: "%Y-%m-%d" %}
                             {% assign endDate = event.dateEnd | date: "%Y-%m-%d" %}
@@ -167,6 +167,18 @@ layout: layouts/base.liquid
                               <time datetime="{{ child.dateStart }}" itemprop="startDate">{{ child.dateStart | localizeDate: "LLL z" }}</time>
                             {% endif %}
                             <meta itemprop="endDate" content="{{ child.dateEnd | localizeDate: 'LLL z' }}" />
+                            {% if child.attendanceMode == "online" %}
+                              <meta itemprop="eventAttendanceMode" content="https://schema.org/OnlineEventAttendanceMode" />
+                            {% endif %}
+                            {% if child.attendanceMode == "offline" %}
+                              <meta itemprop="eventAttendanceMode" content="https://schema.org/OfflineEventAttendanceMode" />
+                              <meta itemprop="location" content="{{ child.location }}" />
+                            {% endif %}
+                            {% if child.attendanceMode == "mixed" %}
+                              <meta itemprop="eventAttendanceMode" content="https://schema.org/MixedEventAttendanceMode" />
+                              <meta itemprop="location" content="{{ child.location }}" />
+                            {% endif %} 
+
                           </div>
                         </li>
                       {% endfor %}
