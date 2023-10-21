@@ -166,6 +166,7 @@ layout: layouts/base.liquid
                             {% else %}
                               <time datetime="{{ child.dateStart }}" itemprop="startDate">{{ child.dateStart | localizeDate: "LLL z" }}</time>
                             {% endif %}
+                            <meta itemprop="endDate" content="{{ child.dateEnd | localizeDate: 'LLL z' }}" />
                           </div>
                         </li>
                       {% endfor %}
