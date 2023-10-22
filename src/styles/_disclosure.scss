@@ -1,11 +1,12 @@
 details {
   border-top: 1px solid rgba(0,0,0,.15);
-  padding: var(--space-3xs-2xs) 0;
+  padding: var(--space-xs) 0;
   &:last-child {
     padding-bottom: 0;
   }
   --flow-space: var(--space-3xs-2xs);
     > summary {
+      font-size: var(--step--1);
       list-style: none;
       .icon {
         margin-right: 0.25em;
@@ -14,7 +15,7 @@ details {
         display: none;
       }
       &:hover {
-        color: var(--color-primary);
+        color: var(--hover-color);
         cursor: pointer;
       }
     }
