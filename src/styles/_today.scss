@@ -1,4 +1,5 @@
 #today {
+  --hover-color: var(--color-secondary);
   background-color: var(--color-primary);
   color: #fff;
   padding: var(--space-s-l) 0;
@@ -8,7 +9,7 @@
     &:hover,
     &:active,
     &:focus {
-      color: var(--color-secondary);
+      color: var(--hover-color);
     }
   }
   .event {
@@ -18,12 +19,6 @@
       background-color: transparent;
       color: #fff;
       padding: 0;
-    }
-    &__description-container {
-      order: 4;
-    }
-    &__children {
-      border-top-color: var(--color-primary);
     }
   }
 }
