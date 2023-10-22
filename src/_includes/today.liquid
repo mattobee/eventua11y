@@ -62,17 +62,23 @@
                 <span class="event__location">
                   {% if event.location %}
                     <i class="fa-solid fa-fw fa-location-dot"></i>
-                    <span itemprop="location" itemscope itemtype="https://schema.org/Place">{{ event.location }}</span>
+                    <span
+                      itemprop="location"
+                      itemscope
+                      itemtype="https://schema.org/Place">{{ event.location }}</span>
                   {% else %}
                     <i class="fa-solid fa-fw fa-globe"></i>
-                    <span itemprop="location" itemscope itemtype="https://schema.org/Place">International</span>
+                    <span
+                      itemprop="location"
+                      itemscope
+                      itemtype="https://schema.org/Place">International</span>
                   {% endif %}
                 </span>
               </div>
             </article>
             <!-- End event -->
           {% endfor %}
-          <!-- End themes -->
+        <!-- End themes -->
         </div>
         <!-- End .events -->
       {% endif %}
@@ -81,11 +87,10 @@
         <div class="events events--list flow">
           {% for event in todaysEvents %}
             <article
-              class="event event--{{ event.type }}"
+              class="event event--{{ event.type }} content"
               itemprop="event"
               itemscope
               itemtype="https://schema.org/Event">
-              <div class="content">
               <h3 class="event__title" itemprop="name">
                 {% if event.website %}
                   <a itemprop="url" href="{{ event.website }}">{{ event.title }}</a>
@@ -117,54 +122,74 @@
               <div class="event__delivery">
                 <span class="sr-only">Location:</span>
                 {% if event.attendanceMode == "online" %}
-                  <span class="event__online" itemprop="eventAttendanceMode" content="https://schema.org/OnlineEventAttendanceMode">
-                  <i class="fa-solid fa-laptop"></i>
+                  <span
+                    class="event__online"
+                    itemprop="eventAttendanceMode"
+                    content="https://schema.org/OnlineEventAttendanceMode">
+                    <i class="fa-solid fa-laptop"></i>
                     Online</span>
                 {% endif %}
                 {% if event.attendanceMode == "offline" %}
-                  <span class="event__location" itemprop="eventAttendanceMode" content="https://schema.org/OfflineEventAttendanceMode">
-                  <i class="fa-solid fa-fw fa-location-dot"></i>
-                    <span itemprop="location" itemscope itemtype="https://schema.org/Place">{{ event.location || "International" }}</span>
+                  <span
+                    class="event__location"
+                    itemprop="eventAttendanceMode"
+                    content="https://schema.org/OfflineEventAttendanceMode">
+                    <i class="fa-solid fa-fw fa-location-dot"></i>
+                    <span
+                      itemprop="location"
+                      itemscope
+                      itemtype="https://schema.org/Place">{{ event.location | | "International" }}</span>
                   </span>
                 {% endif %}
                 {% if event.attendanceMode == "mixed" %}
                   <div itemprop="eventAttendanceMode" content="https://schema.org/MixedEventAttendanceMode">
                     <span class="event__online">
                       <i class="fa-solid fa-laptop"></i>
-                      Online</span> and 
+                      Online</span>
+                    and
                     <span class="event__location">
                       <i class="fa-solid fa-fw fa-location-dot"></i>
-                      <span itemprop="location" itemscope itemtype="https://schema.org/Place">{{ event.location || "International" }}</span>
+                      <span
+                        itemprop="location"
+                        itemscope
+                        itemtype="https://schema.org/Place">{{ event.location | | "International" }}</span>
                     </span>
                   </div>
                 {% endif %}
               </div>
               {% if event.description %}
-              <details class="event__description-container flow">
-                <summary class="btn btn--small event__description-toggle"><i class="icon fa-solid fa-caret-right"></i> Description</summary>
-                <p itemprop="description" class="event__description">
+                <details class="event__description flow">
+                  <summary>
+                    <i class="icon fa-solid fa-caret-right"></i>
+                    Description</summary>
+                  <p itemprop="description" class="event__description">
                     {{ event.description }}
-                </p>
-              </details>
+                  </p>
+                </details>
               {% endif %}
-              </div>
               {% if event.children %}
-              <div class="event__children">
-                <details class="flow">
-                  <summary class="btn btn--small"><i class="icon fa-solid fa-caret-right"></i> 
+                <details class="event__children flow">
+                  <summary>
+                    <i class="icon fa-solid fa-caret-right"></i>
                     {% assign childCount = event.children | size %}
                     {% if childCount == 1 %}
-                    {{ childCount }} accessibility highlight
+                      {{ childCount }} accessibility highlight
                     {% else %}
-                    {{ childCount }} accessibility highlights
+                      {{ childCount }} accessibility highlights
                     {% endif %}
                   </summary>
                   <div class="flow">
                     <!-- List of child events -->
                     <ul role="list" class="flow">
                       {% for child in event.children %}
-                        <li class="event__child" itemprop="event" itemscope itemtype="https://schema.org/Event">
-                          <span itemprop="name"><a href="{{ child.website }}">{{ child.title }}</a></span>
+                        <li
+                          class="event__child"
+                          itemprop="event"
+                          itemscope
+                          itemtype="https://schema.org/Event">
+                          <span itemprop="name">
+                            <a href="{{ child.website }}">{{ child.title }}</a>
+                          </span>
                           <div class="event__dates text-muted">
                             {% assign parentStartDate = event.dateStart | date: "%Y-%m-%d" %}
                             {% assign parentEndDate = event.dateEnd | date: "%Y-%m-%d" %}
@@ -188,27 +213,26 @@
                             {% if child.attendanceMode == "mixed" %}
                               <meta itemprop="eventAttendanceMode" content="https://schema.org/MixedEventAttendanceMode" />
                               <meta itemprop="location" content="{{ child.location }}" />
-                            {% endif %} 
+                            {% endif %}
                           </div>
                         </li>
                       {% endfor %}
                     </ul>
-                    </div>
+                  </div>
                 </details>
-              </div>
               {% endif %}
-              <!-- End .event__children -->
+            <!-- End .event__children -->
             </article>
             <!-- End .event -->
           {% endfor %}
-          <!-- End events -->
+        <!-- End events -->
         </div>
         <!-- End events -->
       {% endif %}
     {% endedge %}
 
   </div>
-  <!-- End .container -->
+<!-- End .container -->
 
 </section>
 <!-- End #today -->
