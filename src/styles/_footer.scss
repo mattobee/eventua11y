@@ -1,9 +1,13 @@
 #global-footer {
     background: var(--color-black);
     color: #fff;
+    --hover-color: var(--color-secondary);
     padding: var(--space-m-l) 0;
     a {
         color: inherit;
+        &:hover, &:active, &:focus {
+            color: var(--hover-color);
+        }
      }
      .logo {
         margin-bottom: var(--space-m-l);
