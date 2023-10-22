@@ -33,3 +33,9 @@
 .color-secondary {
   color: var(--color-secondary);
 }
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-s-m);
+}
