@@ -23,7 +23,7 @@ layout: layouts/base.liquid
       
       <div class="events events--list flow">
         {% for month in groupedEvents %}
-          <h3>{{ month.name }}</h3>
+          <h3 class="month">{{ month.name }}</h3>
           {% for event in month.events %}
           {%- if event.type == "theme" %}
             <article
@@ -31,12 +31,12 @@ layout: layouts/base.liquid
               itemprop="event"
               itemscope
               itemtype="https://schema.org/Event">
-              <h3 class="event__title" itemprop="name">
+              <h4 class="event__title" itemprop="name">
                 {% if event.website %}
                   <a href="{{ event.website }}">{{ event.title }}</a>
                 {% else %}
                   {{ event.title }}{% endif %}
-              </h3>
+              </h4>
               <div class="event__dates text-muted">
                 <span class="event__dateStart">
                   <span class="sr-only">Starts
@@ -88,12 +88,12 @@ layout: layouts/base.liquid
               itemprop="event"
               itemscope
               itemtype="https://schema.org/Event">
-              <h3 class="event__title" itemprop="name">
+              <h4 class="event__title" itemprop="name">
                 {% if event.website %}
                   <a href="{{ event.website }}">{{ event.title }}</a>
                 {% else %}
                   {{ event.title }}{% endif %}
-              </h3>
+              </h4>
               <div class="event__dates text-muted">
                 <span class="event__dateStart">
                   <span class="sr-only">Starts
