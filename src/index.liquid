@@ -14,14 +14,17 @@ layout: layouts/base.liquid
       <h2>Upcoming Events</h2>
 
       {% assign upcomingEvents = events | upcomingEvents | sort: 'dateStart' %}
+      {% assign groupedEvents = upcomingEvents | groupByMonth %}
 
       <!-- if there are no upcoming events -->
       {% if upcomingEvents.length == 0 %}
         <p>There are no upcoming events. Check back later.</p>
       {% endif %}
-
+      
       <div class="events events--list flow">
-        {% for event in upcomingEvents %}
+        {% for month in groupedEvents %}
+          <h3>{{ month.name }}</h3>
+          {% for event in month.events %}
           {%- if event.type == "theme" %}
             <article
               class="event event--theme content"
@@ -223,6 +226,7 @@ layout: layouts/base.liquid
             <!-- End .event -->
           {% endif %}
         {% endfor %}
+      {% endfor %}
       </div>
     <!-- End .events -->
     </section>
