@@ -7,227 +7,231 @@ layout: layouts/base.liquid
 
 {% include "today" %}
 
-  <div class="container readable">
-
   {% edge "liquid" events %}
-    <section id="upcoming">
-      <h2>Upcoming Events</h2>
+    <div id="upcoming">
 
       {% assign upcomingEvents = events | upcomingEvents | sort: 'dateStart' %}
+      {% assign groupedEvents = upcomingEvents | groupByMonth %}
 
       <!-- if there are no upcoming events -->
       {% if upcomingEvents.length == 0 %}
         <p>There are no upcoming events. Check back later.</p>
       {% endif %}
-
-      <div class="events events--list flow">
-        {% for event in upcomingEvents %}
-          {%- if event.type == "theme" %}
-            <article
-              class="event event--theme content"
-              itemprop="event"
-              itemscope
-              itemtype="https://schema.org/Event">
-              <h3 class="event__title" itemprop="name">
-                {% if event.website %}
-                  <a href="{{ event.website }}">{{ event.title }}</a>
-                {% else %}
-                  {{ event.title }}{% endif %}
-              </h3>
-              <div class="event__dates text-muted">
-                <span class="event__dateStart">
-                  <span class="sr-only">Starts
-                  </span>
-                  {% if event.day %}
-                    <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | localizeDate: "LL" }}</time>
-                  {% else %}
-                    <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | localizeDate: "LLL z" }}</time>
-                  {% endif %}
-                </span>
-                {% if event.dateEnd %}
-                  <span class="event__dateEnd">
-                    <span class="sr-only">Ends
-                    </span>
-                    <i class="fa-solid fa-arrow-right-long"></i>
-                    <!-- if event.day is true, use the short date format -->
-                    {% if event.day %}
-                      <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd | localizeDate: "LL" }}</time>
+      
+      <div class="events events--list">
+        {% for month in groupedEvents %}
+          <section id="{{ month.name }}" class="month">
+            <div class="container readable flow">
+              <h2 class="month__heading">{{ month.name }}</h2>
+              {% for event in month.events %}
+              {%- if event.type == "theme" %}
+                <article
+                  class="event event--theme content"
+                  itemprop="event"
+                  itemscope
+                  itemtype="https://schema.org/Event">
+                  <h3 class="event__title" itemprop="name">
+                    {% if event.website %}
+                      <a href="{{ event.website }}">{{ event.title }}</a>
                     {% else %}
-                      <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd | localizeDate: "LLL z" }}</time>
-                    {% endif %}
-                  </span>
-                {% endif %}
-              </div>
-              <!-- End dates -->
-              <div class="event__delivery">
-                <span class="sr-only">Location:</span>
-                <span class="event__location">
-                  {% if event.location %}
-                    <i class="fa-solid fa-fw fa-location-dot"></i>
-                    <span
-                      itemprop="location"
-                      itemscope
-                      itemtype="https://schema.org/Place">{{ event.location }}</span>
-                  {% else %}
-                    <i class="fa-solid fa-fw fa-globe"></i>
-                    <span
-                      itemprop="location"
-                      itemscope
-                      itemtype="https://schema.org/Place">International</span>
-                  {% endif %}
-                </span>
-              </div>
-            </article>
-          <!-- End theme event -->
-          {% else %}
-            <article
-              class="event event--{{ event.type }} content"
-              itemprop="event"
-              itemscope
-              itemtype="https://schema.org/Event">
-              <h3 class="event__title" itemprop="name">
-                {% if event.website %}
-                  <a href="{{ event.website }}">{{ event.title }}</a>
-                {% else %}
-                  {{ event.title }}{% endif %}
-              </h3>
-              <div class="event__dates text-muted">
-                <span class="event__dateStart">
-                  <span class="sr-only">Starts
-                  </span>
-                  {% if event.day %}
-                    <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | localizeDate: "LL" }}</time>
-                  {% else %}
-                    <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | localizeDate: "LLL z" }}</time>
-                  {% endif %}
-                </span>
-                {% if event.dateEnd %}
-                  <span class="event__dateEnd">
-                    <span class="sr-only">Ends
-                    </span>
-                    <i class="fa-solid fa-arrow-right-long"></i>
-                    {% if event.day %}
-                      <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd | localizeDate: "LL" }}</time>
-                    {% else %}
-                      <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd | localizeDate: "LLL z" }}</time>
-                    {% endif %}
-                  </span>
-                {% endif %}
-              </div>
-              <!-- End dates -->
-              <div class="event__delivery">
-                <span class="sr-only">Location:</span>
-                {% if event.attendanceMode == "online" %}
-                  <span
-                    class="event__online"
-                    itemprop="eventAttendanceMode"
-                    content="https://schema.org/OnlineEventAttendanceMode">
-                    <i class="fa-solid fa-laptop"></i>
-                    Online</span>
-                {% endif %}
-                {% if event.attendanceMode == "offline" %}
-                  <span
-                    class="event__location"
-                    itemprop="eventAttendanceMode"
-                    content="https://schema.org/OfflineEventAttendanceMode">
-                    <i class="fa-solid fa-fw fa-location-dot"></i>
-                    <span
-                      itemprop="location"
-                      itemscope
-                      itemtype="https://schema.org/Place">{{ event.location | | "International" }}</span>
-                  </span>
-                {% endif %}
-                {% if event.attendanceMode == "mixed" %}
-                  <div itemprop="eventAttendanceMode" content="https://schema.org/MixedEventAttendanceMode">
-                    <span class="event__location">
-                      <i class="fa-solid fa-fw fa-location-dot"></i>
-                      <span
-                        itemprop="location"
-                        itemscope
-                        itemtype="https://schema.org/Place">{{ event.location | default: 'International' }}</span>
-                    </span>
-                    <span class="text-muted">and</span>
-                    <span class="event__online">
-                      <i class="fa-solid fa-laptop"></i>
-                      Online</span>
-                  </div>
-                {% endif %}
-              </div>
-              <!-- End delivery -->
-              {% if event.description %}
-                <details class="event__description flow">
-                  <summary>
-                    <i class="icon fa-solid fa-caret-right"></i>
-                    Description</summary>
-                  <p itemprop="description">
-                    {{ event.description }}
-                  </p>
-                </details>
-                {% if event.children %}
-                  <details class="event__children flow" open>
-                    <summary>
-                      <i class="icon fa-solid fa-caret-right"></i>
-                      {% assign childCount = event.children | size %}
-                      {% if childCount == 1 %}
-                        {{ childCount }} accessibility highlight
+                      {{ event.title }}{% endif %}
+                  </h3>
+                  <div class="event__dates text-muted">
+                    <span class="event__dateStart">
+                      <span class="sr-only">Starts
+                      </span>
+                      {% if event.day %}
+                        <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | localizeDate: "LL" }}</time>
                       {% else %}
-                        {{ childCount }} accessibility highlights
+                        <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | localizeDate: "LLL z" }}</time>
                       {% endif %}
-                    </summary>
-                    <div class="flow">
-                      <!-- List of child events -->
-                      <ul role="list" class="flow">
-                        {% for child in event.children %}
-                          <li
-                            class="event__child"
-                            itemprop="event"
+                    </span>
+                    {% if event.dateEnd %}
+                      <span class="event__dateEnd">
+                        <span class="sr-only">Ends
+                        </span>
+                        <i class="fa-solid fa-arrow-right-long"></i>
+                        <!-- if event.day is true, use the short date format -->
+                        {% if event.day %}
+                          <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd | localizeDate: "LL" }}</time>
+                        {% else %}
+                          <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd | localizeDate: "LLL z" }}</time>
+                        {% endif %}
+                      </span>
+                    {% endif %}
+                  </div>
+                  <!-- End dates -->
+                  <div class="event__delivery">
+                    <span class="sr-only">Location:</span>
+                    <span class="event__location">
+                      {% if event.location %}
+                        <i class="fa-solid fa-fw fa-location-dot"></i>
+                        <span
+                          itemprop="location"
+                          itemscope
+                          itemtype="https://schema.org/Place">{{ event.location }}</span>
+                      {% else %}
+                        <i class="fa-solid fa-fw fa-globe"></i>
+                        <span
+                          itemprop="location"
+                          itemscope
+                          itemtype="https://schema.org/Place">International</span>
+                      {% endif %}
+                    </span>
+                  </div>
+                </article>
+                <!-- End .event -->
+              {% else %} {% comment %} if it's not a theme event {% endcomment %}
+                <article
+                  class="event event--{{ event.type }} content"
+                  itemprop="event"
+                  itemscope
+                  itemtype="https://schema.org/Event">
+                  <h3 class="event__title" itemprop="name">
+                    {% if event.website %}
+                      <a href="{{ event.website }}">{{ event.title }}</a>
+                    {% else %}
+                      {{ event.title }}{% endif %}
+                  </h3>
+                  <div class="event__dates text-muted">
+                    <span class="event__dateStart">
+                      <span class="sr-only">Starts
+                      </span>
+                      {% if event.day %}
+                        <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | localizeDate: "LL" }}</time>
+                      {% else %}
+                        <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | localizeDate: "LLL z" }}</time>
+                      {% endif %}
+                    </span>
+                    {% if event.dateEnd %}
+                      <span class="event__dateEnd">
+                        <span class="sr-only">Ends
+                        </span>
+                        <i class="fa-solid fa-arrow-right-long"></i>
+                        {% if event.day %}
+                          <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd | localizeDate: "LL" }}</time>
+                        {% else %}
+                          <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd | localizeDate: "LLL z" }}</time>
+                        {% endif %}
+                      </span>
+                    {% endif %}
+                  </div>
+                  <!-- End dates -->
+                  <div class="event__delivery">
+                    <span class="sr-only">Location:</span>
+                    {% if event.attendanceMode == "online" %}
+                      <span
+                        class="event__online"
+                        itemprop="eventAttendanceMode"
+                        content="https://schema.org/OnlineEventAttendanceMode">
+                        <i class="fa-solid fa-laptop"></i>
+                        Online</span>
+                    {% endif %}
+                    {% if event.attendanceMode == "offline" %}
+                      <span
+                        class="event__location"
+                        itemprop="eventAttendanceMode"
+                        content="https://schema.org/OfflineEventAttendanceMode">
+                        <i class="fa-solid fa-fw fa-location-dot"></i>
+                        <span
+                          itemprop="location"
+                          itemscope
+                          itemtype="https://schema.org/Place">{{ event.location | | "International" }}</span>
+                      </span>
+                    {% endif %}
+                    {% if event.attendanceMode == "mixed" %}
+                      <div itemprop="eventAttendanceMode" content="https://schema.org/MixedEventAttendanceMode">
+                        <span class="event__location">
+                          <i class="fa-solid fa-fw fa-location-dot"></i>
+                          <span
+                            itemprop="location"
                             itemscope
-                            itemtype="https://schema.org/Event">
-                            <span itemprop="name">
-                              <a href="{{ child.website }}">{{ child.title }}</a>
-                            </span>
-                            <div class="event__dates text-muted">
-                              {% assign parentStartDate = event.dateStart | date: "%Y-%m-%d" %}
-                              {% assign parentEndDate = event.dateEnd | date: "%Y-%m-%d" %}
-                              {% if parentStartDate == parentEndDate %}
-                                <time datetime="{{ child.dateStart }}" itemprop="startDate">{{ child.dateStart | localizeDate: 'LT z' }}</time>
-                              {% else %}
-                                <span class="sr-only">Starts</span>
-                                <time datetime="{{ child.dateStart }}" itemprop="startDate">{{ child.dateStart | localizeDate: "LLL" }}</time>
-                                <i class="fa-solid fa-arrow-right-long"></i>
-                                <span class="sr-only">Ends</span>
-                                <time datetime="{{ child.dateEnd }}" itemprop="endDate">{{ child.dateEnd | localizeDate: "LT z" }}</time>
-                              {% endif %}
-                              <meta itemprop="endDate" content="{{ child.dateEnd }}" />
-                              {% if child.attendanceMode == "online" %}
-                                <meta itemprop="eventAttendanceMode" content="https://schema.org/OnlineEventAttendanceMode" />
-                              {% endif %}
-                              {% if child.attendanceMode == "offline" %}
-                                <meta itemprop="eventAttendanceMode" content="https://schema.org/OfflineEventAttendanceMode" />
-                                <meta itemprop="location" content="{{ child.location }}" />
-                              {% endif %}
-                              {% if child.attendanceMode == "mixed" %}
-                                <meta itemprop="eventAttendanceMode" content="https://schema.org/MixedEventAttendanceMode" />
-                                <meta itemprop="location" content="{{ child.location }}" />
-                              {% endif %}
-                            </div>
-                          </li>
-                        {% endfor %}
-                      </ul>
-                    </div>
-                  </details>
-                {% endif %}
-                <!-- End .event__children -->
+                            itemtype="https://schema.org/Place">{{ event.location | default: 'International' }}</span>
+                        </span>
+                        <span class="text-muted">and</span>
+                        <span class="event__online">
+                          <i class="fa-solid fa-laptop"></i>
+                          Online</span>
+                      </div>
+                    {% endif %}
+                  </div>
+                  <!-- End delivery -->
+                  {% if event.description %}
+                    <details class="event__description flow">
+                      <summary>
+                        <i class="icon fa-solid fa-caret-right"></i>
+                        Description</summary>
+                      <p itemprop="description">
+                        {{ event.description }}
+                      </p>
+                    </details>
+                    {% if event.children %}
+                      <details class="event__children flow" open>
+                        <summary>
+                          <i class="icon fa-solid fa-caret-right"></i>
+                          {% assign childCount = event.children | size %}
+                          {% if childCount == 1 %}
+                            {{ childCount }} accessibility highlight
+                          {% else %}
+                            {{ childCount }} accessibility highlights
+                          {% endif %}
+                        </summary>
+                        <div class="flow">
+                          <!-- List of child events -->
+                          <ul role="list" class="flow">
+                            {% for child in event.children %}
+                              <li
+                                class="event__child"
+                                itemprop="event"
+                                itemscope
+                                itemtype="https://schema.org/Event">
+                                <span itemprop="name">
+                                  <a href="{{ child.website }}">{{ child.title }}</a>
+                                </span>
+                                <div class="event__dates text-muted">
+                                  {% assign parentStartDate = event.dateStart | date: "%Y-%m-%d" %}
+                                  {% assign parentEndDate = event.dateEnd | date: "%Y-%m-%d" %}
+                                  {% if parentStartDate == parentEndDate %}
+                                    <time datetime="{{ child.dateStart }}" itemprop="startDate">{{ child.dateStart | localizeDate: 'LT z' }}</time>
+                                  {% else %}
+                                    <span class="sr-only">Starts</span>
+                                    <time datetime="{{ child.dateStart }}" itemprop="startDate">{{ child.dateStart | localizeDate: "LLL" }}</time>
+                                    <i class="fa-solid fa-arrow-right-long"></i>
+                                    <span class="sr-only">Ends</span>
+                                    <time datetime="{{ child.dateEnd }}" itemprop="endDate">{{ child.dateEnd | localizeDate: "LT z" }}</time>
+                                  {% endif %}
+                                  <meta itemprop="endDate" content="{{ child.dateEnd }}" />
+                                  {% if child.attendanceMode == "online" %}
+                                    <meta itemprop="eventAttendanceMode" content="https://schema.org/OnlineEventAttendanceMode" />
+                                  {% endif %}
+                                  {% if child.attendanceMode == "offline" %}
+                                    <meta itemprop="eventAttendanceMode" content="https://schema.org/OfflineEventAttendanceMode" />
+                                    <meta itemprop="location" content="{{ child.location }}" />
+                                  {% endif %}
+                                  {% if child.attendanceMode == "mixed" %}
+                                    <meta itemprop="eventAttendanceMode" content="https://schema.org/MixedEventAttendanceMode" />
+                                    <meta itemprop="location" content="{{ child.location }}" />
+                                  {% endif %}
+                                </div>
+                              </li>
+                            {% endfor %}
+                          </ul>
+                        </div>
+                      </details>
+                    {% endif %}
+                    <!-- End .event__children -->
+                  {% endif %}
+                </article>
+                <!-- End .event -->
               {% endif %}
-            </article>
-            <!-- End .event -->
-          {% endif %}
-        {% endfor %}
+            {% endfor %} {% comment %} end event loop {% endcomment %}
+            </div>
+            <!-- End event .readable .container -->
+          </section>
+          <!-- End .month .flow -->
+        {% endfor %} {% comment %} end months loop {% endcomment %}
       </div>
-    <!-- End .events -->
-    </section>
-    <!-- End .upcoming -->
+      <!-- End .events .flow -->
+    </div>
+    <!-- End #upcoming -->
   {% endedge %}
-
-</div>
-<!-- End container -->

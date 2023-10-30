@@ -1,4 +1,5 @@
 .event {
+    background-color: #fff;
     border: 1px solid rgba(0,0,0,.15);
     border-radius: var(--border-radius);
     display: flex;
@@ -7,6 +8,7 @@
     justify-content: space-between;
     // padding: var(--space-s-m);
     &__title {
+        font-size: var(--step-2);
         margin-bottom: .4rem;
         order: 3;
     }
@@ -58,10 +60,10 @@
     border-radius: 0;
     display: flex;
     flex-direction: column;
-    padding: 0 var(--space-s-m);
-    @media screen and (max-width: 400px) {
-        padding: 0;
-    }
+    padding: 0 var(--space-xs-m);
+    // @media screen and (max-width: 400px) {
+    //     padding: 0;
+    // }
     .event__title {
         font-size: 1.2rem;
         order: 2;
@@ -75,6 +77,13 @@
     }
 }
 
-#upcoming {
+.month {
     padding: var(--space-s-l) 0;
+    background: rgb(246,246,246);
+    background: linear-gradient(0deg, rgba(246,246,246,1) 0%, rgba(255,255,255,0) 30%);
+}
+
+.month__heading {
+    font-size: var(--step-4);
+    padding: 0 var(--space-xs-m);
 }

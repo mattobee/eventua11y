@@ -85,6 +85,33 @@ export default async (request, context) => {
         });
       });
 
+      /* Filter to list the events grouped by month. Each month should have a name property containing the name of the month
+      and then an array of events for that month */
+      eleventyConfig.addFilter("groupByMonth", function (events) {
+        // Create an array of months
+        const months = [];
+        // Loop through each event
+        events.forEach((event) => {
+          // Get the month of the event
+          const month = new dayjs(event.dateStart).format("MMMM");
+          // Check if the month already exists in the array
+          const monthIndex = months.findIndex((m) => m.name === month);
+          // If the month doesn't exist, add it to the array
+          if (monthIndex === -1) {
+            months.push({
+              name: month,
+              events: [event],
+            });
+          } else {
+            // If the month does exist, add the event to the array
+            months[monthIndex].events.push(event);
+          }
+        });
+        console.log(months);
+        // Return the array of months
+        return months;
+      });
+
       // Return today's date as an iso string
       eleventyConfig.addShortcode("todayISO", () => now.toISOString());
 

@@ -13,7 +13,7 @@ const sanityClient = createClient({
 async function getEvents() {
   try {
     // Fetch all events from Sanity
-    const events = await sanityClient.fetch('*[_type == "event"]');
+    const events = await sanityClient.fetch('*[_type == "event" && !(_id in path("drafts.**"))]');
     // Add children to those events, if they exist
     const eventsWithChildren = events.map(async event => {
       // Find children of this event, sorted by dateStart in ascending order
