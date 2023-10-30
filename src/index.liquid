@@ -22,7 +22,7 @@ layout: layouts/base.liquid
         {% for month in groupedEvents %}
           <section id="{{ month.name }}" class="month">
             <div class="container readable flow">
-              <h3 class="month__heading">{{ month.name }}</h3>
+              <h2 class="month__heading">{{ month.name }}</h2>
               {% for event in month.events %}
               {%- if event.type == "theme" %}
                 <article
@@ -30,12 +30,12 @@ layout: layouts/base.liquid
                   itemprop="event"
                   itemscope
                   itemtype="https://schema.org/Event">
-                  <h4 class="event__title" itemprop="name">
+                  <h3 class="event__title" itemprop="name">
                     {% if event.website %}
                       <a href="{{ event.website }}">{{ event.title }}</a>
                     {% else %}
                       {{ event.title }}{% endif %}
-                  </h4>
+                  </h3>
                   <div class="event__dates text-muted">
                     <span class="event__dateStart">
                       <span class="sr-only">Starts
@@ -87,12 +87,12 @@ layout: layouts/base.liquid
                   itemprop="event"
                   itemscope
                   itemtype="https://schema.org/Event">
-                  <h4 class="event__title" itemprop="name">
+                  <h3 class="event__title" itemprop="name">
                     {% if event.website %}
                       <a href="{{ event.website }}">{{ event.title }}</a>
                     {% else %}
                       {{ event.title }}{% endif %}
-                  </h4>
+                  </h3>
                   <div class="event__dates text-muted">
                     <span class="event__dateStart">
                       <span class="sr-only">Starts
