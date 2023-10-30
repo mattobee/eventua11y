@@ -39,16 +39,18 @@ body {
 }
 
 a {
-    text-decoration: underline;
+    // text-decoration: underline;
     text-underline-offset: .15em;
 }
 
 a:link, a:visited {
     color: inherit;
+    text-decoration: none;
 }
 
 a:hover, a:active, a:focus {
     color: var(--color-primary);
+    text-decoration: underline;
 }
 
 small {
