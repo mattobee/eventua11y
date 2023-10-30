@@ -1,8 +1,8 @@
 <section id="today">
 
-  <div class="container readable flow">
+  <div class="container readable">
 
-    <hgroup role="group" aria-roledescription="Heading group">
+    <hgroup class="content py-0" role="group" aria-roledescription="Heading group">
       <h2>Today</h2>
       <p aria-roledescription="subtitle">
         {% edge "liquid" %}
@@ -22,7 +22,7 @@
       {% endif %}
 
       {% if todaysThemes.length > 0 %}
-        <div class="events events--list flow">
+        <div class="events events--list content flow">
           {% for event in todaysThemes %}
             <article
               class="event event--theme"

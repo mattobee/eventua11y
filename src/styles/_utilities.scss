@@ -37,5 +37,10 @@
 .content {
   display: flex;
   flex-direction: column;
-  padding: var(--space-s-m);
+  padding: var(--space-xs-m);
+}
+
+.py-0 {
+  padding-top: 0;
+  padding-bottom: 0;
 }
