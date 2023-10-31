@@ -5,6 +5,7 @@
     padding: var(--space-m-l) 0;
     a {
         color: inherit;
+        text-decoration: underline;
         &:hover, &:active, &:focus {
             color: var(--hover-color);
         }
