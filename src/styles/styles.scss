@@ -26,9 +26,12 @@ body {
 }
 
 main {
-    background-color: var(--color-white);
+    background-color: var(--color-primary);
 }
 
+#upcoming {
+    background-color: #fff;
+}
 
 *:focus {
     outline-offset: 0.1em;
