@@ -184,13 +184,37 @@
                       {% for child in event.children %}
                         <li
                           class="event__child"
-                          itemprop="event"
+                          itemprop="subEvent"
                           itemscope
                           itemtype="https://schema.org/Event">
                           <span itemprop="name">
                             <a href="{{ child.website }}">{{ child.title }}</a>
                           </span>
                           <div class="event__dates text-muted">
+                            {% if child.format  %}
+                              {% if child.format == "talk" %}
+                                Talk
+                              {% elsif child.format == "workshop" %}
+                                Workshop
+                              {% elsif child.format == "tutorial" %}
+                                Tutorial
+                              {% elsif child.format == "roundtable" %}
+                                Roundtable
+                              {% elsif child.format == "competition" %}
+                                Competition
+                              {% elsif child.format == "panel" %}
+                                Panel
+                              {% elsif child.format == "interview" %}
+                                Interview
+                              {% elsif child.format == "demo" %}
+                                Demo
+                              {% elsif child.format == "keynote" %}
+                                Keynote
+                              {% elsif child.format == "announcement" %}
+                                Announcement
+                              {% endif %}
+                              ·
+                            {% endif %}
                             {% assign parentStartDate = event.dateStart | date: "%Y-%m-%d" %}
                             {% assign parentEndDate = event.dateEnd | date: "%Y-%m-%d" %}
                             {% if parentStartDate == parentEndDate %}
