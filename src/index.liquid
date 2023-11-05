@@ -215,14 +215,14 @@ layout: layouts/base.liquid
                                   {% endif %}
                                   {% assign parentStartDate = event.dateStart | date: "%Y-%m-%d" %}
                                   {% assign parentEndDate = event.dateEnd | date: "%Y-%m-%d" %}
-                                  {% if parentStartDate == parentEndDate %}
-                                    <time datetime="{{ child.dateStart }}" itemprop="startDate">{{ child.dateStart | localizeDate: 'LT z' }}</time>
+                                  {% if parentEndDate == nil %}
+                                    <time datetime="{{ child.dateStart }}" itemprop="startDate">{{ child.dateStart | localizeDate: 'h:mm A z' }}</time>
                                   {% else %}
                                     <span class="sr-only">Starts</span>
-                                    <time datetime="{{ child.dateStart }}" itemprop="startDate">{{ child.dateStart | localizeDate: "LLL" }}</time>
+                                    <time datetime="{{ child.dateStart }}" itemprop="startDate">{{ child.dateStart | localizeDate: "MMMM D h:mm A" }}</time>
                                     <i class="fa-solid fa-arrow-right-long"></i>
                                     <span class="sr-only">Ends</span>
-                                    <time datetime="{{ child.dateEnd }}" itemprop="endDate">{{ child.dateEnd | localizeDate: "LT z" }}</time>
+                                    <time datetime="{{ child.dateEnd }}" itemprop="endDate">{{ child.dateEnd | localizeDate: "h:mm A z" }}</time>
                                   {% endif %}
                                   <meta itemprop="endDate" content="{{ child.dateEnd }}" />
                                   {% if child.attendanceMode == "online" %}
