@@ -215,18 +215,26 @@
                               {% endif %}
                               ·
                             {% endif %}
-                            {% assign parentStartDate = event.dateStart | date: "%Y-%m-%d" %}
-                            {% assign parentEndDate = event.dateEnd | date: "%Y-%m-%d" %}
-                            {% if parentStartDate == parentEndDate %}
-                              <time datetime="{{ child.dateStart }}" itemprop="startDate">{{ child.dateStart | localizeDate: 'LT z' }}</time>
+                            {% if child.scheduled != false %}
+                              {% assign parentStartDate = event.dateStart | date: "%Y-%m-%d" %}
+                              {% assign parentEndDate = event.dateEnd | date: "%Y-%m-%d" %}
+                              {% if parentEndDate == nil %}
+                                <time datetime="{{ child.dateStart }}" itemprop="startDate">{{ child.dateStart | localizeDate: 'h:mm A z' }}</time>
+                              {% elsif parentStartDate == parentEndDate %}
+                                <time datetime="{{ child.dateStart }}" itemprop="startDate">{{ child.dateStart | localizeDate: "h:mm A" }}</time>
+                                <i class="fa-solid fa-arrow-right-long"></i>
+                                <span class="sr-only">Ends</span>
+                                <time datetime="{{ child.dateEnd }}" itemprop="endDate">{{ child.dateEnd | localizeDate: "h:mm A z" }}</time>
+                              {% else %}
+                                <span class="sr-only">Starts</span>
+                                <time datetime="{{ child.dateStart }}" itemprop="startDate">{{ child.dateStart | localizeDate: "MMM D h:mm A" }}</time>
+                                <i class="fa-solid fa-arrow-right-long"></i>
+                                <span class="sr-only">Ends</span>
+                                <time datetime="{{ child.dateEnd }}" itemprop="endDate">{{ child.dateEnd | localizeDate: "MMM D h:mm A z" }}</time>
+                              {% endif %}
                             {% else %}
-                              <span class="sr-only">Starts</span>
-                              <time datetime="{{ child.dateStart }}" itemprop="startDate">{{ child.dateStart | localizeDate: "LLL" }}</time>
-                              <i class="fa-solid fa-arrow-right-long"></i>
-                              <span class="sr-only">Ends</span>
-                              <time datetime="{{ child.dateEnd }}" itemprop="endDate">{{ child.dateEnd | localizeDate: "LT z" }}</time>
+                              Not yet scheduled
                             {% endif %}
-                            <meta itemprop="endDate" content="{{ child.dateEnd }}" />
                             {% if child.attendanceMode == "online" %}
                               <meta itemprop="eventAttendanceMode" content="https://schema.org/OnlineEventAttendanceMode" />
                             {% endif %}

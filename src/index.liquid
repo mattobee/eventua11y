@@ -219,7 +219,7 @@ layout: layouts/base.liquid
                                     {% if parentEndDate == nil %}
                                       <time datetime="{{ child.dateStart }}" itemprop="startDate">{{ child.dateStart | localizeDate: 'h:mm A z' }}</time>
                                     {% elsif parentStartDate == parentEndDate %}
-                                      <time datetime="{{ child.dateStart }}" itemprop="startDate">{{ child.dateStart | localizeDate: "MMM D h:mm A" }}</time>
+                                      <time datetime="{{ child.dateStart }}" itemprop="startDate">{{ child.dateStart | localizeDate: "h:mm A" }}</time>
                                       <i class="fa-solid fa-arrow-right-long"></i>
                                       <span class="sr-only">Ends</span>
                                       <time datetime="{{ child.dateEnd }}" itemprop="endDate">{{ child.dateEnd | localizeDate: "h:mm A z" }}</time>
