@@ -92,18 +92,20 @@ export default async (request, context) => {
         const months = [];
         // Loop through each event
         events.forEach((event) => {
-          // Get the month of the event
+          // Get the month and year of the event
           const month = new dayjs(event.dateStart).format("MMMM");
-          // Check if the month already exists in the array
-          const monthIndex = months.findIndex((m) => m.name === month);
-          // If the month doesn't exist, add it to the array
+          const year = new dayjs(event.dateStart).format("YYYY");
+          // Check if the month and year already exist in the array
+          const monthIndex = months.findIndex((m) => m.month === month && m.year === year);
+          // If the month and year don't exist, add them to the array
           if (monthIndex === -1) {
             months.push({
-              name: month,
+              month: month,
+              year: year,
               events: [event],
             });
           } else {
-            // If the month does exist, add the event to the array
+            // If the month and year do exist, add the event to the array
             months[monthIndex].events.push(event);
           }
         });
