@@ -258,18 +258,44 @@ layout: layouts/base.liquid
                                     {% assign parentStartDate = event.dateStart | date: "%Y-%m-%d" %}
                                     {% assign parentEndDate = event.dateEnd | date: "%Y-%m-%d" %}
                                     {% if parentEndDate == nil %}
-                                      <time datetime="{{ child.dateStart }}" itemprop="startDate">{{ child.dateStart | localizeDate: 'h:mm A z' }}</time>
+                                      <time datetime="{{ child.dateStart }}" itemprop="endDate">
+                                        {{ child.dateStart | localizeDate: "h:mm A" }}
+                                        <abbr title="{{ child.dateEnd | localizeDate: 'z' | expandTimezone }}">
+                                          {{ child.dateStart | localizeDate: 'z' }}
+                                        </abbr>
+                                      </time>
                                     {% elsif parentStartDate == parentEndDate %}
-                                      <time datetime="{{ child.dateStart }}" itemprop="startDate">{{ child.dateStart | localizeDate: "h:mm A" }}</time>
+                                      <time datetime="{{ child.dateStart }}" itemprop="startDate">
+                                        {{ child.dateStart | localizeDate: "h:mm A" }}
+                                        <abbr title="{{ child.dateStart | localizeDate: 'z' | expandTimezone }}">
+                                          {{ child.dateStart | localizeDate: 'z' }}
+                                        </abbr>
+                                      </time>
                                       <i class="fa-solid fa-arrow-right-long"></i>
                                       <span class="sr-only">Ends</span>
-                                      <time datetime="{{ child.dateEnd }}" itemprop="endDate">{{ child.dateEnd | localizeDate: "h:mm A z" }}</time>
+                                      <time datetime="{{ child.dateEnd }}" itemprop="endDate">
+                                        {{ child.dateEnd | localizeDate: "h:mm A" }}
+                                        <abbr title="{{ child.dateEnd | localizeDate: 'z' | expandTimezone }}">
+                                          {{ child.dateEnd | localizeDate: 'z' }}
+                                        </abbr>
+                                      </time>
                                     {% else %}
                                       <span class="sr-only">Starts</span>
-                                      <time datetime="{{ child.dateStart }}" itemprop="startDate">{{ child.dateStart | localizeDate: "MMM D h:mm A" }}</time>
+                                      <time datetime="{{ child.dateStart }}" itemprop="startDate">
+                                        {{ child.dateStart | localizeDate: "MMM D h:mm A" }}
+                                        <abbr title="{{ child.dateStart | localizeDate: 'z' | expandTimezone }}">
+                                          {{ child.dateStart | localizeDate: 'z' }}
+                                        </abbr>
+                                      </time>
                                       <i class="fa-solid fa-arrow-right-long"></i>
                                       <span class="sr-only">Ends</span>
                                       <time datetime="{{ child.dateEnd }}" itemprop="endDate">{{ child.dateEnd | localizeDate: "MMM D h:mm A z" }}</time>
+                                      <time datetime="{{ child.dateEnd }}" itemprop="endDate">
+                                        {{ child.dateEnd | localizeDate: "MMM D h:mm A" }}
+                                        <abbr title="{{ child.dateEnd | localizeDate: 'z' | expandTimezone }}">
+                                          {{ child.dateEnd | localizeDate: 'z' }}
+                                        </abbr>
+                                      </time>
                                     {% endif %}
                                   {% else %}
                                     Not yet scheduled
