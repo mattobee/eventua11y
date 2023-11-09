@@ -115,7 +115,7 @@ export default async (request, context) => {
       });
 
       // Return the full name of the given timezone abbreviation
-      const timezoneNames = require('./timezoneNames.js');
+      const timezoneNames = require('../../src/_data/timezoneNames.js');
       eleventyConfig.addFilter("expandTimezone", function (abbreviation) {
         return timezoneNames[abbreviation] || abbreviation;
       });
