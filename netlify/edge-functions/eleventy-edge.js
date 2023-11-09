@@ -5,7 +5,7 @@ import {
 import getEvents from "./sanity.js";
 import dayjs from "./day.js";
 import meta from "../../src/_data/meta.mjs";
-import timezoneNames from '../../src/_data/timezoneNames.js';
+import timezoneNames from '../../src/_data/timezoneNames.mjs';
 
 // Pull events from Sanity
 const events = await getEvents();
