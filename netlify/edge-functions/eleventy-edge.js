@@ -115,6 +115,7 @@ export default async (request, context) => {
         return months;
       });
 
+      // Return the full name of the given timezone abbreviation
       eleventyConfig.addFilter("expandTimezone", function (abbreviation) {
         return timezoneNames[abbreviation] || abbreviation;
       });
