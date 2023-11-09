@@ -5,6 +5,7 @@ import {
 import getEvents from "./sanity.js";
 import dayjs from "./day.js";
 import meta from "../../src/_data/meta.mjs";
+import timezoneNames from '../../src/_data/timezoneNames.js';
 
 // Pull events from Sanity
 const events = await getEvents();
@@ -115,7 +116,6 @@ export default async (request, context) => {
       });
 
       // Return the full name of the given timezone abbreviation
-      const timezoneNames = require('../../src/_data/timezoneNames.js');
       eleventyConfig.addFilter("expandTimezone", function (abbreviation) {
         return timezoneNames[abbreviation] || abbreviation;
       });
