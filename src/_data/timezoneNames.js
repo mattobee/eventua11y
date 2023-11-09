@@ -1,5 +1,5 @@
 // timezoneNames.js
-export default {
+module.exports = {
     "GMT": "Greenwich Mean Time",
     "GMT+1": "Greenwich Mean Time +1",
     "UTC": "Coordinated Universal Time",
@@ -31,7 +31,5 @@ export default {
     "HAST": "Hawaii-Aleutian Standard Time",
     "HADT": "Hawaii-Aleutian Daylight Time",
     "SST": "Samoa Standard Time",
-    "SDT": "Samoa Daylight Time",
-    "CHST": "Chamorro Standard Time",
-    "CHDT": "Chamorro Daylight Time"
+    // ... rest of the timezones
 };
