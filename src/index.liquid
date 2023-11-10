@@ -42,9 +42,19 @@ layout: layouts/base.liquid
                       <span class="sr-only">Starts
                       </span>
                       {% if event.day %}
-                        <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | localizeDate: "LL" }}</time>
+                        <time datetime="{{event.dateStart | isoDate}}" itemprop="startDate">
+                        {{ event.dateStart | localizeDate: "MMMM D" }}
+                        {% comment %} <abbr title="{{ event.dateStart | localizeDate: 'z' | expandTimezone }}">
+                          {{ event.dateStart | localizeDate: 'z' }}
+                        </abbr> {% endcomment %}
+                      </time>
                       {% else %}
-                        <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | localizeDate: "LLL z" }}</time>
+                      <time datetime="{{event.dateStart | isoDate}}" itemprop="startDate">
+                        {{ event.dateStart | localizeDate: "MMMM D" }}
+                        {% comment %} <abbr title="{{ event.dateStart | localizeDate: 'z' | expandTimezone }}">
+                          {{ event.dateStart | localizeDate: 'z' }}
+                        </abbr> {% endcomment %}
+                      </time>
                       {% endif %}
                     </span>
                     {% if event.dateEnd %}
@@ -54,9 +64,19 @@ layout: layouts/base.liquid
                         <i class="fa-solid fa-arrow-right-long"></i>
                         <!-- if event.day is true, use the short date format -->
                         {% if event.day %}
-                          <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd | localizeDate: "LL" }}</time>
+                          <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">
+                            {{ event.dateEnd | localizeDate: "MMMM D" }}
+                            {% comment %} <abbr title="{{ event.dateEnd | localizeDate: 'z' | expandTimezone }}">
+                              {{ event.dateEnd | localizeDate: 'z' }}
+                            </abbr> {% endcomment %}
+                          </time>
                         {% else %}
-                          <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd | localizeDate: "LLL z" }}</time>
+                        <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">
+                          {{ event.dateEnd | localizeDate: "MMMM D" }}
+                          {% comment %} <abbr title="{{ event.dateEnd | localizeDate: 'z' | expandTimezone }}">
+                            {{ event.dateEnd | localizeDate: 'z' }}
+                          </abbr> {% endcomment %}
+                        </time>
                         {% endif %}
                       </span>
                     {% endif %}
@@ -99,9 +119,19 @@ layout: layouts/base.liquid
                       <span class="sr-only">Starts
                       </span>
                       {% if event.day %}
-                        <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | localizeDate: "LL" }}</time>
+                        <time datetime="{{event.dateStart | isoDate}}" itemprop="startDate">
+                        {{ event.dateStart | localizeDate: "MMMM D" }}
+                        {% comment %} <abbr title="{{ event.dateStart | localizeDate: 'z' | expandTimezone }}">
+                          {{ event.dateStart | localizeDate: 'z' }}
+                        </abbr> {% endcomment %}
+                      </time>
                       {% else %}
-                        <time datetime="{{ event.dateStart | isoDate }}" itemprop="startDate">{{ event.dateStart | localizeDate: "LLL z" }}</time>
+                      <time datetime="{{event.dateStart | isoDate}}" itemprop="startDate">
+                        {{ event.dateStart | localizeDate: "MMMM D h:mm A" }}
+                        <abbr title="{{ event.dateStart | localizeDate: 'z' | expandTimezone }}">
+                          {{ event.dateStart | localizeDate: 'z' }}
+                        </abbr>
+                      </time>
                       {% endif %}
                     </span>
                     {% if event.dateEnd %}
@@ -110,9 +140,16 @@ layout: layouts/base.liquid
                         </span>
                         <i class="fa-solid fa-arrow-right-long"></i>
                         {% if event.day %}
-                          <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd | localizeDate: "LL" }}</time>
+                          <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">
+                            {{ event.dateEnd | localizeDate: "MMMM D" }}
+                          </time>
                         {% else %}
-                          <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd | localizeDate: "LLL z" }}</time>
+                        <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">
+                          {{ event.dateEnd | localizeDate: "MMMM D h:mm A" }}
+                          <abbr title="{{ event.dateEnd | localizeDate: 'z' | expandTimezone }}">
+                            {{ event.dateEnd | localizeDate: 'z' }}
+                          </abbr>
+                        </time>
                         {% endif %}
                       </span>
                     {% endif %}
@@ -218,18 +255,43 @@ layout: layouts/base.liquid
                                     {% assign parentStartDate = event.dateStart | date: "%Y-%m-%d" %}
                                     {% assign parentEndDate = event.dateEnd | date: "%Y-%m-%d" %}
                                     {% if parentEndDate == nil %}
-                                      <time datetime="{{ child.dateStart }}" itemprop="startDate">{{ child.dateStart | localizeDate: 'h:mm A z' }}</time>
+                                      <time datetime="{{ child.dateStart }}" itemprop="endDate">
+                                        {{ child.dateStart | localizeDate: "h:mm A" }}
+                                        <abbr title="{{ child.dateEnd | localizeDate: 'z' | expandTimezone }}">
+                                          {{ child.dateStart | localizeDate: 'z' }}
+                                        </abbr>
+                                      </time>
                                     {% elsif parentStartDate == parentEndDate %}
-                                      <time datetime="{{ child.dateStart }}" itemprop="startDate">{{ child.dateStart | localizeDate: "h:mm A" }}</time>
+                                      <time datetime="{{ child.dateStart }}" itemprop="startDate">
+                                        {{ child.dateStart | localizeDate: "h:mm A" }}
+                                        <abbr title="{{ child.dateStart | localizeDate: 'z' | expandTimezone }}">
+                                          {{ child.dateStart | localizeDate: 'z' }}
+                                        </abbr>
+                                      </time>
                                       <i class="fa-solid fa-arrow-right-long"></i>
                                       <span class="sr-only">Ends</span>
-                                      <time datetime="{{ child.dateEnd }}" itemprop="endDate">{{ child.dateEnd | localizeDate: "h:mm A z" }}</time>
+                                      <time datetime="{{ child.dateEnd }}" itemprop="endDate">
+                                        {{ child.dateEnd | localizeDate: "h:mm A" }}
+                                        <abbr title="{{ child.dateEnd | localizeDate: 'z' | expandTimezone }}">
+                                          {{ child.dateEnd | localizeDate: 'z' }}
+                                        </abbr>
+                                      </time>
                                     {% else %}
                                       <span class="sr-only">Starts</span>
-                                      <time datetime="{{ child.dateStart }}" itemprop="startDate">{{ child.dateStart | localizeDate: "MMM D h:mm A" }}</time>
+                                      <time datetime="{{ child.dateStart }}" itemprop="startDate">
+                                        {{ child.dateStart | localizeDate: "MMMM D h:mm A" }}
+                                        <abbr title="{{ child.dateStart | localizeDate: 'z' | expandTimezone }}">
+                                          {{ child.dateStart | localizeDate: 'z' }}
+                                        </abbr>
+                                      </time>
                                       <i class="fa-solid fa-arrow-right-long"></i>
                                       <span class="sr-only">Ends</span>
-                                      <time datetime="{{ child.dateEnd }}" itemprop="endDate">{{ child.dateEnd | localizeDate: "MMM D h:mm A z" }}</time>
+                                      <time datetime="{{ child.dateEnd }}" itemprop="endDate">
+                                        {{ child.dateEnd | localizeDate: "MMMM D h:mm A" }}
+                                        <abbr title="{{ child.dateEnd | localizeDate: 'z' | expandTimezone }}">
+                                          {{ child.dateEnd | localizeDate: 'z' }}
+                                        </abbr>
+                                      </time>
                                     {% endif %}
                                   {% else %}
                                     Not yet scheduled
