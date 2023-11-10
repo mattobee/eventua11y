@@ -28,6 +28,10 @@
     }
     &__dateStart {
         display: inline-block;
+        white-space: nowrap;
+    }
+    &__dateEnd {
+        white-space: nowrap;
     }
     &__description {
         order: 4;
