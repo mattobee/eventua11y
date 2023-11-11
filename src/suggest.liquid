@@ -11,14 +11,12 @@ layout: layouts/base.liquid
             <p>The event must be related to accessibility, inclusive design, or assistive technology. If it's a broader conference, it must have at least one thing on the schedule related to accessibility.</p>
             <form class="flow" name="suggest-event" data-netlify="true">
                 <p>Fields marked with * are required</p>
-                <sl-input name="yourName" label="Your name" required></sl-input>
-                <sl-input name="yourEmail" type="email" label="Your email address" required></sl-input>
                 <sl-input name="eventName" label="Name of the event" required></sl-input>
-                <sl-input name="eventUrl" type="url" label="Event URL" required></sl-input>
-                <sl-input name="eventDate" type="date" label="Event date"></sl-input>
-                <sl-input name="eventLocation" label="Event location"></sl-input>
-                <sl-textarea name="description" label="Event description"></sl-textarea>
-                <sl-button type="submit" variant="primary">Submit suggestion</sl-button>
+                <sl-input name="eventUrl" type="url" label="Website" required></sl-input>
+                <sl-input name="eventDate" type="date" label="Date"></sl-input>
+                <sl-input name="eventLocation" label="Location"></sl-input>
+                <sl-textarea name="description" label="Description"></sl-textarea>
+                <sl-button type="submit" variant="primary" pill>Submit suggestion</sl-button>
             </form>
         </div>
     </div>
