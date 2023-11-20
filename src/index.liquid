@@ -327,7 +327,9 @@ layout: layouts/base.liquid
                     <!-- End .event__children -->
                   {% endif %}
                   <div class="event__badges">
-                    <sl-badge variant="success" pill pulse>Call for speakers</sl-badge>
+                    <sl-tooltip placement="top-start" trigger="hover focus" content="You can apply to be a speaker at this event.">
+                      <sl-badge variant="success" pill pulse tabindex="0">Call for speakers</sl-badge>
+                    </sl-tooltip>
                   </div>
                 </article>
                 <!-- End .event -->
