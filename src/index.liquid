@@ -260,20 +260,11 @@ layout: layouts/base.liquid
                                     {% assign duration_seconds = end_date | minus: start_date %}
                                     {% assign duration_minutes = duration_seconds | divided_by: 60 %}
 
-                                    {% if parentEndDate == nil %}
+                                    {% if parentEndDate == nil or parentStartDate == parentEndDate %}
                                       <span class="event__dateStart">
                                         <time datetime="{{ child.dateStart }}" itemprop="startDate">
                                           {{ child.dateStart | localizeDate: "h:mm A" }}
                                           <abbr title="{{ child.dateEnd | localizeDate: 'z' | expandTimezone }}">
-                                            {{ child.dateStart | localizeDate: 'z' }}
-                                          </abbr>
-                                        </time>
-                                      </span>
-                                    {% elsif parentStartDate == parentEndDate %}
-                                      <span class="event__dateStart">
-                                        <time datetime="{{ child.dateStart }}" itemprop="startDate">
-                                          {{ child.dateStart | localizeDate: "h:mm A" }}
-                                          <abbr title="{{ child.dateStart | localizeDate: 'z' | expandTimezone }}">
                                             {{ child.dateStart | localizeDate: 'z' }}
                                           </abbr>
                                         </time>
