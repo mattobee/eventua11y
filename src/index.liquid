@@ -269,10 +269,11 @@ layout: layouts/base.liquid
                                           </abbr>
                                         </time>
                                       </span>
+                                      <meta itemprop="endDate" content="{{ child.dateEnd }}" />
                                       ·
                                       <span class="event__duration">
                                         <span class="sr-only">Duration</span>
-                                        <time datetime="{{ child.dateEnd }}" itemprop="endDate">
+                                        <time datetime="PT{{ duration_minutes }}M" itemprop="duration">
                                           <i class="fa-solid fa-timer"></i>
                                           {{ duration_minutes }} minutes
                                         </time>
@@ -287,10 +288,11 @@ layout: layouts/base.liquid
                                           </abbr>
                                         </time>
                                       </span>
+                                      <meta itemprop="endDate" content="{{ child.dateEnd }}" />
                                       ·
                                       <span class="event__duration">
                                         <span class="sr-only">Duration</span>
-                                        <time datetime="{{ child.dateEnd }}" itemprop="endDate">
+                                        <time datetime="PT{{ duration_minutes }}M" itemprop="duration">
                                           <i class="fa-solid fa-timer"></i>
                                           {{ duration_minutes }} minutes
                                         </time>
