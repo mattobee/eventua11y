@@ -278,14 +278,12 @@ layout: layouts/base.liquid
                                           </abbr>
                                         </time>
                                       </span>
-                                      <span class="event__dateEnd">
-                                        <i class="fa-solid fa-arrow-right-long"></i>
-                                        <span class="sr-only">Ends</span>
+                                      ·
+                                      <span class="event__duration">
+                                        <span class="sr-only">Duration</span>
                                         <time datetime="{{ child.dateEnd }}" itemprop="endDate">
-                                          {{ child.dateEnd | localizeDate: "h:mm A" }}
-                                          <abbr title="{{ child.dateEnd | localizeDate: 'z' | expandTimezone }}">
-                                            {{ child.dateEnd | localizeDate: 'z' }}
-                                          </abbr>
+                                          <i class="fa-solid fa-timer"></i>
+                                          {{ duration_minutes }} minutes
                                         </time>
                                       </span>
                                     {% else %}
