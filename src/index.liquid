@@ -262,7 +262,7 @@ layout: layouts/base.liquid
 
                                     {% if parentEndDate == nil %}
                                       <span class="event__dateStart">
-                                        <time datetime="{{ child.dateStart }}" itemprop="endDate">
+                                        <time datetime="{{ child.dateStart }}" itemprop="startDate">
                                           {{ child.dateStart | localizeDate: "h:mm A" }}
                                           <abbr title="{{ child.dateEnd | localizeDate: 'z' | expandTimezone }}">
                                             {{ child.dateStart | localizeDate: 'z' }}
@@ -302,7 +302,6 @@ layout: layouts/base.liquid
                                       <span class="event__duration">
                                         <span class="sr-only">Duration</span>
                                         <time datetime="{{ child.dateEnd }}" itemprop="endDate">
-                                          {% comment %} stopwaatch Icon {% endcomment %}
                                           <i class="fa-solid fa-timer"></i>
                                           {{ duration_minutes }} minutes
                                         </time>
