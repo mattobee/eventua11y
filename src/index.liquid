@@ -252,18 +252,15 @@ layout: layouts/base.liquid
                                     ·
                                   {% endif %}
                                   {% if child.scheduled != false %}
+
                                     {% assign parentStartDate = event.dateStart | date: "%Y-%m-%d" %}
                                     {% assign parentEndDate = event.dateEnd | date: "%Y-%m-%d" %}
-                                    {% if parentEndDate == nil %}
-                                      <span class="event__dateStart">
-                                        <time datetime="{{ child.dateStart }}" itemprop="endDate">
-                                          {{ child.dateStart | localizeDate: "h:mm A" }}
-                                          <abbr title="{{ child.dateEnd | localizeDate: 'z' | expandTimezone }}">
-                                            {{ child.dateStart | localizeDate: 'z' }}
-                                          </abbr>
-                                        </time>
-                                      </span>
-                                    {% elsif parentStartDate == parentEndDate %}
+                                    {% assign childStartDate = child.dateStart | date: "%s" %}
+                                    {% assign childEndDate = child.dateEnd | date: "%s" %}
+                                    {% assign duration_seconds = childEndDate | minus: childStartDate %}
+                                    {% assign duration_minutes = duration_seconds | divided_by: 60 %}
+
+                                    {% if parentEndDate == nil or parentStartDate == parentEndDate %}
                                       <span class="event__dateStart">
                                         <time datetime="{{ child.dateStart }}" itemprop="startDate">
                                           {{ child.dateStart | localizeDate: "h:mm A" }}
@@ -272,16 +269,17 @@ layout: layouts/base.liquid
                                           </abbr>
                                         </time>
                                       </span>
-                                      <span class="event__dateEnd">
-                                        <i class="fa-solid fa-arrow-right-long"></i>
-                                        <span class="sr-only">Ends</span>
-                                        <time datetime="{{ child.dateEnd }}" itemprop="endDate">
-                                          {{ child.dateEnd | localizeDate: "h:mm A" }}
-                                          <abbr title="{{ child.dateEnd | localizeDate: 'z' | expandTimezone }}">
-                                            {{ child.dateEnd | localizeDate: 'z' }}
-                                          </abbr>
+                                      {% if child.dateEnd %}
+                                      <meta itemprop="endDate" content="{{ child.dateEnd }}" />
+                                      ·
+                                      <span class="event__duration">
+                                        <span class="sr-only">Duration</span>
+                                        <time datetime="PT{{ duration_minutes }}M" itemprop="duration">
+                                          <i class="fa-solid fa-timer"></i>
+                                          {{ duration_minutes }} minutes
                                         </time>
                                       </span>
+                                      {% endif %}
                                     {% else %}
                                       <span class="event__dateStart">
                                         <span class="sr-only">Starts</span>
@@ -292,16 +290,17 @@ layout: layouts/base.liquid
                                           </abbr>
                                         </time>
                                       </span>
-                                      <span class="event__dateEnd">
-                                        <i class="fa-solid fa-arrow-right-long"></i>
-                                        <span class="sr-only">Ends</span>
-                                        <time datetime="{{ child.dateEnd }}" itemprop="endDate">
-                                          {{ child.dateEnd | localizeDate: "MMMM D h:mm A" }}
-                                          <abbr title="{{ child.dateEnd | localizeDate: 'z' | expandTimezone }}">
-                                            {{ child.dateEnd | localizeDate: 'z' }}
-                                          </abbr>
-                                        </time>
-                                      </span>
+                                      {% if child.dateEnd %}
+                                        <meta itemprop="endDate" content="{{ child.dateEnd }}" />
+                                        ·
+                                        <span class="event__duration">
+                                          <span class="sr-only">Duration</span>
+                                          <time datetime="PT{{ duration_minutes }}M" itemprop="duration">
+                                            <i class="fa-solid fa-timer"></i>
+                                            {{ duration_minutes }} minutes
+                                          </time>
+                                        </span>
+                                        {% endif %}
                                     {% endif %}
                                   {% else %}
                                     Not yet scheduled
