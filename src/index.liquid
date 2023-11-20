@@ -252,8 +252,14 @@ layout: layouts/base.liquid
                                     ·
                                   {% endif %}
                                   {% if child.scheduled != false %}
+
                                     {% assign parentStartDate = event.dateStart | date: "%Y-%m-%d" %}
                                     {% assign parentEndDate = event.dateEnd | date: "%Y-%m-%d" %}
+                                    {% assign start_date = child.dateStart | date: "%s" %}
+                                    {% assign end_date = child.dateEnd | date: "%s" %}
+                                    {% assign duration_seconds = end_date | minus: start_date %}
+                                    {% assign duration_minutes = duration_seconds | divided_by: 60 %}
+
                                     {% if parentEndDate == nil %}
                                       <span class="event__dateStart">
                                         <time datetime="{{ child.dateStart }}" itemprop="endDate">
@@ -292,14 +298,13 @@ layout: layouts/base.liquid
                                           </abbr>
                                         </time>
                                       </span>
-                                      <span class="event__dateEnd">
-                                        <i class="fa-solid fa-arrow-right-long"></i>
-                                        <span class="sr-only">Ends</span>
+                                      ·
+                                      <span class="event__duration">
+                                        <span class="sr-only">Duration</span>
                                         <time datetime="{{ child.dateEnd }}" itemprop="endDate">
-                                          {{ child.dateEnd | localizeDate: "MMMM D h:mm A" }}
-                                          <abbr title="{{ child.dateEnd | localizeDate: 'z' | expandTimezone }}">
-                                            {{ child.dateEnd | localizeDate: 'z' }}
-                                          </abbr>
+                                          {% comment %} stopwaatch Icon {% endcomment %}
+                                          <i class="fa-solid fa-timer"></i>
+                                          {{ duration_minutes }} minutes
                                         </time>
                                       </span>
                                     {% endif %}
