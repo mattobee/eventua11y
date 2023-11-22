@@ -46,16 +46,10 @@ layout: layouts/base.liquid
                       {% if event.day %}
                         <time datetime="{{event.dateStart | isoDate}}" itemprop="startDate">
                           {{ event.dateStart | localizeDate: "MMMM D" }}
-                        {% comment %} <abbr title="{{ event.dateStart | localizeDate: 'z' | expandTimezone }}">
-                                                    {{ event.dateStart | localizeDate: 'z' }}
-                                                </abbr> {% endcomment %}
                         </time>
                       {% else %}
                         <time datetime="{{event.dateStart | isoDate}}" itemprop="startDate">
                           {{ event.dateStart | localizeDate: "MMMM D" }}
-                        {% comment %} <abbr title="{{ event.dateStart | localizeDate: 'z' | expandTimezone }}">
-                                                    {{ event.dateStart | localizeDate: 'z' }}
-                                                </abbr> {% endcomment %}
                         </time>
                       {% endif %}
                     </span>
@@ -68,16 +62,10 @@ layout: layouts/base.liquid
                         {% if event.day %}
                           <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">
                             {{ event.dateEnd | localizeDate: "MMMM D" }}
-                          {% comment %} <abbr title="{{ event.dateEnd | localizeDate: 'z' | expandTimezone }}">
-                                                          {{ event.dateEnd | localizeDate: 'z' }}
-                                                      </abbr> {% endcomment %}
                           </time>
                         {% else %}
                           <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">
                             {{ event.dateEnd | localizeDate: "MMMM D" }}
-                          {% comment %} <abbr title="{{ event.dateEnd | localizeDate: 'z' | expandTimezone }}">
-                                                        {{ event.dateEnd | localizeDate: 'z' }}
-                                                    </abbr> {% endcomment %}
                           </time>
                         {% endif %}
                       </span>
@@ -124,9 +112,6 @@ layout: layouts/base.liquid
                       {% if event.day %}
                         <time datetime="{{event.dateStart | isoDate}}" itemprop="startDate">
                           {{ event.dateStart | localizeDate: "MMMM D" }}
-                        {% comment %} <abbr title="{{ event.dateStart | localizeDate: 'z' | expandTimezone }}">
-                                                    {{ event.dateStart | localizeDate: 'z' }}
-                                                </abbr> {% endcomment %}
                         </time>
                       {% else %}
                         <time datetime="{{event.dateStart | isoDate}}" itemprop="startDate">
@@ -328,6 +313,14 @@ layout: layouts/base.liquid
                       </details>
                     {% endif %}
                     <!-- End .event__children -->
+                  {% endif %}
+                  {% if event.callForSpeakers %}
+                    <div class="event__badges">
+                      <sl-badge
+                        variant="success"
+                        pill
+                        pulse>Call for speakers</sl-badge>
+                    </div>
                   {% endif %}
                 </article>
                 <!-- End .event -->
