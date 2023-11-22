@@ -47,15 +47,15 @@ layout: layouts/base.liquid
                         <time datetime="{{event.dateStart | isoDate}}" itemprop="startDate">
                           {{ event.dateStart | localizeDate: "MMMM D" }}
                         {% comment %} <abbr title="{{ event.dateStart | localizeDate: 'z' | expandTimezone }}">
-                                                    {{ event.dateStart | localizeDate: 'z' }}
-                                                </abbr> {% endcomment %}
+                                                                              {{ event.dateStart | localizeDate: 'z' }}
+                                                                        </abbr> {% endcomment %}
                         </time>
                       {% else %}
                         <time datetime="{{event.dateStart | isoDate}}" itemprop="startDate">
                           {{ event.dateStart | localizeDate: "MMMM D" }}
                         {% comment %} <abbr title="{{ event.dateStart | localizeDate: 'z' | expandTimezone }}">
-                                                    {{ event.dateStart | localizeDate: 'z' }}
-                                                </abbr> {% endcomment %}
+                                                                              {{ event.dateStart | localizeDate: 'z' }}
+                                                                        </abbr> {% endcomment %}
                         </time>
                       {% endif %}
                     </span>
@@ -69,15 +69,15 @@ layout: layouts/base.liquid
                           <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">
                             {{ event.dateEnd | localizeDate: "MMMM D" }}
                           {% comment %} <abbr title="{{ event.dateEnd | localizeDate: 'z' | expandTimezone }}">
-                                                          {{ event.dateEnd | localizeDate: 'z' }}
-                                                      </abbr> {% endcomment %}
+                                                                                      {{ event.dateEnd | localizeDate: 'z' }}
+                                                                                </abbr> {% endcomment %}
                           </time>
                         {% else %}
                           <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">
                             {{ event.dateEnd | localizeDate: "MMMM D" }}
                           {% comment %} <abbr title="{{ event.dateEnd | localizeDate: 'z' | expandTimezone }}">
-                                                        {{ event.dateEnd | localizeDate: 'z' }}
-                                                    </abbr> {% endcomment %}
+                                                                                    {{ event.dateEnd | localizeDate: 'z' }}
+                                                                              </abbr> {% endcomment %}
                           </time>
                         {% endif %}
                       </span>
@@ -125,8 +125,8 @@ layout: layouts/base.liquid
                         <time datetime="{{event.dateStart | isoDate}}" itemprop="startDate">
                           {{ event.dateStart | localizeDate: "MMMM D" }}
                         {% comment %} <abbr title="{{ event.dateStart | localizeDate: 'z' | expandTimezone }}">
-                                                    {{ event.dateStart | localizeDate: 'z' }}
-                                                </abbr> {% endcomment %}
+                                                                              {{ event.dateStart | localizeDate: 'z' }}
+                                                                        </abbr> {% endcomment %}
                         </time>
                       {% else %}
                         <time datetime="{{event.dateStart | isoDate}}" itemprop="startDate">
@@ -330,9 +330,10 @@ layout: layouts/base.liquid
                     <!-- End .event__children -->
                   {% endif %}
                   <div class="event__badges">
-                    <sl-tooltip placement="top-start" trigger="hover focus" content="You can apply to be a speaker at this event.">
-                      <sl-badge variant="success" pill pulse tabindex="0">Call for speakers</sl-badge>
-                    </sl-tooltip>
+                    <sl-badge
+                      variant="success"
+                      pill
+                      pulse>Call for speakers</sl-badge>
                   </div>
                 </article>
                 <!-- End .event -->
