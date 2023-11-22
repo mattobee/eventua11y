@@ -2,7 +2,10 @@
 
   <div class="container readable flow">
 
-    <hgroup class="content py-0" role="group" aria-roledescription="Heading group">
+    <hgroup
+      class="content py-0"
+      role="group"
+      aria-roledescription="Heading group">
       <h2>Today</h2>
       <p aria-roledescription="subtitle">
         {% edge "liquid" %}
@@ -201,7 +204,7 @@
                             <a href="{{ child.website }}">{{ child.title }}</a>
                           </span>
                           <div class="event__dates text-muted">
-                            {% if child.format  %}
+                            {% if child.format %}
                               {% if child.format == "talk" %}
                                 Talk
                               {% elsif child.format == "workshop" %}
@@ -244,15 +247,15 @@
                                   </time>
                                 </span>
                                 {% if child.dateEnd %}
-                                <meta itemprop="endDate" content="{{ child.dateEnd }}" />
-                                ·
-                                <span class="event__duration">
-                                  <span class="sr-only">Duration</span>
-                                  <time datetime="PT{{ duration_minutes }}M" itemprop="duration">
-                                    <i class="fa-solid fa-timer"></i>
-                                    {{ duration_minutes }} minutes
-                                  </time>
-                                </span>
+                                  <meta itemprop="endDate" content="{{ child.dateEnd }}" />
+                                  ·
+                                  <span class="event__duration">
+                                    <span class="sr-only">Duration</span>
+                                    <time datetime="PT{{ duration_minutes }}M" itemprop="duration">
+                                      <i class="fa-solid fa-timer"></i>
+                                      {{ duration_minutes }} minutes
+                                    </time>
+                                  </span>
                                 {% endif %}
                               {% else %}
                                 <span class="event__dateStart">
@@ -274,7 +277,7 @@
                                       {{ duration_minutes }} minutes
                                     </time>
                                   </span>
-                                  {% endif %}
+                                {% endif %}
                               {% endif %}
                             {% else %}
                               Not yet scheduled
