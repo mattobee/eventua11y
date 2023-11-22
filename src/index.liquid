@@ -7,24 +7,26 @@ layout: layouts/base.liquid
 
 {% include "today" %}
 
-  {% edge "liquid" events %}
-    <div id="upcoming">
+{% edge "liquid" events %}
+  <div id="upcoming">
 
-      {% assign upcomingEvents = events | upcomingEvents | sort: 'dateStart' %}
-      {% assign groupedEvents = upcomingEvents | groupByMonth %}
+    {% assign upcomingEvents = events | upcomingEvents | sort: 'dateStart' %}
+    {% assign groupedEvents = upcomingEvents | groupByMonth %}
 
-      <!-- if there are no upcoming events -->
-      {% if upcomingEvents.length == 0 %}
-        <p>There are no upcoming events. Check back later.</p>
-      {% endif %}
-      
-      <div class="events events--list">
-        {% for month in groupedEvents %}
-          <section id="{{ month.name }}" class="month">
-            <div class="container readable flow">
-              {% assign currentYear = 'now' | date: "%Y" %}
-              <h2 class="month__heading">{{ month.month }}{% if month.year != currentYear %} {{ month.year }}{% endif %}</h2>
-              {% for event in month.events %}
+    <!-- if there are no upcoming events -->
+    {% if upcomingEvents.length == 0 %}
+      <p>There are no upcoming events. Check back later.</p>
+    {% endif %}
+
+    <div class="events events--list">
+      {% for month in groupedEvents %}
+        <section id="{{ month.name }}" class="month">
+          <div class="container readable flow">
+            {% assign currentYear = 'now' | date: "%Y" %}
+            <h2 class="month__heading">{{ month.month }}{% if month.year != currentYear %}
+                {{ month.year }}{% endif %}
+            </h2>
+            {% for event in month.events %}
               {%- if event.type == "theme" %}
                 <article
                   class="event event--theme content"
@@ -43,18 +45,18 @@ layout: layouts/base.liquid
                       </span>
                       {% if event.day %}
                         <time datetime="{{event.dateStart | isoDate}}" itemprop="startDate">
-                        {{ event.dateStart | localizeDate: "MMMM D" }}
+                          {{ event.dateStart | localizeDate: "MMMM D" }}
                         {% comment %} <abbr title="{{ event.dateStart | localizeDate: 'z' | expandTimezone }}">
-                          {{ event.dateStart | localizeDate: 'z' }}
-                        </abbr> {% endcomment %}
-                      </time>
+                                                    {{ event.dateStart | localizeDate: 'z' }}
+                                                </abbr> {% endcomment %}
+                        </time>
                       {% else %}
-                      <time datetime="{{event.dateStart | isoDate}}" itemprop="startDate">
-                        {{ event.dateStart | localizeDate: "MMMM D" }}
+                        <time datetime="{{event.dateStart | isoDate}}" itemprop="startDate">
+                          {{ event.dateStart | localizeDate: "MMMM D" }}
                         {% comment %} <abbr title="{{ event.dateStart | localizeDate: 'z' | expandTimezone }}">
-                          {{ event.dateStart | localizeDate: 'z' }}
-                        </abbr> {% endcomment %}
-                      </time>
+                                                    {{ event.dateStart | localizeDate: 'z' }}
+                                                </abbr> {% endcomment %}
+                        </time>
                       {% endif %}
                     </span>
                     {% if event.dateEnd %}
@@ -66,17 +68,17 @@ layout: layouts/base.liquid
                         {% if event.day %}
                           <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">
                             {{ event.dateEnd | localizeDate: "MMMM D" }}
-                            {% comment %} <abbr title="{{ event.dateEnd | localizeDate: 'z' | expandTimezone }}">
-                              {{ event.dateEnd | localizeDate: 'z' }}
-                            </abbr> {% endcomment %}
+                          {% comment %} <abbr title="{{ event.dateEnd | localizeDate: 'z' | expandTimezone }}">
+                                                          {{ event.dateEnd | localizeDate: 'z' }}
+                                                      </abbr> {% endcomment %}
                           </time>
                         {% else %}
-                        <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">
-                          {{ event.dateEnd | localizeDate: "MMMM D" }}
+                          <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">
+                            {{ event.dateEnd | localizeDate: "MMMM D" }}
                           {% comment %} <abbr title="{{ event.dateEnd | localizeDate: 'z' | expandTimezone }}">
-                            {{ event.dateEnd | localizeDate: 'z' }}
-                          </abbr> {% endcomment %}
-                        </time>
+                                                        {{ event.dateEnd | localizeDate: 'z' }}
+                                                    </abbr> {% endcomment %}
+                          </time>
                         {% endif %}
                       </span>
                     {% endif %}
@@ -101,8 +103,9 @@ layout: layouts/base.liquid
                     </span>
                   </div>
                 </article>
-                <!-- End .event -->
-              {% else %} {% comment %} if it's not a theme event {% endcomment %}
+              <!-- End .event -->
+              {% else %}
+                {% comment %} if it's not a theme event {% endcomment %}
                 <article
                   class="event event--{{ event.type }} content"
                   itemprop="event"
@@ -120,18 +123,18 @@ layout: layouts/base.liquid
                       </span>
                       {% if event.day %}
                         <time datetime="{{event.dateStart | isoDate}}" itemprop="startDate">
-                        {{ event.dateStart | localizeDate: "MMMM D" }}
+                          {{ event.dateStart | localizeDate: "MMMM D" }}
                         {% comment %} <abbr title="{{ event.dateStart | localizeDate: 'z' | expandTimezone }}">
-                          {{ event.dateStart | localizeDate: 'z' }}
-                        </abbr> {% endcomment %}
-                      </time>
+                                                    {{ event.dateStart | localizeDate: 'z' }}
+                                                </abbr> {% endcomment %}
+                        </time>
                       {% else %}
-                      <time datetime="{{event.dateStart | isoDate}}" itemprop="startDate">
-                        {{ event.dateStart | localizeDate: "MMMM D h:mm A" }}
-                        <abbr title="{{ event.dateStart | localizeDate: 'z' | expandTimezone }}">
-                          {{ event.dateStart | localizeDate: 'z' }}
-                        </abbr>
-                      </time>
+                        <time datetime="{{event.dateStart | isoDate}}" itemprop="startDate">
+                          {{ event.dateStart | localizeDate: "MMMM D h:mm A" }}
+                          <abbr title="{{ event.dateStart | localizeDate: 'z' | expandTimezone }}">
+                            {{ event.dateStart | localizeDate: 'z' }}
+                          </abbr>
+                        </time>
                       {% endif %}
                     </span>
                     {% if event.dateEnd %}
@@ -144,12 +147,12 @@ layout: layouts/base.liquid
                             {{ event.dateEnd | localizeDate: "MMMM D" }}
                           </time>
                         {% else %}
-                        <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">
-                          {{ event.dateEnd | localizeDate: "MMMM D h:mm A" }}
-                          <abbr title="{{ event.dateEnd | localizeDate: 'z' | expandTimezone }}">
-                            {{ event.dateEnd | localizeDate: 'z' }}
-                          </abbr>
-                        </time>
+                          <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">
+                            {{ event.dateEnd | localizeDate: "MMMM D h:mm A" }}
+                            <abbr title="{{ event.dateEnd | localizeDate: 'z' | expandTimezone }}">
+                              {{ event.dateEnd | localizeDate: 'z' }}
+                            </abbr>
+                          </time>
                         {% endif %}
                       </span>
                     {% endif %}
@@ -219,7 +222,7 @@ layout: layouts/base.liquid
                           <ul role="list" class="flow">
                             {% for child in event.children %}
                               <li
-                                class="event__child"
+                                class="event__child flow"
                                 itemprop="subEvent"
                                 itemscope
                                 itemtype="https://schema.org/Event">
@@ -227,7 +230,7 @@ layout: layouts/base.liquid
                                   <a href="{{ child.website }}">{{ child.title }}</a>
                                 </span>
                                 <div class="event__dates text-muted">
-                                  {% if child.format  %}
+                                  {% if child.format %}
                                     {% if child.format == "talk" %}
                                       Talk
                                     {% elsif child.format == "workshop" %}
@@ -270,15 +273,15 @@ layout: layouts/base.liquid
                                         </time>
                                       </span>
                                       {% if child.dateEnd %}
-                                      <meta itemprop="endDate" content="{{ child.dateEnd }}" />
-                                      ·
-                                      <span class="event__duration">
-                                        <span class="sr-only">Duration</span>
-                                        <time datetime="PT{{ duration_minutes }}M" itemprop="duration">
-                                          <i class="fa-solid fa-timer"></i>
-                                          {{ duration_minutes }} minutes
-                                        </time>
-                                      </span>
+                                        <meta itemprop="endDate" content="{{ child.dateEnd }}" />
+                                        ·
+                                        <span class="event__duration">
+                                          <span class="sr-only">Duration</span>
+                                          <time datetime="PT{{ duration_minutes }}M" itemprop="duration">
+                                            <i class="fa-solid fa-timer"></i>
+                                            {{ duration_minutes }} minutes
+                                          </time>
+                                        </span>
                                       {% endif %}
                                     {% else %}
                                       <span class="event__dateStart">
@@ -300,7 +303,7 @@ layout: layouts/base.liquid
                                             {{ duration_minutes }} minutes
                                           </time>
                                         </span>
-                                        {% endif %}
+                                      {% endif %}
                                     {% endif %}
                                   {% else %}
                                     Not yet scheduled
@@ -334,14 +337,16 @@ layout: layouts/base.liquid
                 </article>
                 <!-- End .event -->
               {% endif %}
-            {% endfor %} {% comment %} end event loop {% endcomment %}
-            </div>
-            <!-- End event .readable .container -->
-          </section>
-          <!-- End .month .flow -->
-        {% endfor %} {% comment %} end months loop {% endcomment %}
-      </div>
-      <!-- End .events .flow -->
+            {% endfor %}
+          {% comment %} end event loop {% endcomment %}
+          </div>
+        <!-- End event .readable .container -->
+        </section>
+        <!-- End .month .flow -->
+      {% endfor %}
+    {% comment %} end months loop {% endcomment %}
     </div>
-    <!-- End #upcoming -->
-  {% endedge %}
+  <!-- End .events .flow -->
+  </div>
+  <!-- End #upcoming -->
+{% endedge %}
