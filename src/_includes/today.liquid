@@ -201,7 +201,11 @@
                           itemscope
                           itemtype="https://schema.org/Event">
                           <span itemprop="name">
-                            <a href="{{ child.website }}">{{ child.title }}</a>
+                            {% if child.website %}
+                              <a href="{{ child.website }}">{{ child.title }}</a>
+                            {% else %}
+                              {{ child.title }}
+                            {% endif %}
                           </span>
                           <div class="event__dates text-muted">
                             {% if child.format %}
