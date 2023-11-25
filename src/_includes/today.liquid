@@ -84,8 +84,16 @@
         <!-- End themes -->
         </div>
         <!-- End .events -->
-      {% endif %}
+    {% endif %}
 
+      {% comment %}
+        Count the number of events in 'todaysEvents' that should be visible.
+        An event is considered visible if it has no child events or if any of its child events have not ended.
+        For each event, if it has no child events, 'visibleEventsCount' is incremented by 1.
+        If the event has child events, it checks each child event.
+        If a child event has not ended, 'visibleEventsCount' is incremented by 1 and it breaks the loop.
+        The result is that 'visibleEventsCount' contains the number of visible events.
+      {% endcomment %}
       {% assign visibleEventsCount = 0 %}
       {% for event in todaysEvents %}
         {% assign nowTimestamp = 'now' | date: "%s" %}
@@ -102,6 +110,11 @@
         {% endif %}
       {% endfor %}
 
+      {% comment %}
+        Check if there are any visible events.
+        If 'visibleEventsCount' is greater than 0, it means there are visible events.
+        If there are no visible events, the 'events' section will not be displayed.
+      {% endcomment %}
       {% if visibleEventsCount > 0 %}
         <div class="events events--list flow">
           {% for event in todaysEvents %}
