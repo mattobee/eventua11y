@@ -91,7 +91,7 @@
           {% for event in todaysEvents %}
             {% comment %}
               Check if all child events of the current event have ended.
-              If the event has no child events, it will be displayed.
+              If the event has no child events, or if a child event doesn't have an end date, it will be displayed.
               If all child events have ended, skip the current event and move on to the next one.
             {% endcomment %}
             {% assign allChildrenEnded = true %}
@@ -100,6 +100,10 @@
             {% else %}
               {% assign nowTimestamp = 'now' | date: "%s" %}
               {% for child in event.children %}
+                {% if child.dateEnd == nil %}
+                  {% assign allChildrenEnded = false %}
+                  {% break %}
+                {% endif %}
                 {% assign childEndTimestamp = child.dateEnd | date: "%s" %}
                 {% if childEndTimestamp > nowTimestamp %}
                   {% assign allChildrenEnded = false %}
