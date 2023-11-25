@@ -86,7 +86,23 @@
         <!-- End .events -->
       {% endif %}
 
-      {% if todaysEvents.length > 0 %}
+      {% assign visibleEventsCount = 0 %}
+      {% for event in todaysEvents %}
+        {% assign nowTimestamp = 'now' | date: "%s" %}
+        {% if event.children == empty %}
+          {% assign visibleEventsCount = visibleEventsCount | plus: 1 %}
+        {% else %}
+          {% for child in event.children %}
+            {% assign childEndTimestamp = child.dateEnd | date: "%s" %}
+            {% if child.dateEnd == nil or childEndTimestamp > nowTimestamp %}
+              {% assign visibleEventsCount = visibleEventsCount | plus: 1 %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+
+      {% if visibleEventsCount > 0 %}
         <div class="events events--list flow">
           {% for event in todaysEvents %}
             {% comment %}
