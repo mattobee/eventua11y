@@ -87,15 +87,16 @@
     {% endif %}
 
       {% comment %}
-        Count the number of events in 'todaysEvents' that should be visible.
-        An event is considered visible if it has no child events or if any of its child events have not ended.
-        For each event, if it has no child events, 'visibleEventsCount' is incremented by 1.
-        If the event has child events, it checks each child event.
-        If a child event has not ended, 'visibleEventsCount' is incremented by 1 and it breaks the loop.
-        The result is that 'visibleEventsCount' contains the number of visible events.
+        Count the number of visible events in 'todaysEvents'.
+        An event is visible if it has no child events or if any child event has not ended.
+        'visibleEventsCount' is incremented for each visible event.
+        As an optimization, the loop is skipped for the remaining events once a visible event is found.
       {% endcomment %}
       {% assign visibleEventsCount = 0 %}
       {% for event in todaysEvents %}
+        {% if visibleEventsCount > 0 %}
+          {% continue %}
+        {% endif %}
         {% assign nowTimestamp = 'now' | date: "%s" %}
         {% if event.children == empty %}
           {% assign visibleEventsCount = visibleEventsCount | plus: 1 %}
