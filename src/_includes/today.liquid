@@ -89,6 +89,22 @@
       {% if todaysEvents.length > 0 %}
         <div class="events events--list flow">
           {% for event in todaysEvents %}
+            {% comment %}
+              Check if all child events of the current event have ended.
+              If all child events have ended, skip the current event and move on to the next one.
+            {% endcomment %}
+            {% assign allChildrenEnded = true %}
+            {% assign nowTimestamp = 'now' | date: "%s" %}
+            {% for child in event.children %}
+              {% assign childEndTimestamp = child.dateEnd | date: "%s" %}
+              {% if childEndTimestamp > nowTimestamp %}
+                {% assign allChildrenEnded = false %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+            {% if allChildrenEnded %}
+              {% continue %}
+            {% endif %}
             <article
               class="event event--{{ event.type }} content"
               itemprop="event"
