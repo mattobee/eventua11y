@@ -91,17 +91,22 @@
           {% for event in todaysEvents %}
             {% comment %}
               Check if all child events of the current event have ended.
+              If the event has no child events, it will be displayed.
               If all child events have ended, skip the current event and move on to the next one.
             {% endcomment %}
             {% assign allChildrenEnded = true %}
-            {% assign nowTimestamp = 'now' | date: "%s" %}
-            {% for child in event.children %}
-              {% assign childEndTimestamp = child.dateEnd | date: "%s" %}
-              {% if childEndTimestamp > nowTimestamp %}
-                {% assign allChildrenEnded = false %}
-                {% break %}
-              {% endif %}
-            {% endfor %}
+            {% if event.children == empty %}
+              {% assign allChildrenEnded = false %}
+            {% else %}
+              {% assign nowTimestamp = 'now' | date: "%s" %}
+              {% for child in event.children %}
+                {% assign childEndTimestamp = child.dateEnd | date: "%s" %}
+                {% if childEndTimestamp > nowTimestamp %}
+                  {% assign allChildrenEnded = false %}
+                  {% break %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
             {% if allChildrenEnded %}
               {% continue %}
             {% endif %}
