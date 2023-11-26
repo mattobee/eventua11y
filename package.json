@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npx @11ty/eleventy",
     "start": "npx @11ty/eleventy --serve --port=8081 --quiet",
-    "test": "npx playwright text",
+    "test": "npx playwright test",
     "debug": "DEBUG=Eleventy* npx @11ty/eleventy",
     "debugstart": "DEBUG=Eleventy* npx @11ty/eleventy --serve --port=8081",
     "benchmark": "DEBUG=Eleventy:Benchmark* npx @11ty/eleventy"
