@@ -69,7 +69,6 @@ module.exports = defineConfig({
     // },
   ],
 
-  
   /* Run your local dev server before starting the tests */
   webServer: process.env.WEBSITE_URL
   ? undefined
