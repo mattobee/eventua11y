@@ -35,5 +35,5 @@ jobs:
       - name: npx playwright test
         run: npx playwright test
         env:
-          PLAYWRIGHT_TEST_BASE_URL: "https://deploy-preview-${{env.GITHUB_PR_NUMBER}}--pull-request.netlify.app/"
+          PLAYWRIGHT_TEST_BASE_URL: "https://deploy-preview-${{env.GITHUB_PR_NUMBER}}--eventua11y.netlify.app/"
           DEBUG: pw:api
