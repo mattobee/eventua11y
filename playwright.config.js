@@ -34,9 +34,9 @@ export default defineConfig({
     },
   ],
   // Run your local dev server before starting the tests.
-  webServer: {
-    command: 'netlify dev',
-    url: 'http://localhost:8888',
-    reuseExistingServer: !process.env.CI,
-  },
+  // webServer: {
+  //   command: 'netlify dev',
+  //   url: 'http://localhost:8888',
+  //   reuseExistingServer: !process.env.CI,
+  // },
 });
