@@ -44,8 +44,8 @@ jobs:
         run: npm ci
       - name: install playwright browsers
         run: npx playwright install --with-deps
-      - name: npm run test
-        run: npm run test
+      - name: npx playwright test
+        run: npx playwright test
         env:
           PLAYWRIGHT_TEST_BASE_URL: "https://deploy-preview-${{env.GITHUB_PR_NUMBER}}--pull-request.netlify.app/"
           DEBUG: pw:api
