@@ -1,6 +1,6 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
-const { AxeBuilder } = require('axe-playwright');
+const AxeBuilder = require('@axe-core/playwright').default;
 
 test('has title', async ({ page, baseURL }) => {
   await page.goto(baseURL);
@@ -12,9 +12,6 @@ test('has title', async ({ page, baseURL }) => {
 
 test('has no accessibility violations', async ({ page, baseURL }) => {
   await page.goto(baseURL);
-
-  const builder = new AxeBuilder({ page });
-  const results = await builder.analyze();
-
-  expect(results.violations).toHaveLength(0);
+  const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
+  expect(accessibilityScanResults.violations).toEqual([]);
 });
