@@ -1,4 +1,4 @@
-name: "E2E"
+name: "E2E Tests"
 
 on: [pull_request]
 
@@ -35,9 +35,6 @@ jobs:
     name: Run end-to-end tests on Netlify PR preview
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    env:
-        PLAYWRIGHT_TEST_BASE_URL: "https://deploy-preview-${{env.GITHUB_PR_NUMBER}}--pull-request.netlify.app/"
-        DEBUG: pw:api
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -49,3 +46,6 @@ jobs:
         run: npx playwright install --with-deps
       - name: npm run test
         run: npm run test
+        env:
+          PLAYWRIGHT_TEST_BASE_URL: "https://deploy-preview-${{env.GITHUB_PR_NUMBER}}--pull-request.netlify.app/"
+          DEBUG: pw:api
