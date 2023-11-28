@@ -1,19 +1,17 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
+const AxeBuilder = require('@axe-core/playwright').default;
 
-test('has title', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
-
-  // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/Playwright/);
+test.beforeEach(async ({ page, baseURL }) => {
+  await page.goto(baseURL);
 });
 
-test('get started link', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
+test('has title', async ({ page }) => {
+  // Expect a title "to contain" a substring.
+  await expect(page).toHaveTitle(/Eventua11y/);
+});
 
-  // Click the get started link.
-  await page.getByRole('link', { name: 'Get started' }).click();
-
-  // Expects page to have a heading with the name of Installation.
-  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
+test('has no accessibility violations', async ({ page }) => {
+  const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
+  expect(accessibilityScanResults.violations).toEqual([]);
 });
