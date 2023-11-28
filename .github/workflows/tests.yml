@@ -12,11 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Waiting for Netlify Preview
-        uses: josephduffy/wait-for-netlify-action@v1
+        uses: jakepartusch/wait-for-netlify-action@v1.4
         id: wait-for-netflify-preview
         with:
-          site_name: "pull-request"
-          max_timeout: 180
+          site_name: "eventua11y"
+          max_timeout: 60
 
   tests_e2e_netlify:
     needs: tests_e2e_netlify_prepare
