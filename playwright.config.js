@@ -33,10 +33,13 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
   ],
-  // Run your local dev server before starting the tests.
-  // webServer: {
-  //   command: 'netlify dev',
-  //   url: 'http://localhost:8888',
-  //   reuseExistingServer: !process.env.CI,
-  // },
+  // Run the local dev server before starting the tests,
+  // but only if process.env.PLAYWRIGHT_TEST_BASE_URL isn't set.
+  webServer: !process.env.PLAYWRIGHT_TEST_BASE_URL
+    ? {
+        command: 'netlify dev',
+        port: 8888,
+        reuseExistingServer: !process.env.CI,
+      }
+    : undefined,
 });
