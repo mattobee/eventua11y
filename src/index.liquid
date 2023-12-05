@@ -13,6 +13,20 @@ layout: layouts/base.liquid
     {% assign upcomingEvents = events | upcomingEvents | sort: 'dateStart' %}
     {% assign groupedEvents = upcomingEvents | groupByMonth %}
 
+    <div id="filters" class="container readable">
+      <div class="content">
+        <div class="filters__controls">
+          {% comment %} <sl-switch class="filter" name="filter-cfs">Looking for speakers</sl-switch>
+          <sl-switch class="filter" name="filter-themes">Theme days</sl-switch> {% endcomment %}
+          <sl-button id="open-filter-drawer"><i class="fa-solid fa-filter"></i> Filter</sl-button>
+        </div>
+        <div class="status">
+          <sl-button type="primary" name="filter-reset"><i class="fa-solid fa-filter-circle-xmark"></i> Reset Filters</sl-button>
+          <p class="filters__count text-muted" aria-live="polite"><small>Showing 14 of {{ upcomingEvents.length }} events</small></p>
+        </div>
+      </div>
+    </div>
+
     <!-- if there are no upcoming events -->
     {% if upcomingEvents.length == 0 %}
       <p>There are no upcoming events. Check back later.</p>
@@ -32,7 +46,8 @@ layout: layouts/base.liquid
                   class="event event--theme content"
                   itemprop="event"
                   itemscope
-                  itemtype="https://schema.org/Event">
+                  itemtype="https://schema.org/Event"
+                  data-event-type="theme">
                   <h3 class="event__title" itemprop="name">
                     {% if event.website %}
                       <a href="{{ event.website }}">{{ event.title }}</a>
@@ -98,7 +113,10 @@ layout: layouts/base.liquid
                   class="event event--{{ event.type }} content"
                   itemprop="event"
                   itemscope
-                  itemtype="https://schema.org/Event">
+                  itemtype="https://schema.org/Event"
+                  data-event-type="normal"
+                  data-event-attendancemode="{{ event.attendanceMode }}"
+                  {% if event.callForSpeakers %}data-event-cfs{% endif %}>
                   <h3 class="event__title" itemprop="name">
                     {% if event.website %}
                       <a href="{{ event.website }}">{{ event.title }}</a>
