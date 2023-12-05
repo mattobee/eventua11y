@@ -34,7 +34,7 @@ layout: layouts/base.liquid
 
     <div class="events events--list">
       {% for month in groupedEvents %}
-        <section id="{{ month.name }}" class="month">
+        <section id="{{ month.month | downcase }}" class="month">
           <div class="container readable flow">
             {% assign currentYear = 'now' | date: "%Y" %}
             <h2 class="month__heading">{{ month.month }}{% if month.year != currentYear %}
