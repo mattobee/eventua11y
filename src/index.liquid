@@ -16,7 +16,7 @@ layout: layouts/base.liquid
     <div id="filters" class="container readable">
       <div class="content">
         <div class="status">
-          <p class="filters__count text-muted" aria-live="polite"><small x-text="'Showing ' + $store.filters.visibleEventCount + ' of ' + $store.filters.totalEventCount + ' events'"></small></p>
+          <p class="filters__count text-muted" aria-live="polite" aria-atomic="true"><small x-text="'Showing ' + $store.filters.visibleEventCount + ' of ' + $store.filters.totalEventCount + ' events'"></small></p>
           <sl-button type="primary" name="filter-reset" @click="$store.filters.reset()"><i class="fa-solid fa-filter-circle-xmark"></i> Reset Filters</sl-button>
         </div>
         <div class="filters__controls">
