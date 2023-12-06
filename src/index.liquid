@@ -15,14 +15,14 @@ layout: layouts/base.liquid
 
     <div id="filters" class="container readable">
       <div class="content">
+        <div class="status">
+          <p class="filters__count text-muted" aria-live="polite"><small x-text="'Showing ' + $store.filters.visibleEventCount + ' of ' + $store.filters.totalEventCount + ' events'"></small></p>
+          <sl-button type="primary" name="filter-reset" @click="$store.filters.reset()"><i class="fa-solid fa-filter-circle-xmark"></i> Reset Filters</sl-button>
+        </div>
         <div class="filters__controls">
           {% comment %} <sl-switch class="filter" name="filter-cfs">Looking for speakers</sl-switch>
           <sl-switch class="filter" name="filter-themes">Theme days</sl-switch> {% endcomment %}
           <sl-button id="open-filter-drawer"><i class="fa-solid fa-filter"></i> Filter</sl-button>
-        </div>
-        <div class="status">
-          <sl-button type="primary" name="filter-reset" @click="$store.filters.reset()"><i class="fa-solid fa-filter-circle-xmark"></i> Reset Filters</sl-button>
-          <p class="filters__count text-muted" aria-live="polite"><small>Showing 14 of {{ upcomingEvents.length }} events</small></p>
         </div>
       </div>
     </div>
