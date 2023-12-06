@@ -3,6 +3,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
   const filterDrawer = document.getElementById("filter-drawer");
   const openButton = document.getElementById("open-filter-drawer");
   openButton.addEventListener("click", () => filterDrawer.show());
+  const noJsElements = document.querySelectorAll(".no-js");
+  noJsElements.forEach((element) => {
+    element.classList.remove("no-js");
+  });
 });
 
 // Store the initial state of the filters

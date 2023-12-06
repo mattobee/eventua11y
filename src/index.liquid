@@ -13,7 +13,7 @@ layout: layouts/base.liquid
     {% assign upcomingEvents = events | upcomingEvents | sort: 'dateStart' %}
     {% assign groupedEvents = upcomingEvents | groupByMonth %}
 
-    <div id="filters" class="container readable">
+    <div id="filters" class="container readable no-js">
       <div class="content">
         <div class="status">
           <p class="filters__count text-muted" aria-live="polite" aria-atomic="true"><small x-text="'Showing ' + $store.filters.visibleEventCount + ' of ' + $store.filters.totalEventCount + ' events'"></small></p>
