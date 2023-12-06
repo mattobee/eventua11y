@@ -16,8 +16,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
 // };
 
 document.addEventListener("alpine:init", () => {
-  console.log("Hello from Alpine");
-  Alpine.store("hello", "Hello from Alpine!");
 
   // Initialize the filters store with the initial state
   const initialFilters = {
