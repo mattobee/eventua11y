@@ -25,7 +25,14 @@ document.addEventListener("alpine:init", () => {
     attendanceOffline: false,
     themes: true,
   };
+
   Alpine.store("filters", { ...initialFilters, initialFilters });
+  Alpine.store("filters").totalEventCount = 0;
+  Alpine.store("filters").visibleEventCount = 0;
+
+  // Count the total number of events on the page
+  const totalEvents = document.querySelectorAll(".event");
+  Alpine.store("filters").totalEventCount = totalEvents.length;
 
   // Add a method to reset the filters to the initial state
   Alpine.store("filters").reset = () => {
@@ -85,5 +92,14 @@ document.addEventListener("alpine:init", () => {
         section.hidden = visibleEvents.length === 0;
       });
     });
+
+    // After filtering the events, count the visible events
+    const visibleEvents = document.querySelectorAll(".event:not([hidden])");
+    Alpine.store("filters").visibleEventCount = visibleEvents.length;
+
   };
+
+  // Filter the events immediately after initializing the store
+  Alpine.store("filters").filterEvents();
+
 });
