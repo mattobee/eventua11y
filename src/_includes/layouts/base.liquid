@@ -90,11 +90,6 @@
             <label for="filter-attendance-in-person">In person <span x-text="$store.filters.attendanceOffline"></span></label>
           </div>
 
-          <div class="checkbox">
-            <input type="checkbox" x-model="$store.filters.attendanceHybrid" @change="$store.filters.filterEvents()" value="hybrid" id="filter-attendance-hybrid" class="filter-option">
-            <label for="filter-attendance-hybrid">Hybrid <span x-text="$store.filters.attendanceHybrid"></span></label>
-          </div>
-
         </fieldset>
 
         <div class="checkbox">
