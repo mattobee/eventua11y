@@ -103,6 +103,11 @@ document.addEventListener("alpine:init", () => {
 
   };
 
+  // Add a method to check if the filters have changed
+  Alpine.store("filters").isChanged = function() {
+    return Object.keys(this.initialFilters).some(key => this[key] !== this.initialFilters[key]);
+  };
+
   // Filter the events immediately after initializing the store
   Alpine.store("filters").filterEvents();
 
