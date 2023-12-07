@@ -1,12 +1,21 @@
 document.addEventListener("DOMContentLoaded", (event) => {
   console.log("Hello from main.js");
   const filterDrawer = document.getElementById("filter-drawer");
+  const filterToolbar = document.querySelector('#filters');
   const openButton = document.getElementById("open-filter-drawer");
   openButton.addEventListener("click", () => filterDrawer.show());
   const noJsElements = document.querySelectorAll(".no-js");
   noJsElements.forEach((element) => {
     element.classList.remove("no-js");
   });
+
+  const observer = new IntersectionObserver( 
+  ([e]) => e.target.classList.toggle("is-pinned", e.intersectionRatio < 1),
+  { threshold: [1] }
+  );
+  
+  observer.observe(filterToolbar);
+
 });
 
 // Store the initial state of the filters
