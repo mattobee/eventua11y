@@ -104,6 +104,14 @@ document.addEventListener("alpine:init", () => {
         // If there are no visible events in the section, hide the section
         section.hidden = visibleEvents.length === 0;
       });
+
+      // Select the .events div in #Today
+      const todayEvents = document.querySelector('#today .events');
+      // Select all visible events in the .events div
+      const visibleTodayEvents = todayEvents.querySelectorAll(".event:not([hidden])");
+      // If there are no visible events in the .events div, hide the div
+      todayEvents.hidden = visibleTodayEvents.length === 0;
+
     });
 
     // After filtering the events, count the visible events
