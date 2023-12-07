@@ -31,7 +31,8 @@
               class="event event--theme"
               itemprop="event"
               itemscope
-              itemtype="https://schema.org/Event">
+              itemtype="https://schema.org/Event"
+              data-event-type="theme">
               <h3 class="event__title" itemprop="name">
                 {% if event.website %}
                   <a itemprop="url" href="{{ event.website }}">{{ event.title }}</a>
@@ -148,7 +149,10 @@
               class="event event--{{ event.type }} content"
               itemprop="event"
               itemscope
-              itemtype="https://schema.org/Event">
+              itemtype="https://schema.org/Event"
+              data-event-type="normal"
+              data-event-attendancemode="{{ event.attendanceMode }}"
+              {% if event.callForSpeakers %}data-event-cfs{% endif %}>
               <h3 class="event__title" itemprop="name">
                 {% if event.website %}
                   <a itemprop="url" href="{{ event.website }}">{{ event.title }}</a>

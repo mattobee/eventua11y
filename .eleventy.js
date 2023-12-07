@@ -8,6 +8,7 @@ console.log("hello from .eleventy.js", process.env)
 module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy("./src/images");
   eleventyConfig.addPassthroughCopy("./src/favicon");
+  eleventyConfig.addPassthroughCopy("./src/scripts");
   eleventyConfig.addPlugin(eleventySass);
   eleventyConfig.addPlugin(EleventyEdgePlugin);
   eleventyConfig.addShortcode("year", () => `${new dayjs().year()}`);

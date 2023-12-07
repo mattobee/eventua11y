@@ -13,6 +13,22 @@ layout: layouts/base.liquid
     {% assign upcomingEvents = events | upcomingEvents | sort: 'dateStart' %}
     {% assign groupedEvents = upcomingEvents | groupByMonth %}
 
+    <div id="filters" class="no-js">
+      <div class="container readable">
+        <div class="content">
+          <div class="status">
+            <p class="filters__count text-muted" aria-live="polite" aria-atomic="true">
+              <small x-text="$store.filters.visibleEventCount === $store.filters.totalEventCount ? 'Showing all ' + $store.filters.totalEventCount + ' events' : 'Showing ' + $store.filters.visibleEventCount + ' of ' + $store.filters.totalEventCount + ' events'"></small>
+            </p>
+            <sl-button id="filter-reset" type="primary" name="filter-reset" x-show="$store.filters.isChanged()" @click="$store.filters.reset()"><i class="fa-solid fa-filter-circle-xmark"></i> Reset Filters</sl-button>
+          </div>
+          <div class="filters__controls">
+            <sl-button id="open-filter-drawer"><i class="fa-solid fa-filter"></i> Filter</sl-button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- if there are no upcoming events -->
     {% if upcomingEvents.length == 0 %}
       <p>There are no upcoming events. Check back later.</p>
@@ -20,7 +36,7 @@ layout: layouts/base.liquid
 
     <div class="events events--list">
       {% for month in groupedEvents %}
-        <section id="{{ month.name }}" class="month">
+        <section id="{{ month.month | downcase }}" class="month">
           <div class="container readable flow">
             {% assign currentYear = 'now' | date: "%Y" %}
             <h2 class="month__heading">{{ month.month }}{% if month.year != currentYear %}
@@ -32,7 +48,8 @@ layout: layouts/base.liquid
                   class="event event--theme content"
                   itemprop="event"
                   itemscope
-                  itemtype="https://schema.org/Event">
+                  itemtype="https://schema.org/Event"
+                  data-event-type="theme">
                   <h3 class="event__title" itemprop="name">
                     {% if event.website %}
                       <a href="{{ event.website }}">{{ event.title }}</a>
@@ -98,7 +115,10 @@ layout: layouts/base.liquid
                   class="event event--{{ event.type }} content"
                   itemprop="event"
                   itemscope
-                  itemtype="https://schema.org/Event">
+                  itemtype="https://schema.org/Event"
+                  data-event-type="normal"
+                  data-event-attendancemode="{{ event.attendanceMode }}"
+                  {% if event.callForSpeakers %}data-event-cfs{% endif %}>
                   <h3 class="event__title" itemprop="name">
                     {% if event.website %}
                       <a href="{{ event.website }}">{{ event.title }}</a>

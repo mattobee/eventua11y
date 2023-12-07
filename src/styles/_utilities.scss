@@ -10,7 +10,7 @@
   border-width: 0;
 }
 
-.flow > * + * {
+.flow > *:not(legend) + * {
   margin-block-start: var(--flow-space, 1em);
 }
 
