@@ -1,0 +1,12 @@
+.checkbox {
+    align-items: center;
+    display: flex;
+    label {
+        margin-left: var(--space-2xs);
+    }
+}
+
+[type='checkbox'] {
+    width: 16px;
+    height: 16px;
+}
