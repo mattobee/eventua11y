@@ -1,32 +1,29 @@
 document.addEventListener("DOMContentLoaded", (event) => {
-  console.log("Hello from main.js");
+
+  // Get references to the necessary DOM elements
   const filterDrawer = document.getElementById("filter-drawer");
   const filterToolbar = document.querySelector('#filters');
   const openButton = document.getElementById("open-filter-drawer");
+
+  // Add an event listener to the open button to show the filter drawer when clicked
   openButton.addEventListener("click", () => filterDrawer.show());
+
+  // Find all elements with the "no-js" class and remove that class
   const noJsElements = document.querySelectorAll(".no-js");
   noJsElements.forEach((element) => {
     element.classList.remove("no-js");
   });
 
+  // Create an Intersection Observer to toggle the "is-pinned" class on the filter toolbar
+  // when it intersects with the viewport
   const observer = new IntersectionObserver( 
   ([e]) => e.target.classList.toggle("is-pinned", e.intersectionRatio < 1),
   { threshold: [1] }
   );
-  
+  // Start observing the filter toolbar
   observer.observe(filterToolbar);
 
 });
-
-// Store the initial state of the filters
-// const initialFilters = {
-//   cfsOpen: false,
-//   cfsClosed: false,
-//   attendanceOnline: false,
-//   attendanceOffline: false,
-//   themes: true,
-//   all: false,
-// };
 
 document.addEventListener("alpine:init", () => {
 
@@ -42,6 +39,7 @@ document.addEventListener("alpine:init", () => {
   // Load the persisted state from localStorage, if it exists
   const persistedFilters = JSON.parse(localStorage.getItem('filters')) || initialFilters;
 
+  // Initialize the filters store with the persisted state
   Alpine.store("filters", {
     ...persistedFilters,
     initialFilters: initialFilters,
@@ -69,6 +67,7 @@ document.addEventListener("alpine:init", () => {
     Alpine.store("filters").filterEvents();
   };
 
+  // Add a method to filter the events
   Alpine.store("filters").filterEvents = () => {
     // Select all events on the page
     const events = document.querySelectorAll(".event");
