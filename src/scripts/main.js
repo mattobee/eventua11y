@@ -39,9 +39,21 @@ document.addEventListener("alpine:init", () => {
     themes: true,
   };
 
-  Alpine.store("filters", { ...initialFilters, initialFilters });
-  Alpine.store("filters").totalEventCount = 0;
-  Alpine.store("filters").visibleEventCount = 0;
+  // Load the persisted state from localStorage, if it exists
+  const persistedFilters = JSON.parse(localStorage.getItem('filters')) || initialFilters;
+
+  Alpine.store("filters", {
+    ...persistedFilters,
+    initialFilters: initialFilters,
+    totalEventCount: 0,
+    visibleEventCount: 0,
+  });
+
+  // Persist the state to localStorage whenever it changes
+  Alpine.effect(() => {
+    const { initialFilters, totalEventCount, visibleEventCount, ...filters } = Alpine.store('filters');
+    localStorage.setItem('filters', JSON.stringify(filters));
+  });
 
   // Count the total number of events on the page
   const totalEvents = document.querySelectorAll(".event");
