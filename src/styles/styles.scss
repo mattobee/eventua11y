@@ -1,60 +1,62 @@
-@import 'reset';
-@import 'variables';
-@import 'shoelace';
-@import 'color';
-@import 'typo';
-@import 'buttons';
-@import 'disclosure';
-@import 'utilities';
-@import 'masthead';
-@import 'events';
-@import 'today';
-@import 'filters';
-@import 'forms';
-@import 'footer';
+@import "reset";
+@import "variables";
+@import "shoelace";
+@import "color";
+@import "typo";
+@import "buttons";
+@import "disclosure";
+@import "utilities";
+@import "masthead";
+@import "events";
+@import "today";
+@import "filters";
+@import "forms";
+@import "footer";
 
 .container {
-    margin: 0 auto;
-    max-width: 1280px;
-    padding: 0 var(--space-xs-m);
-    &.readable {
-        max-width: 55rem;
-    }
+  margin: 0 auto;
+  max-width: 1280px;
+  padding: 0 var(--space-xs-m);
+  &.readable {
+    max-width: 55rem;
+  }
 }
 
 body {
-    background-color: var(--color-white);
-    line-height: 1.5;
-    margin: 0;
+  background-color: var(--color-white);
+  line-height: 1.5;
+  margin: 0;
 }
 
 main {
-    background-color: var(--color-primary);
+  background-color: var(--color-primary);
 }
 
 #upcoming {
-    background-color: #fff;
+  background-color: #fff;
 }
 
 *:focus {
-    outline-offset: 0.1em;
+  outline-offset: 0.1em;
 }
 
-[hidden] { display: none !important; }
+[hidden] {
+  display: none !important;
+}
 
 .no-js {
-    display: none;
-  }
+  display: none;
+}
 
 .checkbox-group {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 fieldset {
-    border-color: rgba(0,0,0,.08);
-    border-radius: var(--space-2xs);
-    legend {
-        font-size: var(--step--1);
-    }
+  border-color: rgba(0, 0, 0, 0.08);
+  border-radius: var(--space-2xs);
+  legend {
+    font-size: var(--step--1);
+  }
 }
