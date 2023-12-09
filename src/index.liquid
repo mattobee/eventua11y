@@ -15,7 +15,7 @@ layout: layouts/base.liquid
 
     <div id="filters" class="no-js">
       <div class="container readable">
-        <div class="content">
+        <div class="content" data-testid="button-filter">
           <div class="status">
             <p class="filters__count text-muted" aria-live="polite" aria-atomic="true">
               <small x-text="$store.filters.visibleEventCount === $store.filters.totalEventCount ? 'Showing all ' + $store.filters.totalEventCount + ' events' : 'Showing ' + $store.filters.visibleEventCount + ' of ' + $store.filters.totalEventCount + ' events'"></small>
