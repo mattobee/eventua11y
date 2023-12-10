@@ -86,6 +86,16 @@ export default async (request, context) => {
         });
       });
 
+      /* Returns a list of past events */
+      eleventyConfig.addFilter("pastEvents", function (events) {
+        return events.filter((event) => {
+          // Work out if the event has a parent event
+          const hasParent = event.parent ? true : false;
+          // Return the event if its end date is before today and is not part of a larger event
+          return new dayjs(event.dateEnd).isBefore(now, "day") && !hasParent;
+        });
+      });
+
       /* Filter to list the events grouped by month. Each month should have a name property containing the name of the month
       and then an array of events for that month */
       eleventyConfig.addFilter("groupByMonth", function (events) {
