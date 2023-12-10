@@ -125,40 +125,11 @@ layout: layouts/base.liquid
                   </h3>
                   <div class="event__dates text-muted">
                     <span class="event__dateStart">
-                      <span class="sr-only">Starts
-                      </span>
-                      {% if event.day %}
+                        <span class="sr-only">Starts</span>
                         <time datetime="{{event.dateStart | isoDate}}" itemprop="startDate">
-                          {{ event.dateStart | localizeDate: "MMMM D" }}
+                            {{ event.dateStart | localizeDate: "MMMM D" }}
                         </time>
-                      {% else %}
-                        <time datetime="{{event.dateStart | isoDate}}" itemprop="startDate">
-                          {{ event.dateStart | localizeDate: "MMMM D h:mm A" }}
-                          <abbr title="{{ event.dateStart | localizeDate: 'z' | expandTimezone }}">
-                            {{ event.dateStart | localizeDate: 'z' }}
-                          </abbr>
-                        </time>
-                      {% endif %}
                     </span>
-                    {% if event.dateEnd %}
-                      <span class="event__dateEnd">
-                        <span class="sr-only">Ends
-                        </span>
-                        <i class="fa-solid fa-arrow-right-long"></i>
-                        {% if event.day %}
-                          <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">
-                            {{ event.dateEnd | localizeDate: "MMMM D" }}
-                          </time>
-                        {% else %}
-                          <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">
-                            {{ event.dateEnd | localizeDate: "MMMM D h:mm A" }}
-                            <abbr title="{{ event.dateEnd | localizeDate: 'z' | expandTimezone }}">
-                              {{ event.dateEnd | localizeDate: 'z' }}
-                            </abbr>
-                          </time>
-                        {% endif %}
-                      </span>
-                    {% endif %}
                   </div>
                   <!-- End dates -->
                   <div class="event__delivery">
