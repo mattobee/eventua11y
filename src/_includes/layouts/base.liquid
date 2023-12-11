@@ -41,14 +41,18 @@
       id="global-header"
       class="masthead"
       role="banner">
-      <div class="container readable">
-        <div class="content">
-          <a href="/"><img
-              class="logo"
-              src="/images/eventua11y_logo_wordmark_white.svg"
-              alt="Eventua11y"></a>
-        </div>
+      <div class="masthead__logo">
+        <a href="/"><img
+            class="logo"
+            src="/images/eventua11y_logo_wordmark_white.svg"
+            alt="Eventua11y"></a>
       </div>
+      <nav class="primaryNav">
+        <ul role="list" class="primaryNav__list">
+            <li class="primaryNav__item"><a class="primaryNav__link" href="/past-events" {% if page.url == '/past-events/' %}aria-current="page"{% endif %}>Past events</a></li>
+            <li class="primaryNav__item"><a class="primaryNav__link" href="/" {% if page.url == '/' %}aria-current="page"{% endif %}>Upcoming events</a></li>
+        </ul>
+      </nav>
     </header>
     <main>
       {{ content }}
