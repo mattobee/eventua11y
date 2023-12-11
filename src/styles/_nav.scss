@@ -1,0 +1,28 @@
+.primaryNav {
+    font-size: 1rem;
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &__list > * + * {
+    margin-left: var(--flow-space, .5em);
+  }
+  &__link {
+    border-radius: .5em;
+    color: var(--color-white);
+    display: inline-block;
+    padding: 0.5em .8em;
+    &:link {
+        text-decoration: none;
+    }
+    &:visited, &:hover, &:active, &:focus {
+        color: var(--color-white);
+    }
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+}
+  [aria-current="page"] {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+}

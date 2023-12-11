@@ -1,5 +1,10 @@
 .masthead {
+    align-items: center;
     background-color: var(--color-primary);
+    color: var(--color-white);
+    display: flex;
+    justify-content: space-between;
+    padding: var(--space-s-m) var(--space-m-l);
     .logo {
         max-width: 12rem;
     }
