@@ -6,7 +6,7 @@ layout: layouts/base.liquid
 <h1 class="sr-only">Past accessibility events</h1>
 
 {% edge "liquid" events %}
-  <div id="upcoming">
+  <div id="past">
 
     {% assign pastEvents = events | pastEvents | sort: 'dateStart' | reverse %}
     {% assign groupedEvents = pastEvents | groupByMonth %}
