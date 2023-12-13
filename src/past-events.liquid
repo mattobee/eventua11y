@@ -3,8 +3,6 @@ title: Past accessibility events - Eventua11y
 layout: layouts/base.liquid
 ---
 
-<h1 class="sr-only">Past accessibility events</h1>
-
 {% edge "liquid" events %}
   <div id="past">
 
@@ -16,9 +14,9 @@ layout: layouts/base.liquid
         <div class="content" data-testid="button-filter">
           <div class="status">
             <p class="filters__count text-muted" aria-live="polite" aria-atomic="true">
-              <small x-text="$store.filters.visibleEventCount === $store.filters.totalEventCount ? 'Showing all ' + $store.filters.totalEventCount + ' past events' : 'Showing ' + $store.filters.visibleEventCount + ' of ' + $store.filters.totalEventCount + ' past events'"></small>
+              <small x-text="$store.pastEventsFilters.visibleEventCount === $store.pastEventsFilters.totalEventCount ? 'Showing all ' + $store.pastEventsFilters.totalEventCount + ' past events' : 'Showing ' + $store.pastEventsFilters.visibleEventCount + ' of ' + $store.pastEventsFilters.totalEventCount + ' past events'"></small>
             </p>
-            <sl-button id="filter-reset" type="primary" name="filter-reset" x-show="$store.filters.isChanged()" @click="$store.filters.reset()"><i class="fa-solid fa-filter-circle-xmark"></i> Reset Filters</sl-button>
+            <sl-button id="filter-reset" type="primary" name="filter-reset" x-show="$store.pastEventsFilters.isChanged()" @click="$store.pastEventsFilters.reset()"><i class="fa-solid fa-filter-circle-xmark"></i> Reset Filters</sl-button>
           </div>
           <div class="filters__controls">
             <sl-button id="open-filter-drawer"><i class="fa-solid fa-filter"></i> Filter</sl-button>
@@ -338,3 +336,40 @@ layout: layouts/base.liquid
   </div>
   <!-- End #upcoming -->
 {% endedge %}
+
+<!-- Start filter drawer -->
+<sl-drawer label="Filter events" placement="end" id="filter-drawer" class="no-js">
+
+<div class="flow">
+
+  <!-- Filter by attendance mode -->
+  <fieldset class="checkbox-group filter flow flow-tight">
+
+    <legend class="text-muted">Attendance method</legend>
+
+    <div class="checkbox">
+      <input type="checkbox" x-model="$store.pastEventsFilters.attendanceOnline" @change="$store.pastEventsFilters.filterEvents()" value="online" id="filter-attendance-online" class="filter-option">
+      <label for="filter-attendance-online">Online</label>
+    </div>
+
+    <div class="checkbox">
+      <input type="checkbox" x-model="$store.pastEventsFilters.attendanceOffline" @change="$store.pastEventsFilters.filterEvents()" value="in-person" id="filter-attendance-in-person" class="filter-option">
+      <label for="filter-attendance-in-person">In person</label>
+    </div>
+
+  </fieldset>
+
+  <div class="checkbox">
+    <input type="checkbox" x-model="$store.pastEventsFilters.themes" @change="$store.pastEventsFilters.filterEvents()" value="closed" id="filter-themes" class="filter-option">
+    <label for="filter-themes">Awareness days</label>
+  </div>
+
+  <p class="filters__count text-muted">
+    <small x-text="$store.pastEventsFilters.visibleEventCount === $store.pastEventsFilters.totalEventCount ? 'Showing all ' + $store.pastEventsFilters.totalEventCount + ' events' : 'Showing ' + $store.pastEventsFilters.visibleEventCount + ' of ' + $store.pastEventsFilters.totalEventCount + ' events'"></small>
+  </p>
+  <sl-button data-testid="drawer-reset" type="primary" name="filter-reset" x-show="$store.pastEventsFilters.isChanged()" @click="$store.pastEventsFilters.reset()"><i class="fa-solid fa-filter-circle-xmark"></i> Reset Filters</sl-button>
+
+</div>
+
+</sl-drawer>
+<!-- End filter drawer -->
