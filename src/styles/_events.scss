@@ -86,6 +86,9 @@
 
 .month {
     padding: var(--space-s-l) 0;
+    &:first-child {
+        padding-top: 0;
+    }
 }
 
 .month__heading {
