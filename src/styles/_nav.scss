@@ -11,6 +11,7 @@
     border-radius: .5em;
     color: var(--color-white);
     display: inline-block;
+    font-weight: bold;
     padding: 0.5em .8em;
     &:link {
         text-decoration: none;
@@ -23,6 +24,7 @@
     }
 }
   [aria-current="page"] {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: var(--color-white);
+    color: var(--color-primary);
   }
 }

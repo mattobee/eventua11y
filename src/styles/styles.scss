@@ -45,15 +45,6 @@ main {
   display: none;
 }
 
-.checkbox-group {
-  display: flex;
-  flex-direction: column;
-}
-
-fieldset {
-  border-color: rgba(0, 0, 0, 0.08);
-  border-radius: var(--space-2xs);
-  legend {
-    font-size: var(--step--1);
-  }
+#past {
+  margin-top: var(--space-s-l);
 }
