@@ -1,13 +1,26 @@
 .checkbox {
-    align-items: center;
-    display: flex;
-    label {
-        margin-left: var(--space-2xs);
-        user-select: none;
-    }
+  align-items: center;
+  display: flex;
+  label {
+    margin-left: var(--space-2xs);
+    user-select: none;
+  }
 }
 
-[type='checkbox'] {
-    width: 16px;
-    height: 16px;
+[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+}
+
+fieldset {
+  border-color: rgba(0, 0, 0, 0.08);
+  border-radius: var(--space-2xs);
+  legend {
+    font-size: var(--step--1);
+  }
 }
