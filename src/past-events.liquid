@@ -6,24 +6,10 @@ layout: layouts/base.liquid
 {% edge "liquid" events %}
   <div id="past">
 
+    <h1 class="sr-only">Past events</h1>
+
     {% assign pastEvents = events | pastEvents | sort: 'dateStart' | reverse %}
     {% assign groupedEvents = pastEvents | groupByMonth %}
-
-    <div id="filters" class="no-js">
-      <div class="container readable">
-        <div class="content" data-testid="button-filter">
-          <div class="status">
-            <p class="filters__count text-muted" aria-live="polite" aria-atomic="true">
-              <small x-text="$store.pastEventsFilters.visibleEventCount === $store.pastEventsFilters.totalEventCount ? 'Showing all ' + $store.pastEventsFilters.totalEventCount + ' past events' : 'Showing ' + $store.pastEventsFilters.visibleEventCount + ' of ' + $store.pastEventsFilters.totalEventCount + ' past events'"></small>
-            </p>
-            <sl-button id="filter-reset" type="primary" name="filter-reset" x-show="$store.pastEventsFilters.isChanged()" @click="$store.pastEventsFilters.reset()"><i class="fa-solid fa-filter-circle-xmark"></i> Reset Filters</sl-button>
-          </div>
-          <div class="filters__controls">
-            <sl-button id="open-filter-drawer"><i class="fa-solid fa-filter"></i> Filter</sl-button>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!-- if there are no upcoming events -->
     {% if pastEvents.length == 0 %}
@@ -113,8 +99,7 @@ layout: layouts/base.liquid
                   itemscope
                   itemtype="https://schema.org/Event"
                   data-event-type="normal"
-                  data-event-attendancemode="{{ event.attendanceMode }}"
-                  {% if event.callForSpeakers %}data-event-cfs{% endif %}>
+                  data-event-attendancemode="{{ event.attendanceMode }}">
                   <h3 class="event__title" itemprop="name">
                     {% if event.website %}
                       <a href="{{ event.website }}">{{ event.title }}</a>
@@ -122,12 +107,7 @@ layout: layouts/base.liquid
                       {{ event.title }}{% endif %}
                   </h3>
                   <div class="event__dates text-muted">
-                    <span class="event__dateStart">
-                        <span class="sr-only">Starts</span>
-                        <time datetime="{{event.dateStart | isoDate}}" itemprop="startDate">
-                            {{ event.dateStart | localizeDate: "MMMM D" }}
-                        </time>
-                    </span>
+                    <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd | timeSince }}</time>
                   </div>
                   <!-- End dates -->
                   <div class="event__delivery">
@@ -334,42 +314,5 @@ layout: layouts/base.liquid
     </div>
   <!-- End .events .flow -->
   </div>
-  <!-- End #upcoming -->
+  <!-- End #past -->
 {% endedge %}
-
-<!-- Start filter drawer -->
-<sl-drawer label="Filter events" placement="end" id="filter-drawer" class="no-js">
-
-<div class="flow">
-
-  <!-- Filter by attendance mode -->
-  <fieldset class="checkbox-group filter flow flow-tight">
-
-    <legend class="text-muted">Attendance method</legend>
-
-    <div class="checkbox">
-      <input type="checkbox" x-model="$store.pastEventsFilters.attendanceOnline" @change="$store.pastEventsFilters.filterEvents()" value="online" id="filter-attendance-online" class="filter-option">
-      <label for="filter-attendance-online">Online</label>
-    </div>
-
-    <div class="checkbox">
-      <input type="checkbox" x-model="$store.pastEventsFilters.attendanceOffline" @change="$store.pastEventsFilters.filterEvents()" value="in-person" id="filter-attendance-in-person" class="filter-option">
-      <label for="filter-attendance-in-person">In person</label>
-    </div>
-
-  </fieldset>
-
-  <div class="checkbox">
-    <input type="checkbox" x-model="$store.pastEventsFilters.themes" @change="$store.pastEventsFilters.filterEvents()" value="closed" id="filter-themes" class="filter-option">
-    <label for="filter-themes">Awareness days</label>
-  </div>
-
-  <p class="filters__count text-muted">
-    <small x-text="$store.pastEventsFilters.visibleEventCount === $store.pastEventsFilters.totalEventCount ? 'Showing all ' + $store.pastEventsFilters.totalEventCount + ' events' : 'Showing ' + $store.pastEventsFilters.visibleEventCount + ' of ' + $store.pastEventsFilters.totalEventCount + ' events'"></small>
-  </p>
-  <sl-button data-testid="drawer-reset" type="primary" name="filter-reset" x-show="$store.pastEventsFilters.isChanged()" @click="$store.pastEventsFilters.reset()"><i class="fa-solid fa-filter-circle-xmark"></i> Reset Filters</sl-button>
-
-</div>
-
-</sl-drawer>
-<!-- End filter drawer -->
