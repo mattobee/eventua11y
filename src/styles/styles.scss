@@ -7,6 +7,7 @@
 @import "disclosure";
 @import "utilities";
 @import "masthead";
+@import "nav";
 @import "events";
 @import "today";
 @import "filters";
@@ -29,11 +30,7 @@ body {
 }
 
 main {
-  background-color: var(--color-primary);
-}
-
-#upcoming {
-  background-color: #fff;
+  background-color: #FFF;
 }
 
 *:focus {
@@ -48,15 +45,6 @@ main {
   display: none;
 }
 
-.checkbox-group {
-  display: flex;
-  flex-direction: column;
-}
-
-fieldset {
-  border-color: rgba(0, 0, 0, 0.08);
-  border-radius: var(--space-2xs);
-  legend {
-    font-size: var(--step--1);
-  }
+#past {
+  margin-top: var(--space-s-l);
 }

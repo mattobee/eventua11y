@@ -1,37 +1,19 @@
 ---
-title: Eventua11y - digital accessibility events calendar
+title: Past accessibility events - Eventua11y
 layout: layouts/base.liquid
 ---
 
-<h1 class="sr-only">Accessibility Events</h1>
-
-{% include "today" %}
-
 {% edge "liquid" events %}
-  <div id="upcoming">
+  <div id="past">
 
-    {% assign upcomingEvents = events | upcomingEvents | sort: 'dateStart' %}
-    {% assign groupedEvents = upcomingEvents | groupByMonth %}
+    <h1 class="sr-only">Past events</h1>
 
-    <div id="filters" class="no-js">
-      <div class="container readable">
-        <div class="content" data-testid="button-filter">
-          <div class="status">
-            <p class="filters__count text-muted" aria-live="polite" aria-atomic="true">
-              <small x-text="$store.filters.visibleEventCount === $store.filters.totalEventCount ? 'Showing all ' + $store.filters.totalEventCount + ' events' : 'Showing ' + $store.filters.visibleEventCount + ' of ' + $store.filters.totalEventCount + ' events'"></small>
-            </p>
-            <sl-button id="filter-reset" type="primary" name="filter-reset" x-show="$store.filters.isChanged()" @click="$store.filters.reset()"><i class="fa-solid fa-filter-circle-xmark"></i> Reset Filters</sl-button>
-          </div>
-          <div class="filters__controls">
-            <sl-button id="open-filter-drawer"><i class="fa-solid fa-filter"></i> Filter</sl-button>
-          </div>
-        </div>
-      </div>
-    </div>
+    {% assign pastEvents = events | pastEvents | sort: 'dateStart' | reverse %}
+    {% assign groupedEvents = pastEvents | groupByMonth %}
 
     <!-- if there are no upcoming events -->
-    {% if upcomingEvents.length == 0 %}
-      <p>There are no upcoming events. Check back later.</p>
+    {% if pastEvents.length == 0 %}
+      <p>There are no past events.</p>
     {% endif %}
 
     <div class="events events--list">
@@ -117,8 +99,7 @@ layout: layouts/base.liquid
                   itemscope
                   itemtype="https://schema.org/Event"
                   data-event-type="normal"
-                  data-event-attendancemode="{{ event.attendanceMode }}"
-                  {% if event.callForSpeakers %}data-event-cfs{% endif %}>
+                  data-event-attendancemode="{{ event.attendanceMode }}">
                   <h3 class="event__title" itemprop="name">
                     {% if event.website %}
                       <a href="{{ event.website }}">{{ event.title }}</a>
@@ -126,41 +107,7 @@ layout: layouts/base.liquid
                       {{ event.title }}{% endif %}
                   </h3>
                   <div class="event__dates text-muted">
-                    <span class="event__dateStart">
-                      <span class="sr-only">Starts
-                      </span>
-                      {% if event.day %}
-                        <time datetime="{{event.dateStart | isoDate}}" itemprop="startDate">
-                          {{ event.dateStart | localizeDate: "MMMM D" }}
-                        </time>
-                      {% else %}
-                        <time datetime="{{event.dateStart | isoDate}}" itemprop="startDate">
-                          {{ event.dateStart | localizeDate: "MMMM D h:mm A" }}
-                          <abbr title="{{ event.dateStart | localizeDate: 'z' | expandTimezone }}">
-                            {{ event.dateStart | localizeDate: 'z' }}
-                          </abbr>
-                        </time>
-                      {% endif %}
-                    </span>
-                    {% if event.dateEnd %}
-                      <span class="event__dateEnd">
-                        <span class="sr-only">Ends
-                        </span>
-                        <i class="fa-solid fa-arrow-right-long"></i>
-                        {% if event.day %}
-                          <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">
-                            {{ event.dateEnd | localizeDate: "MMMM D" }}
-                          </time>
-                        {% else %}
-                          <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">
-                            {{ event.dateEnd | localizeDate: "MMMM D h:mm A" }}
-                            <abbr title="{{ event.dateEnd | localizeDate: 'z' | expandTimezone }}">
-                              {{ event.dateEnd | localizeDate: 'z' }}
-                            </abbr>
-                          </time>
-                        {% endif %}
-                      </span>
-                    {% endif %}
+                    <time datetime="{{event.dateEnd | isoDate}}" itemprop="endDate">{{ event.dateEnd | timeSince }}</time>
                   </div>
                   <!-- End dates -->
                   <div class="event__delivery">
@@ -367,58 +314,5 @@ layout: layouts/base.liquid
     </div>
   <!-- End .events .flow -->
   </div>
-  <!-- End #upcoming -->
+  <!-- End #past -->
 {% endedge %}
-
-<!-- Start filter drawer -->
-<sl-drawer label="Filter events" placement="end" id="filter-drawer" class="no-js">
-
-<div class="flow">
-
-  <fieldset class="checkbox-group filter flow flow-tight">
-
-    <legend class="text-muted">Call for speakers</legend>
-
-    <div class="checkbox">
-      <input type="checkbox" x-model="$store.filters.cfsOpen" @change="$store.filters.filterEvents()" value="open" id="filter-cfs-open" class="filter-option">
-      <label for="filter-cfs-open">Accepting talks</label>
-    </div>
-
-    <div class="checkbox">
-      <input type="checkbox" x-model="$store.filters.cfsClosed" @change="$store.filters.filterEvents()" value="closed" id="filter-cfs-closed" class="filter-option">
-      <label for="filter-cfs-closed">Not accepting talks</label>
-    </div>
-
-  </fieldset>
-
-  <!-- Filter by attendance mode -->
-  <fieldset class="checkbox-group filter flow flow-tight">
-
-    <legend class="text-muted">Attendance method</legend>
-
-    <div class="checkbox">
-      <input type="checkbox" x-model="$store.filters.attendanceOnline" @change="$store.filters.filterEvents()" value="online" id="filter-attendance-online" class="filter-option">
-      <label for="filter-attendance-online">Online</label>
-    </div>
-
-    <div class="checkbox">
-      <input type="checkbox" x-model="$store.filters.attendanceOffline" @change="$store.filters.filterEvents()" value="in-person" id="filter-attendance-in-person" class="filter-option">
-      <label for="filter-attendance-in-person">In person</label>
-    </div>
-
-  </fieldset>
-
-  <div class="checkbox">
-    <input type="checkbox" x-model="$store.filters.themes" @change="$store.filters.filterEvents()" value="closed" id="filter-themes" class="filter-option">
-    <label for="filter-themes">Awareness days</label>
-  </div>
-
-  <p class="filters__count text-muted">
-    <small x-text="$store.filters.visibleEventCount === $store.filters.totalEventCount ? 'Showing all ' + $store.filters.totalEventCount + ' events' : 'Showing ' + $store.filters.visibleEventCount + ' of ' + $store.filters.totalEventCount + ' events'"></small>
-  </p>
-  <sl-button data-testid="drawer-reset" type="primary" name="filter-reset" x-show="$store.filters.isChanged()" @click="$store.filters.reset()"><i class="fa-solid fa-filter-circle-xmark"></i> Reset Filters</sl-button>
-
-</div>
-
-</sl-drawer>
-<!-- End filter drawer -->

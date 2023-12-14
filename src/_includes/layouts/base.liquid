@@ -41,71 +41,25 @@
       id="global-header"
       class="masthead"
       role="banner">
-      <div class="container readable">
-        <div class="content">
+      <div class="inner">
+        <div class="masthead__logo">
           <a href="/"><img
               class="logo"
               src="/images/eventua11y_logo_wordmark_white.svg"
-              alt="Eventua11y"></a>
+              alt="Eventua11y"
+              rel="home"></a>
         </div>
+        <nav class="primaryNav">
+          <ul role="list" class="primaryNav__list">
+              <li class="primaryNav__item"><a class="primaryNav__link" href="/past-events" {% if page.url == '/past-events/' %}aria-current="page"{% endif %}>Past events</a></li>
+              <li class="primaryNav__item"><a class="primaryNav__link" href="/" {% if page.url == '/' %}aria-current="page"{% endif %}>Upcoming events</a></li>
+          </ul>
+        </nav>
       </div>
     </header>
     <main>
       {{ content }}
     </main>
-
-    <!-- Start filter drawer -->
-    <sl-drawer label="Filter events" placement="end" id="filter-drawer" class="no-js">
-
-      <div class="flow">
-
-        <fieldset class="checkbox-group filter flow flow-tight">
-
-          <legend class="text-muted">Call for speakers</legend>
-
-          <div class="checkbox">
-            <input type="checkbox" x-model="$store.filters.cfsOpen" @change="$store.filters.filterEvents()" value="open" id="filter-cfs-open" class="filter-option">
-            <label for="filter-cfs-open">Accepting talks</label>
-          </div>
-
-          <div class="checkbox">
-            <input type="checkbox" x-model="$store.filters.cfsClosed" @change="$store.filters.filterEvents()" value="closed" id="filter-cfs-closed" class="filter-option">
-            <label for="filter-cfs-closed">Not accepting talks</label>
-          </div>
-
-        </fieldset>
-
-        <!-- Filter by attendance mode -->
-        <fieldset class="checkbox-group filter flow flow-tight">
-
-          <legend class="text-muted">Attendance method</legend>
-
-          <div class="checkbox">
-            <input type="checkbox" x-model="$store.filters.attendanceOnline" @change="$store.filters.filterEvents()" value="online" id="filter-attendance-online" class="filter-option">
-            <label for="filter-attendance-online">Online</label>
-          </div>
-
-          <div class="checkbox">
-            <input type="checkbox" x-model="$store.filters.attendanceOffline" @change="$store.filters.filterEvents()" value="in-person" id="filter-attendance-in-person" class="filter-option">
-            <label for="filter-attendance-in-person">In person</label>
-          </div>
-
-        </fieldset>
-
-        <div class="checkbox">
-          <input type="checkbox" x-model="$store.filters.themes" @change="$store.filters.filterEvents()" value="closed" id="filter-themes" class="filter-option">
-          <label for="filter-themes">Awareness days</label>
-        </div>
-
-        <p class="filters__count text-muted">
-          <small x-text="$store.filters.visibleEventCount === $store.filters.totalEventCount ? 'Showing all ' + $store.filters.totalEventCount + ' events' : 'Showing ' + $store.filters.visibleEventCount + ' of ' + $store.filters.totalEventCount + ' events'"></small>
-        </p>
-        <sl-button data-testid="drawer-reset" type="primary" name="filter-reset" x-show="$store.filters.isChanged()" @click="$store.filters.reset()"><i class="fa-solid fa-filter-circle-xmark"></i> Reset Filters</sl-button>
-
-      </div>
-
-    </sl-drawer>
-    <!-- End filter drawer -->
 
     <footer id="global-footer" role="contentinfo">
       <div class="container readable">

@@ -46,6 +46,11 @@ export default async (request, context) => {
         dayjs(date).locale(LOCALE).tz(timezone).format(format)
       );
 
+      // Return the time since the given date
+      eleventyConfig.addFilter("timeSince", function (date) {
+        return dayjs(date).locale(LOCALE).tz(timezone).fromNow();
+      });
+
       // Return theme events taking place today
       eleventyConfig.addFilter("todaysThemes", function (events) {
         return events.filter((event) => {
@@ -83,6 +88,16 @@ export default async (request, context) => {
           const hasParent = event.parent ? true : false;
           // Return the event if its start date is after today and is not part of a larger event
           return new dayjs(event.dateStart).isAfter(now, "day") && !hasParent;
+        });
+      });
+
+      /* Returns a list of past events */
+      eleventyConfig.addFilter("pastEvents", function (events) {
+        return events.filter((event) => {
+          // Work out if the event has a parent event
+          const hasParent = event.parent ? true : false;
+          // Return the event if its end date is before today and is not part of a larger event
+          return new dayjs(event.dateEnd).isBefore(now, "day") && !hasParent;
         });
       });
 
