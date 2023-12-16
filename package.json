@@ -31,9 +31,12 @@
     "@axe-core/playwright": "^4.8.1",
     "@playwright/test": "^1.40.0",
     "@types/node": "^20.10.0",
+    "@typescript-eslint/parser": "^6.14.0",
     "astro": "^4.0.6",
     "dayjs": "^1.11.9",
-    "eslint": "^8.54.0",
+    "eslint": "^8.56.0",
+    "eslint-plugin-astro": "^0.31.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
     "markdown-it-anchor": "^8.6.6",
     "netlify-cli": "^16.3.1",
     "playwright-chromium": "^1.40.0"
