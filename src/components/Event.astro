@@ -12,4 +12,16 @@ const { type = 'normal' } = Astro.props;
   <h2 class="event__title">
     <a href="" class="event__website" itemprop="url">{title}</a>
   </h2>
+  <!-- TODO: add event details -->
+  <details class="event__description flow">
+    <summary>
+        <i class="icon fa-solid fa-caret-right"></i> 
+        Description
+    </summary>
+    <p itemprop="description"><!-- TODO: Pull from Sanity --></p>
+  </details>
+  <div class="event__badges">
+    <!-- TODO: add logic -->
+    <sl-badge variant="success" pill pulse>Call for speakers</sl-badge>
+  </div>
 </article>
