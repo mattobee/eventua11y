@@ -1,0 +1,15 @@
+---
+const { title } = Astro.props;
+const { type = 'normal' } = Astro.props;
+---
+<article
+  class="event content"
+  itemprop={`event--${type}`}
+  itemscope
+  itemtype="https://schema.org/Event"
+  data-event-type="normal"
+>
+  <h2 class="event__title">
+    <a href="" class="event__website" itemprop="url">{title}</a>
+  </h2>
+</article>
