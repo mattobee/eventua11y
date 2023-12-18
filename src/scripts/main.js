@@ -6,9 +6,13 @@ document.addEventListener("DOMContentLoaded", (event) => {
     const filterDrawer = document.getElementById("filter-drawer");
     const filterToolbar = document.querySelector('#filters');
     const openButton = document.getElementById("open-filter-drawer");
+    const showEventsButton = document.getElementById("show-events");
 
     // Add an event listener to the open button to show the filter drawer when clicked
     openButton.addEventListener("click", () => filterDrawer.show());
+
+    // Add an event listener to the show events button to hide the filter drawer when clicked
+    showEventsButton.addEventListener("click", () => filterDrawer.hide());
 
     // Create an Intersection Observer to toggle the "is-pinned" class on the filter toolbar
     // when it intersects with the viewport
