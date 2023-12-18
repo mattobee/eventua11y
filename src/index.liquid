@@ -413,10 +413,10 @@ layout: layouts/base.liquid
     <label for="filter-themes">Awareness days</label>
   </div>
 
-  <p class="filters__count text-muted">
-    <small x-text="$store.filters.visibleEventCount === $store.filters.totalEventCount ? 'Showing all ' + $store.filters.totalEventCount + ' events' : 'Showing ' + $store.filters.visibleEventCount + ' of ' + $store.filters.totalEventCount + ' events'"></small>
-  </p>
-  <sl-button data-testid="drawer-reset" type="primary" name="filter-reset" x-show="$store.filters.isChanged()" @click="$store.filters.reset()"><i class="fa-solid fa-filter-circle-xmark"></i> Reset Filters</sl-button>
+  <div class="actions flow">
+    <sl-button variant="primary" size="large" id="show-events" name="show-events" @click="$refs.filterDrawer.close()" x-text="$store.filters.visibleEventCount === $store.filters.totalEventCount ? 'Show all ' + $store.filters.totalEventCount + ' events' : 'Show ' + $store.filters.visibleEventCount + ' of ' + $store.filters.totalEventCount + ' events'"></sl-button>
+    <sl-button data-testid="drawer-reset" name="filter-reset" x-show="$store.filters.isChanged()" @click="$store.filters.reset()"><i class="fa-solid fa-filter-circle-xmark"></i> Reset Filters</sl-button>
+  </div>
 
 </div>
 

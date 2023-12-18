@@ -32,3 +32,11 @@
         }
     }
 }
+
+#filter-drawer {
+    .actions {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
