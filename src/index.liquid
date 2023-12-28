@@ -13,21 +13,7 @@ layout: layouts/base.liquid
     {% assign upcomingEvents = events | upcomingEvents | sort: 'dateStart' %}
     {% assign groupedEvents = upcomingEvents | groupByMonth %}
 
-    <div id="filters" class="no-js">
-      <div class="container readable">
-        <div class="content" data-testid="button-filter">
-          <div class="status">
-            <p class="filters__count text-muted" aria-live="polite" aria-atomic="true">
-              <small x-text="$store.filters.visibleEventCount === $store.filters.totalEventCount ? 'Showing all ' + $store.filters.totalEventCount + ' events' : 'Showing ' + $store.filters.visibleEventCount + ' of ' + $store.filters.totalEventCount + ' events'"></small>
-            </p>
-            <sl-button id="filter-reset" type="primary" name="filter-reset" x-show="$store.filters.isChanged()" @click="$store.filters.reset()"><i class="fa-solid fa-filter-circle-xmark"></i> Reset Filters</sl-button>
-          </div>
-          <div class="filters__controls">
-            <sl-button id="open-filter-drawer"><i class="fa-solid fa-filter"></i> Filter</sl-button>
-          </div>
-        </div>
-      </div>
-    </div>
+    filters
 
     <!-- if there are no upcoming events -->
     {% if upcomingEvents.length == 0 %}
