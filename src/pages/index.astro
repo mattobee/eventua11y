@@ -1,0 +1,15 @@
+---
+import DefaultLayout from '../layouts/default.astro';
+import Today from '../components/Today.astro';
+import UpcomingEvents from '../components/UpcomingEvents.astro';
+import FilterBar from '../components/FilterBar.astro';
+---
+<DefaultLayout>
+  <Today />
+  <FilterBar />
+  <div class="container readable">
+    <UpcomingEvents />
+  </div>
+  <!-- End container -->
+
+</DefaultLayout>
