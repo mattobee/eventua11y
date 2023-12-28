@@ -1,16 +1,15 @@
 ---
-const { title } = Astro.props;
-const { type = 'normal' } = Astro.props;
+let { event, title, description, website, callForSpeakers, children } = Astro.props;
+import ChildEvent from './ChildEvent.astro';
 ---
 <article
   class="event content"
-  itemprop={`event--${type}`}
   itemscope
   itemtype="https://schema.org/Event"
   data-event-type="normal"
 >
   <h2 class="event__title">
-    <a href="" class="event__website" itemprop="url">{title}</a>
+    {website ? <a href={website} class="event__website" itemprop="url">{title}</a> : title}
   </h2>
   <!-- TODO: add event details -->
   <details class="event__description flow">
@@ -20,11 +19,28 @@ const { type = 'normal' } = Astro.props;
     </summary>
     <p itemprop="description">
         <!-- TODO: Pull from Sanity -->
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        {description ? description : ''}
     </p>
   </details>
-  <div class="event__badges">
-    <!-- TODO: add logic -->
-    <sl-badge variant="success" pill pulse>Call for speakers</sl-badge>
-  </div>
+  {children && children.length > 0 && (
+    <details class="event__children flow">
+      <summary>
+        <i class="icon fa-solid fa-caret-right"></i>
+        Accessibility highlights
+      </summary>
+      <!-- List of child events -->
+      <ul role="list" class="flow">
+        {children.map(child => (
+          <li><ChildEvent event={child} /></li>
+        ))}
+      </ul>
+    </details>
+  )}
+  <!-- End child events -->
+  {callForSpeakers && (
+    <div class="event__badges">
+      <sl-badge variant="success" pill pulse>Call for speakers</sl-badge>
+    </div>
+  )}
+
 </article>

@@ -1,0 +1,22 @@
+---
+import Event from '../components/Event.astro';
+import getEvents from '../getEvents.js';
+const events = await getEvents();
+const futureEvents = events.future();
+---
+
+<!-- If there are no upcoming events -->
+{futureEvents.length === 0 && (
+  <p>No upcoming events</p>
+)}
+
+<!-- If there are upcoming events -->
+{futureEvents.length > 0 && (
+  <ul role="list" class="flow">
+    {futureEvents.map((event) => (
+      <li key={event._id}>
+        <Event event={event} title={event.title} description={event.description}, website={event.website} />
+      </li>
+    ))}
+  </ul>
+)}
