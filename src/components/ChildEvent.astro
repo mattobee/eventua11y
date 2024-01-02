@@ -1,5 +1,9 @@
+---
+let { event } = Astro.props;
+let { title, website } = event;
+---
 <article itemprop="subEvent" itemscope itemtype="https://schema.org/Event">
   <span itemprop="name">
-    {child.website ? <a href={child.website}>{child.title}</a> : child.title}
+    {website ? <a href={website}>{title}</a> : title}
   </span>
 </article>

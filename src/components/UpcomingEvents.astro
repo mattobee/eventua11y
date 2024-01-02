@@ -14,8 +14,9 @@ const futureEvents = events.future();
 {futureEvents.length > 0 && (
   <ul role="list" class="flow">
     {futureEvents.map((event) => (
-      <li key={event._id}>
-        <Event event={event} title={event.title} description={event.description}, website={event.website} />
+      event && <li key={event._id}>
+        <!--<pre>{JSON.stringify(event, null, 2)}</pre> -->
+        <Event event={event} />
       </li>
     ))}
   </ul>

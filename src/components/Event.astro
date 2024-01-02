@@ -1,5 +1,8 @@
 ---
-let { event, title, description, website, callForSpeakers, children } = Astro.props;
+let { event } = Astro.props;
+let { title, website, description, attendanceMode, location, callForSpeakers, children } = event;
+import Date from './Date.astro';
+import EventDelivery from './EventDelivery.astro';
 import ChildEvent from './ChildEvent.astro';
 ---
 <article
@@ -11,29 +14,33 @@ import ChildEvent from './ChildEvent.astro';
   <h2 class="event__title">
     {website ? <a href={website} class="event__website" itemprop="url">{title}</a> : title}
   </h2>
-  <!-- TODO: add event details -->
-  <details class="event__description flow">
-    <summary>
+  <Date event={event} />
+  <EventDelivery attendanceMode={attendanceMode} location={location} />
+  {description && (
+    <details class="event__description flow">
+      <summary>
         <i class="icon fa-solid fa-caret-right"></i> 
         Description
-    </summary>
-    <p itemprop="description">
-        <!-- TODO: Pull from Sanity -->
-        {description ? description : ''}
-    </p>
-  </details>
+      </summary>
+      <p itemprop="description">
+        {description}
+      </p>
+    </details>
+  )}
   {children && children.length > 0 && (
     <details class="event__children flow">
       <summary>
         <i class="icon fa-solid fa-caret-right"></i>
         Accessibility highlights
       </summary>
-      <!-- List of child events -->
-      <ul role="list" class="flow">
-        {children.map(child => (
-          <li><ChildEvent event={child} /></li>
-        ))}
-      </ul>
+      {children && children.length > 0 && (
+        <!-- List of child events -->
+        <ul role="list" class="flow">
+          {children.map(child => (
+            <li><ChildEvent event={child} /></li>
+          ))}
+        </ul>
+      )}
     </details>
   )}
   <!-- End child events -->
