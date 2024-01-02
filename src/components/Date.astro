@@ -1,43 +1,40 @@
 ---
 let { event } = Astro.props;
-
-function formatDate(dateString, options) {
-    const date = new Date(dateString);
-    return date.toLocaleDateString(undefined, options);
-}
-
-function formatTime(dateString, options) {
-    const date = new Date(dateString);
-    return date.toLocaleTimeString(undefined, options);
-}
-
-function renderTimeElement(dateString, day) {
-    const dateOptions = { month: 'long', day: 'numeric', ...(day ? {} : { hour: 'numeric', minute: 'numeric' }) };
-    const timeOptions = { timeZoneName: 'short' };
-
-    return (
-        <time datetime={new Date(dateString).toISOString()}>
-            {formatDate(dateString, dateOptions)}
-            {!day && (
-                <abbr title={formatTime(dateString, { timeZoneName: 'long' })}>
-                    {formatTime(dateString, timeOptions)}
-                </abbr>
-            )}
-        </time>
-    );
-}
 ---
 
 <div class="event__dates text-muted">
     <span class="event__dateStart">
         <span class="sr-only">Starts</span>
-        {renderTimeElement(event.dateStart, event.day)}
+        {event.day ? (
+            <time datetime={new Date(event.dateStart).toISOString()} itemprop="startDate">
+                {new Date(event.dateStart).toLocaleDateString(undefined, { month: 'long', day: 'numeric' })}
+            </time>
+        ) : (
+            <time datetime={new Date(event.dateStart).toISOString()} itemprop="startDate">
+                {new Date(event.dateStart).toLocaleDateString(undefined, { month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' })}
+                <abbr title={new Date(event.dateStart).toLocaleTimeString(undefined, { timeZoneName: 'long' })}>
+                    {new Date(event.dateStart).toLocaleTimeString(undefined, { timeZoneName: 'short' })}
+                </abbr>
+            </time>
+        )}
     </span>
     {event.dateEnd && (
         <span class="event__dateEnd">
             <span class="sr-only">Ends</span>
             <i class="fa-solid fa-arrow-right-long"></i>
-            {renderTimeElement(event.dateEnd, event.day)}
+            {event.day ? (
+                <time datetime={new Date(event.dateEnd).toISOString()} itemprop="endDate">
+                    {new Date(event.dateEnd).toLocaleDateString(undefined, { month: 'long', day: 'numeric' })}
+                </time>
+            ) : (
+                <time datetime={new Date(event.dateEnd).toISOString()} itemprop="endDate">
+                    {new Date(event.dateEnd).toLocaleDateString(undefined, { month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' })}
+                    <abbr title={new Date(event.dateEnd).toLocaleTimeString(undefined, { timeZoneName: 'long' })}>
+                        {new Date(event.dateEnd).toLocaleTimeString(undefined, { timeZoneName: 'short' })}
+                    </abbr>
+                </time>
+            )}
         </span>
     )}
 </div>
+<!-- End dates -->
