@@ -1,31 +1,33 @@
 ---
 let { event } = Astro.props;
-let { title, website, description, attendanceMode, location, callForSpeakers, children } = event;
+let { title, website, description, attendanceMode, location, callForSpeakers, children, type } = event;
 import Date from './Date.astro';
 import EventDelivery from './EventDelivery.astro';
 import ChildEvent from './ChildEvent.astro';
+import EventDebug from './EventDebug.astro';
 ---
 <article
-  class="event content"
+  class={`event content event--${event.type}`}
   itemscope
   itemtype="https://schema.org/Event"
   data-event-type="normal"
 >
+  <EventDebug event={event} />
   <h2 class="event__title">
     {website ? <a href={website} class="event__website" itemprop="url">{title}</a> : title}
   </h2>
   <Date event={event} />
   <EventDelivery attendanceMode={attendanceMode} location={location} />
-  {description && (
-    <details class="event__description flow">
-      <summary>
-        <i class="icon fa-solid fa-caret-right"></i> 
-        Description
-      </summary>
-      <p itemprop="description">
-        {description}
-      </p>
-    </details>
+  {description && event.type !== 'theme' && (
+      <details class="event__description flow">
+        <summary>
+          <i class="icon fa-solid fa-caret-right"></i> 
+          Description
+        </summary>
+        <p itemprop="description">
+          {description}
+        </p>
+      </details>
   )}
   {children && children.length > 0 && (
     <details class="event__children flow">
@@ -49,5 +51,4 @@ import ChildEvent from './ChildEvent.astro';
       <sl-badge variant="success" pill pulse>Call for speakers</sl-badge>
     </div>
   )}
-
 </article>

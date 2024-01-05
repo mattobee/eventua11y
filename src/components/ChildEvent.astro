@@ -1,9 +1,26 @@
 ---
+import Date from './Date.astro';
 let { event } = Astro.props;
-let { title, website } = event;
+let { title, website, format } = event;
+
+// Define a map from types to strings
+let typeStrings = {
+  'talk': 'Talk',
+  'workshop': 'Workshop',
+  // Add more types as needed
+};
+
+let displayType = typeStrings[format]
+
 ---
 <article itemprop="subEvent" itemscope itemtype="https://schema.org/Event">
   <span itemprop="name">
     {website ? <a href={website}>{title}</a> : title}
   </span>
+  <div>
+    <span class="text-muted">
+      {displayType}
+    </span>
+    <Date event={event} />
+  </div>
 </article>

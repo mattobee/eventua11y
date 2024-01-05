@@ -2,7 +2,7 @@
 let { event } = Astro.props;
 ---
 
-<div class="event__dates text-muted">
+<span class="event__dates text-muted">
     <span class="event__dateStart">
         <span class="sr-only">Starts</span>
         {event.day ? (
@@ -36,5 +36,5 @@ let { event } = Astro.props;
             )}
         </span>
     )}
-</div>
+</span>
 <!-- End dates -->
