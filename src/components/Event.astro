@@ -33,7 +33,7 @@ import EventDebug from './EventDebug.astro';
     <details class="event__children flow">
       <summary>
         <i class="icon fa-solid fa-caret-right"></i>
-        Accessibility highlights
+        Accessibility highlights{children.length > 0 ? ` (${children.length})` : ''}
       </summary>
       {children && children.length > 0 && (
         <!-- List of child events -->
