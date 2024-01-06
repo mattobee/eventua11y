@@ -1,5 +1,6 @@
 ---
 import EventDate from './EventDate.astro';
+import EventDuration from './EventDuration.astro';
 let { event } = Astro.props;
 let { title, website, format } = event;
 
@@ -19,8 +20,9 @@ let displayType = typeStrings[format]
   </span>
   <div>
     <span class="text-small text-muted">
-      {displayType}
+      {displayType} ·
     </span>
-    <EventDate event={event} />
+    <EventDate event={event} /> .
+    <EventDuration event={event} />
   </div>
 </article>
