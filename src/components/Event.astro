@@ -1,7 +1,7 @@
 ---
 let { event } = Astro.props;
 let { title, website, description, attendanceMode, location, callForSpeakers, children, type } = event;
-import Date from './Date.astro';
+import EventDate from './EventDate.astro';
 import EventDelivery from './EventDelivery.astro';
 import ChildEvent from './ChildEvent.astro';
 import EventDebug from './EventDebug.astro';
@@ -16,7 +16,7 @@ import EventDebug from './EventDebug.astro';
   <h2 class="event__title">
     {website ? <a href={website} class="event__website" itemprop="url">{title}</a> : title}
   </h2>
-  <Date event={event} />
+  <EventDate event={event} />
   <EventDelivery attendanceMode={attendanceMode} location={location} />
   {description && event.type !== 'theme' && (
       <details class="event__description flow">
