@@ -1,4 +1,5 @@
 ---
+import dayjs from "dayjs";
 let { event } = Astro.props;
 ---
 
@@ -6,14 +7,14 @@ let { event } = Astro.props;
     <span class="event__dateStart">
         <span class="sr-only">Starts</span>
         {event.day ? (
-            <time datetime={new Date(event.dateStart).toISOString()} itemprop="startDate">
-                {new Date(event.dateStart).toLocaleDateString(undefined, { month: 'long', day: 'numeric' })}
+            <time datetime={dayjs(event.dateStart).toISOString()} itemprop="startDate">
+                {dayjs(event.dateStart).format('MMMM D')}
             </time>
         ) : (
-            <time datetime={new Date(event.dateStart).toISOString()} itemprop="startDate">
-                {new Date(event.dateStart).toLocaleDateString(undefined, { month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' })}
-                <abbr title={new Date(event.dateStart).toLocaleTimeString(undefined, { timeZoneName: 'long' })}>
-                    {new Date(event.dateStart).toLocaleTimeString(undefined, { timeZoneName: 'short' })}
+            <time datetime={dayjs(event.dateStart).toISOString()} itemprop="startDate">
+                {dayjs(event.dateStart).format('MMMM D, h:mm')}
+                <abbr title={dayjs(event.dateStart).format('z')}>
+                    {dayjs(event.dateStart).format('z')}
                 </abbr>
             </time>
         )}
@@ -23,18 +24,17 @@ let { event } = Astro.props;
             <span class="sr-only">Ends</span>
             <i class="fa-solid fa-arrow-right-long"></i>
             {event.day ? (
-                <time datetime={new Date(event.dateEnd).toISOString()} itemprop="endDate">
-                    {new Date(event.dateEnd).toLocaleDateString(undefined, { month: 'long', day: 'numeric' })}
+                <time datetime={dayjs(event.dateEnd).toISOString()} itemprop="endDate">
+                    {dayjs(event.dateEnd).format('MMMM D')}
                 </time>
             ) : (
-                <time datetime={new Date(event.dateEnd).toISOString()} itemprop="endDate">
-                    {new Date(event.dateEnd).toLocaleDateString(undefined, { month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' })}
-                    <abbr title={new Date(event.dateEnd).toLocaleTimeString(undefined, { timeZoneName: 'long' })}>
-                        {new Date(event.dateEnd).toLocaleTimeString(undefined, { timeZoneName: 'short' })}
+                <time datetime={dayjs(event.dateEnd).toISOString()} itemprop="endDate">
+                    {dayjs(event.dateEnd).format('MMMM D, h:mm')}
+                    <abbr title={dayjs(event.dateEnd).format('z')}>
+                        {dayjs(event.dateEnd).format('z')}
                     </abbr>
                 </time>
             )}
         </span>
     )}
 </span>
-<!-- End dates -->
