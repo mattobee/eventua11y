@@ -1,0 +1,29 @@
+---
+import dayjs from 'dayjs';
+let { event } = Astro.props;
+
+let dateStart = event.dateStart;
+let dateEnd = event.dateEnd;
+
+// Work out the duration of the event in minutes, given the start and end dates using dayjs
+let duration = dayjs(dateEnd).diff(dayjs(dateStart), 'minutes');
+
+// If the duration is 60 minutes or less, store it in minutes
+let formattedDuration;
+if (duration <= 60) {
+    formattedDuration = `${duration} minutes`;
+} else {
+    // Otherwise, calculate the hours and remaining minutes and store them
+    let hours = Math.floor(duration / 60);
+    let minutes = duration % 60;
+    formattedDuration = `${hours} hours ${minutes} minutes`;
+}
+
+---
+<span class="event__duration">
+    <span class="sr-only">Duration</span>
+    <time datetime="PT{{ duration_minutes }}M" itemprop="duration" class="text-small text-muted">
+        <i class="fa-solid fa-timer"></i>
+        {formattedDuration}
+    </time>
+</span>
