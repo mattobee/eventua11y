@@ -276,6 +276,8 @@ layout: layouts/base.liquid
                                       {% assign childEndDate = child.dateEnd | date: "%s" %}
                                       {% assign duration_seconds = childEndDate | minus: childStartDate %}
                                       {% assign duration_minutes = duration_seconds | divided_by: 60 %}
+                                      {% assign hours = duration_minutes | divided_by: 60 %}
+                                      {% assign minutes = duration_minutes | modulo: 60 %}
 
                                       {% if parentEndDate == nil or parentStartDate == parentEndDate %}
                                         <span class="event__dateStart">
@@ -314,7 +316,15 @@ layout: layouts/base.liquid
                                             <span class="sr-only">Duration</span>
                                             <time datetime="PT{{ duration_minutes }}M" itemprop="duration">
                                               <i class="fa-solid fa-timer"></i>
-                                              {{ duration_minutes }} minutes
+                                              {% if duration_minutes > 60 %}
+                                                {% if minutes == 0 %}
+                                                  {{ hours }} hours
+                                                {% else %}
+                                                  {{ hours }} hours {{ minutes }} minutes
+                                                {% endif %}
+                                              {% else %}
+                                                {{ duration_minutes }} minutes
+                                              {% endif %}
                                             </time>
                                           </span>
                                         {% endif %}
