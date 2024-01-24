@@ -354,14 +354,11 @@ layout: layouts/base.liquid
                     {% endif %}
                     <!-- End .event__children -->
                   {% endif %}
-                  {% if event.callForSpeakers %}
-                  <div class="event__badges">
-                    {% if event.callForSpeakers %}<sl-badge
-                      variant="success"
-                      pill
-                      pulse>Call for speakers</sl-badge>
-                    {% endif %}
-                  </div>
+                  {% assign currentDate = 'now' | date: '%Y-%m-%dT%H:%M:%S%z' %}
+                  {% if event.callForSpeakers and event.callForSpeakersClosingDate >= currentDate %}
+                    <div class="event__badges">
+                      <sl-badge variant="success" pill pulse>Call for speakers</sl-badge>
+                    </div>
                   {% endif %}
                 </article>
                 <!-- End .event -->
