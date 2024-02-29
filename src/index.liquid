@@ -118,7 +118,14 @@ layout: layouts/base.liquid
                   itemtype="https://schema.org/Event"
                   data-event-type="normal"
                   data-event-attendancemode="{{ event.attendanceMode }}"
-                  {% if event.callForSpeakers %}data-event-cfs{% endif %}>
+                  {% if event.callForSpeakers %}
+                    {% if event.callForSpeakersClosingDate == empty %}
+                      data-event-cfs
+                    {% elsif event.callForSpeakersClosingDate >= currentDate %}
+                      data-event-cfs
+                    {% endif %}
+                  {% endif %}
+                >
                   <h3 class="event__title" itemprop="name">
                     {% if event.website %}
                       <a href="{{ event.website }}">{{ event.title }}</a>
@@ -355,10 +362,16 @@ layout: layouts/base.liquid
                     <!-- End .event__children -->
                   {% endif %}
                   {% assign currentDate = 'now' | date: '%Y-%m-%dT%H:%M:%S%z' %}
-                  {% if event.callForSpeakers and event.callForSpeakersClosingDate >= currentDate %}
-                    <div class="event__badges">
-                      <sl-badge variant="success" pill pulse>Call for speakers</sl-badge>
-                    </div>
+                  {% if event.callForSpeakers %}
+                    {% if event.callForSpeakersClosingDate == empty %}
+                      <div class="event__badges">
+                        <sl-badge variant="success" pill pulse>Call for speakers</sl-badge>
+                      </div>
+                    {% elsif event.callForSpeakersClosingDate >= currentDate %}
+                      <div class="event__badges">
+                        <sl-badge variant="success" pill pulse>Call for speakers</sl-badge>
+                      </div>
+                    {% endif %}
                   {% endif %}
                 </article>
                 <!-- End .event -->
