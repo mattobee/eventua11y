@@ -30,17 +30,19 @@ h5 {
 }
 
 body {
-    font-family: "Roboto";
+    font-family: "Atkinson Hyperlegible", sans-serif;
     font-size: var(--step-0);
+    font-weight: 400;
 }
 
 :is(h1,h2,h3,h4,h5,h6) {
-    font-family: "Roboto Slab", serif;
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    font-weight: 400;
 }
 
 a {
     // text-decoration: underline;
-    text-underline-offset: .15em;
+    // text-underline-offset: .15em;
 }
 
 a:link, a:visited {
