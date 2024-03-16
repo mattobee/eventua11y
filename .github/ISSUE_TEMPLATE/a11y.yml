@@ -1,0 +1,32 @@
+name: Accessibility Problem
+description: Report something that makes it difficult for you to use Eventua11y.
+labels: ["accessibility", "bug"]
+projects: ["mattobee/eventua11y"]
+assignees:
+  - mattobee
+body:
+  - type: input
+    id: contact
+    attributes:
+      label: Contact Details
+      description: How can we get in touch with you if we need more info?
+      placeholder: ex. email@example.com
+    validations:
+      required: false
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the problem
+      description: What happened and what did you expect to happen?
+    validations:
+      required: true
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: What browsers are you seeing the problem on?
+      multiple: true
+      options:
+        - Firefox
+        - Chrome
+        - Safari
+        - Microsoft Edge
