@@ -7,7 +7,7 @@
     height: 100%;
     justify-content: space-between;
     &__title {
-        font-size: var(--step-2);
+        font-size: var(--step-1);
         margin-bottom: .4rem;
         order: 3;
     }
@@ -84,6 +84,5 @@
 }
 
 .month__heading {
-    font-size: var(--step-4);
     padding: 0 var(--space-xs-m);
 }
