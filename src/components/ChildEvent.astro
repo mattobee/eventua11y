@@ -8,13 +8,14 @@ let { title, website, format } = event;
 let typeStrings = {
   'talk': 'Talk',
   'workshop': 'Workshop',
+  'roundtable': 'Roundtable',
   // Add more types as needed
 };
 
 let displayType = typeStrings[format]
 
 ---
-<article itemprop="subEvent" itemscope itemtype="https://schema.org/Event">
+<article class="flow-s" itemprop="subEvent" itemscope itemtype="https://schema.org/Event">
   <span itemprop="name">
     {website ? <a href={website}>{title}</a> : title}
   </span>
@@ -22,7 +23,15 @@ let displayType = typeStrings[format]
     <span class="text-small text-muted">
       {displayType} ·
     </span>
-    <EventDate event={event} /> .
-    <EventDuration event={event} />
+      { /* Only show dates if event is scheduled */
+      event.scheduled ? (
+        <>
+          <EventDate event={event} /> .
+          <EventDuration event={event} />
+        </>
+      ) : (
+        <span class="text-small text-muted">Not yet scheduled</span>
+      )
+    }
   </div>
 </article>
