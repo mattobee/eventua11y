@@ -27,14 +27,16 @@ async function getEvents() {
     return {
       events: allEvents,
       future: () =>
-        allEvents.filter((event) => {
-          // Get the date of the event
-          const eventDate = new Date(event.dateStart);
-          // Get the current date
-          const currentDate = new Date();
-          // Return true if the event is in the future and does not have a parent
-          return eventDate > currentDate && !event.parent;
-        }),
+        allEvents
+          .filter((event) => {
+            // Get the date of the event
+            const eventDate = new Date(event.dateStart);
+            // Get the current date
+            const currentDate = new Date();
+            // Return true if the event is in the future and does not have a parent
+            return eventDate > currentDate && !event.parent;
+          })
+          .sort((a, b) => new Date(a.dateStart) - new Date(b.dateStart)), // Sort in ascending order
       past: () =>
         allEvents.filter((event) => {
           // Get the date of the event
