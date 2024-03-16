@@ -6,9 +6,9 @@ assignees:
   - mattobee
 body:
   - type: input
-    id: contact
+    id: email
     attributes:
-      label: Contact Details
+      label: Email address
       description: How can we get in touch with you if we need more info?
       placeholder: ex. email@example.com
     validations:
