@@ -3,7 +3,7 @@ let { event } = Astro.props;
 ---
 
 <details class="debug" style="overflow:scroll;">
-    <summary>Debug</summary>
+    <summary>{event._id}</summary>
     <small>
         <pre>{JSON.stringify(event, null, 2)}</pre>
     </small>
@@ -11,6 +11,12 @@ let { event } = Astro.props;
 
 <style>
     details {
+        border-radius: .5rem;
         border-top: none;
+        background-color: rgba(0, 0, 0, .03);
+        padding: var(--space-2xs);
+    }
+    pre {
+        font-size: var(--step--2);
     }
 </style>
