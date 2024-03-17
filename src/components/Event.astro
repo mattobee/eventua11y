@@ -13,10 +13,10 @@ import EventDebug from './EventDebug.astro';
   data-event-type="normal"
 >
   <EventDebug event={event} />
-  <h2 class="event__title">
+  <h3 class="event__title">
     {website ? <a href={website} class="event__website" itemprop="url">{title}</a> : title}
-  </h2>
-  <EventDate event={event} />
+  </h3>
+  <span class="text-muted text-small"><EventDate event={event} /></span>
   <EventDelivery attendanceMode={attendanceMode} location={location} />
   {description && event.type !== 'theme' && (
       <details class="event__description flow">
@@ -36,7 +36,6 @@ import EventDebug from './EventDebug.astro';
         Accessibility highlights{children.length > 0 ? ` (${children.length})` : ''}
       </summary>
       {children && children.length > 0 && (
-        <!-- List of child events -->
         <ul role="list" class="flow">
           {children.map(child => (
             <li><ChildEvent event={child} /></li>
