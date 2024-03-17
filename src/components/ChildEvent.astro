@@ -19,18 +19,16 @@ let displayType = typeStrings[format]
   <span itemprop="name">
     {website ? <a href={website}>{title}</a> : title}
   </span>
-  <div>
-    <span class="text-small text-muted">
+  <div class="text-small text-muted">
       {displayType} ·
-    </span>
       { /* Only show dates if event is scheduled */
       event.scheduled ? (
         <>
-          <EventDate event={event} /> .
+          <EventDate event={event} /> ·
           <EventDuration event={event} />
         </>
       ) : (
-        <span class="text-small text-muted">Not yet scheduled</span>
+        "Not yet scheduled"
       )
     }
   </div>
