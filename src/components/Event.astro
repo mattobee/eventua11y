@@ -29,13 +29,17 @@ import EventDebug from './EventDebug.astro';
         </p>
       </details>
   )}
-  {event.isParent && (
+  { /* Check if the event is a parent event */
+  event.isParent && (
     <details class="event__children flow">
       <summary>
         <i class="icon fa-solid fa-caret-right"></i>
-        Accessibility highlights{children && children.length > 0 && ` (${children.length})`}
+        Accessibility highlights
+        { /* If there are child events, display their count */
+        children && children.length > 0 && ` (${children.length})`}
       </summary>
-      {children && children.length > 0 ? (
+      { /* If there are child events, display a list of them */
+      children && children.length > 0 ? (
         <>
           <ul role="list" class="flow">
             {children.map(child => (
@@ -44,6 +48,7 @@ import EventDebug from './EventDebug.astro';
           </ul>
         </>
       ) : (
+      /* If there are no child events, display a message */
       <p>{event.title} is expected to include one or more accessibility-themed sessions but the full schedule has not yet been announced. Details will be published here closer to the date of the event.</p>
       )}
     </details>
