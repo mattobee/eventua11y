@@ -29,18 +29,22 @@ import EventDebug from './EventDebug.astro';
         </p>
       </details>
   )}
-  {children && children.length > 0 && (
+  {event.isParent && (
     <details class="event__children flow">
       <summary>
         <i class="icon fa-solid fa-caret-right"></i>
-        Accessibility highlights{children.length > 0 ? ` (${children.length})` : ''}
+        Accessibility highlights{children && children.length > 0 && ` (${children.length})`}
       </summary>
-      {children && children.length > 0 && (
-        <ul role="list" class="flow">
-          {children.map(child => (
-            <li><ChildEvent event={child} /></li>
-          ))}
-        </ul>
+      {children && children.length > 0 ? (
+        <>
+          <ul role="list" class="flow">
+            {children.map(child => (
+              <li><ChildEvent event={child} /></li>
+            ))}
+          </ul>
+        </>
+      ) : (
+      <p>{event.title} is expected to include one or more accessibility-themed sessions but the full schedule has not yet been announced. Details will be published here closer to the date of the event.</p>
       )}
     </details>
   )}
