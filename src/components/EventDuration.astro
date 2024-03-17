@@ -16,7 +16,8 @@ if (duration <= 60) {
     // Otherwise, calculate the hours and remaining minutes and store them
     let hours = Math.floor(duration / 60);
     let minutes = duration % 60;
-    formattedDuration = `${hours} hours ${minutes} minutes`;
+    // If minutes is greater than 0, display both hours and minutes. Otherwise, display only hours.
+    formattedDuration = minutes > 0 ? `${hours} hours ${minutes} minutes` : `${hours} hours`;
 }
 ---
 <span class="event__duration">
