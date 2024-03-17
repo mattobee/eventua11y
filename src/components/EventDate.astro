@@ -1,40 +1,29 @@
 ---
 import dayjs from "dayjs";
 let { event } = Astro.props;
+
+// Helper function to format date and time
+function formatDate(date, format) {
+  return dayjs(date).format(format);
+}
 ---
 
 <span class="event__dates">
     <span class="event__dateStart">
         <span class="sr-only">Starts</span>
-        {event.day ? (
-            <time datetime={dayjs(event.dateStart).toISOString()} itemprop="startDate">
-                {dayjs(event.dateStart).format('MMMM D')}
-            </time>
-        ) : (
-            <time datetime={dayjs(event.dateStart).toISOString()} itemprop="startDate">
-                {dayjs(event.dateStart).format('MMMM D, h:mm')}
-                <abbr title={dayjs(event.dateStart).format('z')}>
-                    {dayjs(event.dateStart).format('z')}
-                </abbr>
-            </time>
-        )}
+        <time datetime={formatDate(event.dateStart, 'YYYY-MM-DDTHH:mm:ssZ')} itemprop="startDate">
+            {formatDate(event.dateStart, event.day ? 'MMMM D' : 'MMMM D, h:mm')}
+            {!event.day && <abbr title={formatDate(event.dateStart, 'z')}>{formatDate(event.dateStart, 'z')}</abbr>}
+        </time>
     </span>
     {event.dateEnd && (
         <span class="event__dateEnd">
             <span class="sr-only">Ends</span>
             <i class="fa-solid fa-arrow-right-long"></i>
-            {event.day ? (
-                <time datetime={dayjs(event.dateEnd).toISOString()} itemprop="endDate">
-                    {dayjs(event.dateEnd).format('MMMM D')}
-                </time>
-            ) : (
-                <time datetime={dayjs(event.dateEnd).toISOString()} itemprop="endDate">
-                    {dayjs(event.dateEnd).format('MMMM D, h:mm')}
-                    <abbr title={dayjs(event.dateEnd).format('z')}>
-                        {dayjs(event.dateEnd).format('z')}
-                    </abbr>
-                </time>
-            )}
+            <time datetime={formatDate(event.dateEnd, 'YYYY-MM-DDTHH:mm:ssZ')} itemprop="endDate">
+                {formatDate(event.dateEnd, event.day ? 'MMMM D' : 'MMMM D, h:mm')}
+                {!event.day && <abbr title={formatDate(event.dateEnd, 'z')}>{formatDate(event.dateEnd, 'z')}</abbr>}
+            </time>
         </span>
     )}
 </span>
