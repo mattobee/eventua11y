@@ -3,7 +3,7 @@ let { event } = Astro.props;
 ---
 
 <details class="debug" style="overflow:scroll;">
-    <summary>{event._id}</summary>
+    <summary>{event.title} ({event._id})</summary>
     <small>
         <pre>{JSON.stringify(event, null, 2)}</pre>
     </small>
