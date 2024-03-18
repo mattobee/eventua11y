@@ -9,7 +9,7 @@ export default defineConfig({
   integrations: [
     sanity({
       projectId: "2g5zqxo3",
-      dataset: "production",
+      dataset: "test",
       // Set useCdn to false if you're building statically.
       useCdn: false,
     }),
