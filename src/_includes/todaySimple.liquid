@@ -4,6 +4,7 @@
   <div class="container readable flow">
 
     <hgroup
+      id="today-heading"
       class="content py-0"
       role="group"
       aria-roledescription="Heading group">
@@ -26,10 +27,10 @@
       {% endif %}
 
       {% if todaysThemes.length > 0 %}
-        <div class="events events--list content flow">
+        <div class="events events--list content py-0 flow">
           {% for event in todaysThemes %}
             <article
-              class="event event--theme"
+              class="event event--theme flow-s"
               itemprop="event"
               itemscope
               itemtype="https://schema.org/Event"
