@@ -27,7 +27,7 @@
     "@11ty/eleventy-navigation": "^0.3.5",
     "@11ty/eleventy-plugin-bundle": "^1.0.3",
     "@11ty/eleventy-plugin-rss": "^1.2.0",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^4.2.0",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
     "@11tyrocks/eleventy-plugin-sass-lightningcss": "^1.0.1",
     "@axe-core/playwright": "^4.8.1",
     "@playwright/test": "^1.42.1",
