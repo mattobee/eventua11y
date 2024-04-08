@@ -31,7 +31,7 @@
     "@11tyrocks/eleventy-plugin-sass-lightningcss": "^1.0.1",
     "@axe-core/playwright": "^4.8.1",
     "@playwright/test": "^1.42.1",
-    "@types/node": "^20.12.2",
+    "@types/node": "^20.12.5",
     "dayjs": "^1.11.9",
     "eslint": "^8.54.0",
     "markdown-it-anchor": "^8.6.6",
