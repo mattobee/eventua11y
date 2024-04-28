@@ -363,13 +363,12 @@ layout: layouts/base.liquid
                   {% endif %}
                   {% assign currentDate = 'now' | date: '%Y-%m-%dT%H:%M:%S%z' %}
                   {% if event.callForSpeakers %}
-                    {% if event.callForSpeakersClosingDate == empty %}
+                    {% if event.callForSpeakersClosingDate == null or event.callForSpeakersClosingDate >= currentDate %}
                       <div class="event__badges">
                         <sl-badge variant="success" pill pulse>Call for speakers</sl-badge>
-                      </div>
-                    {% elsif event.callForSpeakersClosingDate >= currentDate %}
-                      <div class="event__badges">
-                        <sl-badge variant="success" pill pulse>Call for speakers</sl-badge>
+                        {% if event.callForSpeakersClosingDate != null %}
+                          <small class="text-muted">Closes: {{ event.callForSpeakersClosingDate | localizeDate: "MMMM D" }}</small>
+                        {% endif %}
                       </div>
                     {% endif %}
                   {% endif %}
