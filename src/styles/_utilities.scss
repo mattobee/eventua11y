@@ -18,6 +18,10 @@
   --flow-space: var(--space-3xs-2xs);
 }
 
+.flow-s {
+  --flow-space: var(--space-3xs);
+}
+
 .content {
   display: flex;
   flex-direction: column;

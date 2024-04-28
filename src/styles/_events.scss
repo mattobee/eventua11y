@@ -75,7 +75,7 @@
     flex-direction: column;
     padding: 0 var(--space-xs-m);
     .event__title {
-        font-size: 1.2rem;
+        font-size: var(--step-0);
         order: 2;
     }
     .event__dates {
@@ -95,6 +95,5 @@
 }
 
 .month__heading {
-    font-size: var(--step-4);
     padding: 0 var(--space-xs-m);
 }
