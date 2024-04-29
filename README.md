@@ -1,6 +1,6 @@
 ![Eventua11y](https://github.com/mattobee/eventua11y/assets/3172945/a1cc64a6-c3f8-465a-b88f-e5f8524c3edd)
 
-# Eventua11y
+# Eventua11y.com
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/147b62a2-2d05-4693-a42f-9f675c3c478d/deploy-status)](https://app.netlify.com/sites/eventua11y/deploys)
 
@@ -27,7 +27,7 @@ Netlify edge functions pull events from Sanity and apply localisation to the dat
 1. Clone this repository by entering this command into your command line application.
 
     ```sh
-    git clone https://github.com/mattobee/eventua11y.git
+    git clone https://github.com/eventua11y/eventua11y.git
     ```
 
 1. Navigate into the project's root directory:
