@@ -283,7 +283,7 @@ layout: layouts/base.liquid
                                       {% assign childEndDate = child.dateEnd | date: "%s" %}
                                       {% assign duration_seconds = childEndDate | minus: childStartDate %}
                                       {% assign duration_minutes = duration_seconds | divided_by: 60 %}
-                                      {% assign hours = duration_minutes | divided_by: 60 %}
+                                      {% assign hours = duration_minutes | divided_by: 60 | floor %}
                                       {% assign minutes = duration_minutes | modulo: 60 %}
 
                                       {% if parentEndDate == nil or parentStartDate == parentEndDate %}
