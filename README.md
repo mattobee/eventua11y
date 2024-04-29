@@ -16,7 +16,7 @@ Page templates are written in the [Liquid](https://github.com/Shopify/liquid) te
 
 Styles are written in [Sass](https://sass-lang.com/), which is then transformed into CSS.
 
-The events themselves are stored in a [Sanity](https://sanity.io/) real-time database.
+The events themselves are stored in a [Sanity](https://sanity.io/) real-time database, edited in [Sanity Studio](https://github.com/eventua11y/eventua11y-sanity).
 
 The website is hosted by [Netlify](https://www.netlify.com/). Whenever changes are pushed to the main branch in GitHub, Netlify builds and deploys the changes automatically. Branches are also deployed temporarily for testing purposes.
 
