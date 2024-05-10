@@ -96,8 +96,10 @@ export default async (request, context) => {
         return events.filter((event) => {
           // Work out if the event has a parent event
           const hasParent = event.parent ? true : false;
+          // If the event doesn't have an end date, assume it's a single day event that ends on the same day it starts
+          const endDate = event.dateEnd ? event.dateEnd : event.dateStart;
           // Return the event if its end date is before today and is not part of a larger event
-          return new dayjs(event.dateEnd).isBefore(now, "day") && !hasParent;
+          return new dayjs(endDate).isBefore(now, "day") && !hasParent;
         });
       });
 
