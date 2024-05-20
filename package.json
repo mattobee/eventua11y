@@ -34,7 +34,7 @@
     "@types/node": "^20.12.12",
     "dayjs": "^1.11.11",
     "eslint": "^9.3.0",
-    "markdown-it-anchor": "^8.6.6",
+    "markdown-it-anchor": "^9.0.1",
     "netlify-cli": "^17.23.3",
     "playwright-chromium": "^1.44.0"
   },
