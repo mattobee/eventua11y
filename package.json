@@ -35,7 +35,7 @@
     "dayjs": "^1.11.11",
     "eslint": "^9.3.0",
     "markdown-it-anchor": "^9.0.1",
-    "netlify-cli": "^17.23.3",
+    "netlify-cli": "^17.23.8",
     "playwright-chromium": "^1.44.0"
   },
   "dependencies": {
